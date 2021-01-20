@@ -2,7 +2,8 @@ from setuptools import setup, find_packages
 
 VERSION = "0.0.1"
 DESCRIPTION = "Simple tools to build discord bots using discord.py"
-LONG_DESCRIPTION = "General purpose, simple tools meant to aid in common tasks when building a discord bot."
+with open('README.md', encoding="utf-8") as f:
+    LONG_DESCRIPTION = f.read()
 
 setup(
     name="dpytools",
