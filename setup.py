@@ -13,7 +13,7 @@ setup(
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     packages=find_packages(
-        exclude=[".env", "env/*", ".gitignore"]
+        exclude=["private", "env/*", ".gitignore"]
                                 ),
     install_requires=["discord.py==1.6.0"],
     keywords=["discord.py", "tools", "extensions"],
