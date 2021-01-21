@@ -6,9 +6,11 @@ class IncorrectGuild(commands.CommandError):
 
 def only_this_guild(guild_id: int):
     """This checks returns true if ctx.guild has same id as param :guild_id:
+
     Raises:
         commands.NoPrivateMessage if ran from DM
         Custom IncorrectGuild commands.CommandError if id doesn't check
+
     Returns:
         True if guild_id == ctx.guild.id
     """

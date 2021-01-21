@@ -67,7 +67,7 @@ async def arrows(ctx: commands.Context,
         try:
             payload = await ctx.bot.wait_for('raw_reaction_add', timeout=timeout, check=check)
         except asyncio.TimeoutError:
-            try:  # This is done so that if the menu is called in a dm_chanel context it omits deleting the reactions.
+            try:  # This is done so that if the menu is called in a dm_channel context it omits deleting the reactions.
                 await msg.clear_reactions()
             except discord.errors.Forbidden:
                 pass
