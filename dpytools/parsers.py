@@ -40,7 +40,7 @@ def parse_time(string: str) -> timedelta:
         amount = float(time_string[:-1])
         return {units[unit]: amount}
 
-    pattern = r"(\d+[.]?\d?[s|m|h|d]{1})"
+    pattern = r"(\d+[.]?\d?[s|m|h|d]{1})\s?"
     matched = re.findall(pattern, string)
 
     if not matched:
