@@ -3,6 +3,10 @@ A simple set of tools to make coding discord bot's faster.
 
 <hr>
 
+## Status of the project
+
+Early development. As such its expected to be unstable and unsuited for production.
+
 ## Components
 
 **Module** | **Functions** | **Notes**
