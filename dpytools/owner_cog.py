@@ -18,13 +18,13 @@ class OwnerCog(commands.Cog):
         self.bot = bot
 
     async def cog_check(self, ctx):
-        if not self.bot.is_owner(ctx.author):
+        if not await self.bot.is_owner(ctx.author):
             raise commands.NotOwner("This command can only be executed by the owner of the bot")
         else:
             return True
 
-    @commands.command()
-    async def my_cogs(
+    @commands.command(hidden=True)
+    async def cogs(
             self,
             ctx: commands.Context,
             option: Optional[str],

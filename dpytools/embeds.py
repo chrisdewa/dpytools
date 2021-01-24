@@ -6,7 +6,7 @@ from typing import List, Optional, Union
 
 def paginate_to_embeds(title: str,
                        description: str,
-                       max_size: int,
+                       max_size: int = 2000,
                        prefix: Optional[str] = "",
                        suffix: Optional[str] = "",
                        color: Union[discord.Color, int, None] = None
