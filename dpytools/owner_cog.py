@@ -4,13 +4,7 @@ from discord import Embed, Color
 from typing import Optional
 import os
 
-
-class UnknownCog(commands.CommandError):
-    pass
-
-
-class InvalidOption(commands.CommandError):
-    pass
+from dpytools.errors import InvalidOption, UnknownCog
 
 
 class OwnerCog(commands.Cog):
