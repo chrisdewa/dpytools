@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+This module holds functions to work with embeds in different ways.
+"""
+
 import discord
 from discord import Embed
 from discord.ext.commands import Paginator

@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+
+"""
+This module holds functions for displaying different kinds of menus.
+All menus are reaction based.
+"""
+
 import discord, asyncio
 from discord.ext import commands
 from discord import Embed

@@ -1,3 +1,20 @@
+# -*- coding: utf-8 -*-
+"""
+This module holds parsers and converters to use with user input
+Functions here can be used as type hints which discord.py will use as
+custom converters or they can be used as regular functions.
+Example:
+    ```
+    @bot.command()
+    async def timedelta(ctx, time: dpytools.parsers.parse_time):
+        await ctx.send(f"time delta is: {time}")
+    ```
+    above command will be called like this: `!timedelta 2h30m`
+    and it will send a message with "time delta is: 2:30:00"
+
+    This way you dont have to manually parse the time string to a timedelta object.
+    the parameter "time" will be of type timedelta.
+"""
 from datetime import timedelta
 from typing import Dict
 from collections import ChainMap
@@ -41,11 +58,11 @@ def parse_time(string: str) -> timedelta:
         return {units[unit]: amount}
 
     pattern = r"(\d+[.]?\d?[s|m|h|d]{1})\s?"
-    matched = re.findall(pattern, string)
 
-    if not matched:
+    if matched := re.findall(pattern, string, flags=re.I):
+        time_dict = dict(ChainMap(*[parse(d) for d in matched]))
+        return timedelta(**time_dict)
+    else:
         raise InvalidTimeString("Invalid string format. Time must be in the form <number>[s|m|h|d].")
 
-    time_dict = dict(ChainMap(*[parse(d) for d in matched]))
 
-    return timedelta(**time_dict)

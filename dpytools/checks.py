@@ -1,3 +1,24 @@
+# -*- coding: utf-8 -*-
+"""
+This module holds different command checks to add as decorator for custom commands.
+Use this checks on your code like this:
+    ```
+    @bot.command()
+    @admin_or_roles('Moderator')
+    async def mute(ctx, member: discord.Member):
+        ...
+    ```
+Or inside Cogs:
+    ```
+    @commands.command()
+    @only_this_guild(123456789...)
+    async def magic(self, ctx):
+        ...
+    ```
+
+"""
+
+
 from discord.ext import commands
 from typing import Union
 from discord.utils import get

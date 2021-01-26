@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+Cog with common functionality for bot owners.
+"""
+
 from discord.ext import commands
 from discord.ext.commands import ExtensionError
 from discord import Embed, Color

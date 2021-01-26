@@ -8,15 +8,31 @@ Toolset to speed up developing discord bots using discord.py
 Early development. As such its expected to be unstable and unsuited for production.
 
 ## Components
+### menus
+#### arrows
+Displays a menu made from passed Embeds with navigation by reaction.
+#### confirm 
+Returns the user reaction to confirm or deny a passed message.
 
-**Module** | **Functions** | **Notes**
---- | --- | --- 
-menus | arrows  | Dispays a menu made from passed Embeds with navigation by reaction.
-.| confirm | Returns the user reaction to confirm or deny a passed message.
-embeds | paginate_to_embeds | Paginates a long text into a list of embeds.
-parsers| parse_time | Parses strings with the format "2h15m" to a timedelta object.
-owner_cog | - | collection of useful commands for the bot owner.
-More to come... 
+### embeds
+#### paginate_to_embeds
+Paginates a long text into a list of embeds.
+
+### parsers
+#### parse_time
+Parses strings with the format "2h15m" to a timedelta object.
+
+### owner_cog
+Cog with different command useful for the owner of the bot
+#### Commands
+##### cogs 
+lists, loads, unloads and reloads cogs in bulk or individually
+
+### checks
+#### admin_or_roles
+Check if command user is an admin or has any of passed roles
+#### only_this_guild
+Check that limits the command to a specific guild.
 
 <hr>
 
