@@ -69,8 +69,6 @@ def only_this_guild(guild_id: int) -> commands.check:
         commands.NoPrivateMessage if ran from DM
         Custom IncorrectGuild commands.CommandError if id doesn't check
 
-    Returns:
-        True if guild_id == ctx.guild.id
     """
 
     async def predicate(ctx):

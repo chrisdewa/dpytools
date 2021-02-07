@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="- Added more proper documentation.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/checks.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/checks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/errors.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/owner_cog.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/owner_cog.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
@@ -180,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611694191166</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Improved owner_cog to handle cog subfolders">
+      <created>1612366718824</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1612366718824</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -208,6 +216,7 @@
     <MESSAGE value="added custom check &quot;admin_or_roles&quot;" />
     <MESSAGE value="moved all custom errors to dpytools.errors." />
     <MESSAGE value="- Added more proper documentation." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added more proper documentation." />
+    <MESSAGE value="Improved owner_cog to handle cog subfolders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved owner_cog to handle cog subfolders" />
   </component>
 </project>

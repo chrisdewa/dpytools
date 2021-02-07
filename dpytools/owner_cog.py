@@ -41,11 +41,10 @@ class OwnerCog(commands.Cog):
             cog: filename of the extension to load, without the file extension ('my_cog' not 'my_cog.py')
             cogs_dir: directory to operate command, defaults to ./cogs
 
-        Raises:
-            InvalidOption if option is not recognized
         """
         if option.lower() not in ['load', 'unload', 'reload', 'list']:
-            raise InvalidOption(f"{option} is not valid. Valid options are:'load', 'unload', 'reload' and 'list' ")
+            await ctx.send(embed=Embed(
+                description=f"{option} is not valid. Valid options are:'load', 'unload', 'reload' and 'list' "))
 
         bot = ctx.bot
 
@@ -61,7 +60,6 @@ class OwnerCog(commands.Cog):
                                          .replace(cogs_dir, '')
                                          .replace('\\', '.')
                                          .replace('/', '.')[1:-3])]
-        # cogs = [filename[:-3] for filename in os.listdir(cogs_dir) if filename.endswith('.py')]
 
         if option.lower() == 'list':
             await ctx.send(embed=Embed(
