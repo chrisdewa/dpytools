@@ -57,7 +57,7 @@ def parse_time(string: str) -> timedelta:
         amount = float(time_string[:-1])
         return {units[unit]: amount}
 
-    pattern = r"(\d+[.]?\d?[s|m|h|d]{1})\s?"
+    pattern = r"(\d+\.?\d?[s|m|h|d]{1})\s?"
 
     if matched := re.findall(pattern, string, flags=re.I):
         time_dict = dict(ChainMap(*[parse(d) for d in matched]))
