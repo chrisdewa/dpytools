@@ -9,10 +9,9 @@ from discord import Embed, Color
 from typing import Optional
 import os
 
-from dpytools.errors import InvalidOption, UnknownCog
 
 
-class OwnerCog(commands.Cog):
+class OwnerCog(commands.Cog, name="Owner Commands"):
     def __init__(self, bot):
         self.bot = bot
 

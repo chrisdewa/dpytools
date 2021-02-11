@@ -34,6 +34,7 @@ def parse_time(string: str) -> timedelta:
         m: minute
         h: hour
         d: day
+        w: weeks
 
     Args:
         string: with format <number>[s|m|h|d].
@@ -47,22 +48,27 @@ def parse_time(string: str) -> timedelta:
         InvalidTimeString: if string isn't in the valid form.
 
     """
-
+    units = {
+        's': 'seconds',
+        'm': 'minutes',
+        'h': 'hours',
+        'd': 'days',
+        'w': 'weeks'
+    }
 
     def parse(time_string: str) -> Dict:
-        units = {'d': 'days', 's': 'seconds', 'm': 'minutes', 'h': 'hours', 'w': 'weeks'}
 
         unit = time_string[-1]
 
         amount = float(time_string[:-1])
         return {units[unit]: amount}
 
-    pattern = r"(\d+\.?\d?[s|m|h|d]{1})\s?"
+    pattern = r"(\d+\.?\d?[s|m|h|d|w]{1})\s?"
 
     if matched := re.findall(pattern, string, flags=re.I):
         time_dict = dict(ChainMap(*[parse(d) for d in matched]))
         return timedelta(**time_dict)
     else:
-        raise InvalidTimeString("Invalid string format. Time must be in the form <number>[s|m|h|d].")
+        raise InvalidTimeString("Invalid string format. Time must be in the form <number>[s|m|h|d|w].")
 
 

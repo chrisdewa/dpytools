@@ -13,10 +13,5 @@ class IncorrectGuild(CommandError):
 class Unauthorized(CommandError):
     pass
 
-
-class UnknownCog(CommandError):
-    pass
-
-
 class InvalidOption(CommandError):
     pass
