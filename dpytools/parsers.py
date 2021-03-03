@@ -20,6 +20,8 @@ from typing import Dict
 from collections import ChainMap
 import re
 
+timestring_pattern = r"(\d+\.?\d?[s|m|h|d|w]{1})\s?"
+
 class InvalidTimeString(Exception):
     pass
 
@@ -63,12 +65,8 @@ def parse_time(string: str) -> timedelta:
         amount = float(time_string[:-1])
         return {units[unit]: amount}
 
-    pattern = r"(\d+\.?\d?[s|m|h|d|w]{1})\s?"
-
-    if matched := re.findall(pattern, string, flags=re.I):
+    if matched := re.findall(timestring_pattern, string, flags=re.I):
         time_dict = dict(ChainMap(*[parse(d) for d in matched]))
         return timedelta(**time_dict)
     else:
         raise InvalidTimeString("Invalid string format. Time must be in the form <number>[s|m|h|d|w].")
-
-
