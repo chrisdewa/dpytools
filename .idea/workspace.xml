@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="- Added more proper documentation.">
+      <change afterPath="$PROJECT_DIR$/dpytools/input.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/checks.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/checks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/errors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/parsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/parsers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613082066145</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="General changes, new functions.">
+      <created>1614794548591</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1614794548591</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,6 +248,7 @@
     <MESSAGE value="fixed bug in parse_time" />
     <MESSAGE value="general bug fixes and formatting" />
     <MESSAGE value="minor updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor updates" />
+    <MESSAGE value="General changes, new functions." />
+    <option name="LAST_COMMIT_MESSAGE" value="General changes, new functions." />
   </component>
 </project>

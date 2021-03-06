@@ -33,6 +33,8 @@ lists, loads, unloads and reloads cogs in bulk or individually
 Check if command user is an admin or has any of passed roles
 #### only_this_guild
 Check that limits the command to a specific guild.
+#### dm_from_this_guild
+Limits a command to direct messages while also checking if the user comes from a particular guild
 
 <hr>
 

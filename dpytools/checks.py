@@ -92,6 +92,7 @@ def dm_from_this_guild(guild_id: int, delete: bool = False) -> commands.check:
         delete: if True, it will try to delete ctx.message. This will only happen if the message is called
                 from the specificed guild_id, if the command is called from another guild the check will
                 just return False.
+
             Possible exceptions by discord.py library:
                 commands.Forbidden – You do not have proper permissions to delete the message.
                 commands.NotFound – The message was deleted already
