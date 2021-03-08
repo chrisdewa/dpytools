@@ -6,13 +6,13 @@ import discord
 from discord.ext import commands
 
 
-async def reply(ctx: commands.Context,
-                expect: Optional[List[str]] = None,
-                stop: str = 'cancel',
-                timeout: Optional[int] = 30
-                ) -> Union[discord.Message, bool, None]:
+async def user_reply(ctx: commands.Context,
+                     expect: Optional[List[str]] = None,
+                     stop: str = 'cancel',
+                     timeout: Optional[int] = 30
+                     ) -> Union[discord.Message, bool, None]:
     """
-    This function returns a user reply.
+    This function returns a single message from ctx.author.
     Args:
         ctx: the command context
         expect: list of strings for options that are expected in the message string
@@ -24,9 +24,6 @@ async def reply(ctx: commands.Context,
         False: if there :expected: is passed and the user reply isn't a match for any.
         discord.Message: User's reply message.
     """
-
-    def check(msg: discord.Message) -> bool:
-        return msg.channel == ctx.channel and msg.author == ctx.author
 
     try:
         message = await ctx.bot.wait_for(
@@ -44,7 +41,7 @@ async def reply(ctx: commands.Context,
 
         elif expect:
             pattern = f"^(" + '|'.join(s for s in expect) + ")$"
-            if not re.match(pattern, message.content, flags=re.I):
+            if not re.match(pattern, message.content.strip(), flags=re.I):
                 return False
 
         return message
