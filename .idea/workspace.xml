@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="- Added more proper documentation.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/input.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/user_interaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/parsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/parsers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615067957572</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="changed module `input` to `user_interaction` and `reply` to `user_reply`">
+      <created>1615239411519</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1615239411519</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -255,6 +261,7 @@
     <MESSAGE value="minor updates" />
     <MESSAGE value="General changes, new functions." />
     <MESSAGE value="general changes and fixes. New functions. check changelog" />
-    <option name="LAST_COMMIT_MESSAGE" value="general changes and fixes. New functions. check changelog" />
+    <MESSAGE value="changed module `input` to `user_interaction` and `reply` to `user_reply`" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed module `input` to `user_interaction` and `reply` to `user_reply`" />
   </component>
 </project>

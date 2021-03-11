@@ -1,3 +1,6 @@
+# 0.0.14a 
+- added two new parser functions to_upper and to_lower
+
 # 0.0.13a
 - new submodule "input" to get input from users
 - new function `input.reply` to get specific reply from user

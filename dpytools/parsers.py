@@ -15,15 +15,41 @@ Example:
     This way you dont have to manually parse the time string to a timedelta object.
     the parameter "time" will be of type timedelta.
 """
+import re
+from collections import ChainMap
 from datetime import timedelta
 from typing import Dict
-from collections import ChainMap
-import re
 
-timestring_pattern = r"(\d+\.?\d?[s|m|h|d|w]{1})\s?"
+
 
 class InvalidTimeString(Exception):
     pass
+
+
+def to_upper(string: str) -> str:
+    """
+    Converts :string: to upper case. Intended to be used as argument converter.
+    Args:
+        string: string to format
+
+    Returns:
+        string to upper case
+    """
+    return string.upper()
+
+
+def to_lower(string: str) -> str:
+    """
+    Converts :string: to lower case. Intended to be used as argument converter.
+    Args:
+        string: string to format
+
+    Returns:
+        string to lower case
+    """
+    return string.lower()
+
+
 
 def parse_time(string: str) -> timedelta:
     """
@@ -58,6 +84,8 @@ def parse_time(string: str) -> timedelta:
         'w': 'weeks'
     }
 
+    time_pattern = r"(\d+\.?\d?[s|m|h|d|w]{1})\s?"
+
     def parse(time_string: str) -> Dict:
 
         unit = time_string[-1]
@@ -65,7 +93,7 @@ def parse_time(string: str) -> timedelta:
         amount = float(time_string[:-1])
         return {units[unit]: amount}
 
-    if matched := re.findall(timestring_pattern, string, flags=re.I):
+    if matched := re.findall(time_pattern, string, flags=re.I):
         time_dict = dict(ChainMap(*[parse(d) for d in matched]))
         return timedelta(**time_dict)
     else:
