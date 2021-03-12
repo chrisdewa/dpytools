@@ -1,3 +1,7 @@
+# 0.0.15a
+- Renamed owner_cog to commands. 
+  This was done because it makes more sense to import specific commands than the entire cog. 
+
 # 0.0.14a 
 - added two new parser functions to_upper and to_lower
 
