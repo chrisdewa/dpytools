@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="- Added more proper documentation.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/owner_cog.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/commands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615495190927</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="insted of adding owner_cog users can now add only the commands they need">
+      <created>1615526627970</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1615526627970</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -273,6 +276,7 @@
     <MESSAGE value="general changes and fixes. New functions. check changelog" />
     <MESSAGE value="changed module `input` to `user_interaction` and `reply` to `user_reply`" />
     <MESSAGE value="added new functions to parsers" />
-    <option name="LAST_COMMIT_MESSAGE" value="added new functions to parsers" />
+    <MESSAGE value="insted of adding owner_cog users can now add only the commands they need" />
+    <option name="LAST_COMMIT_MESSAGE" value="insted of adding owner_cog users can now add only the commands they need" />
   </component>
 </project>

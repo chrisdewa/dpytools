@@ -51,7 +51,7 @@ def to_lower(string: str) -> str:
 
 
 
-def parse_time(string: str) -> timedelta:
+def time_parser(string: str) -> timedelta:
     """
     Converts a string with format <number>[s|m|h|d] to a timedelta object
     <number> must be convertible to float.

@@ -6,11 +6,11 @@ import discord
 from discord.ext import commands
 
 
-async def user_reply(ctx: commands.Context,
-                     expect: Optional[List[str]] = None,
-                     stop: str = 'cancel',
-                     timeout: Optional[int] = 30
-                     ) -> Union[discord.Message, bool, None]:
+async def wait_for_reply(ctx: commands.Context,
+                         expect: Optional[List[str]] = None,
+                         stop: str = 'cancel',
+                         timeout: Optional[int] = 30
+                         ) -> Union[discord.Message, bool, None]:
     """
     This function returns a single message from ctx.author.
     Args:
