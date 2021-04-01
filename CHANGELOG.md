@@ -1,6 +1,7 @@
 # 0.0.15a1
 - Changed name of `user_reply` to `wait_for_reply`
 - Changed name of `parse_time` to `time_parser`
+- Added command `latency`
 
 # 0.0.15a
 - Renamed owner_cog to commands. 

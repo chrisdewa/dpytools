@@ -8,19 +8,37 @@ Add them to your bot by simply doing
     ```
 """
 
+import os
+from typing import Optional
+
+from discord import Embed, Color
 from discord.ext import commands
 from discord.ext.commands import ExtensionError
-from discord import Embed, Color
-from typing import Optional
-import os
+
+
+@commands.command(aliases=['lat'])
+async def latency(ctx: commands.Context):
+    """
+    Command to disply latency in ms.
+    Latency is displayed on plain embed in the description field
+    Args:
+        ctx: discord.Context
+
+    Returns:
+        None
+    """
+
+    await ctx.send(embed=Embed(
+        description=f"Latency: {round(ctx.bot.latency * 1000, 1)}ms"
+    ))
+
 
 @commands.command(hidden=True)
 @commands.is_owner()
-async def cogs(
-        ctx: commands.Context,
-        option: Optional[str],
-        cog: Optional[str],
-        cogs_dir: str = "./cogs"):
+async def cogs(ctx: commands.Context,
+               option: Optional[str],
+               cog: Optional[str],
+               cogs_dir: str = "./cogs"):
     """
     Command to load, unload and reload extensions.
 
