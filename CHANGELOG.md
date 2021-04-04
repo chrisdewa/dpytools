@@ -1,8 +1,12 @@
 # 0.0.15a1
-- Changed name of `user_reply` to `wait_for_reply`
-- Changed name of `parse_time` to `time_parser`
+- renamed `user_interaction` to `waiters`
+- Changed the name of `user_reply` to `wait_for_author`
+- Added waiter `wait_for_regex`
+- Changed the name of `parse_time` to `time_parser`
 - Added command `latency`
-- Added instalation instructions to README.md
+- Added installation instructions to README.md
+- Modified check `admin_or_roles` inner variable names
+
 # 0.0.15a
 - Renamed owner_cog to commands. 
   This was done because it makes more sense to import specific commands than the entire cog. 

@@ -16,7 +16,6 @@ from discord.ext import commands
 from discord.ext.commands import ExtensionError
 
 
-
 @commands.command(aliases=['lat'])
 async def latency(ctx: commands.Context):
     """
@@ -28,9 +27,7 @@ async def latency(ctx: commands.Context):
     Returns:
         None
     """
-    await ctx.send(embed=Embed(
-        description=f"Latency: {round(ctx.bot.latency * 1000, 1)}ms"
-    ))
+    await ctx.send(embed=Embed(description=f"Latency: {round(ctx.bot.latency * 1000, 1)}ms"))
 
 
 @commands.command(hidden=True)

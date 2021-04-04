@@ -27,12 +27,11 @@ from discord.utils import get
 from dpytools.errors import Unauthorized, IncorrectGuild, NotMemberOfCorrectGuild
 
 
-def admin_or_roles(*role_ids: Union[int, str]) -> commands.check:
+def admin_or_roles(*roles: Union[int, str]) -> commands.check:
     """
     This check returns true under these conditions:
         The command is run in a guild AND:
-            ctx.author has admin permissions OR
-            has any role in :roles:
+            ctx.author has admin permissions OR has any role in :roles:
 
     Raises:
         commands.NoPrivateMessage if ran from DM
@@ -47,15 +46,15 @@ def admin_or_roles(*role_ids: Union[int, str]) -> commands.check:
         if ctx.author.guild_permissions.administrator is True:
             return True
 
-        roles = []
-        for role in role_ids:
+        discord_roles = []
+        for role in roles:
             if isinstance(role, str):
-                roles.append(get(ctx.guild.roles, name=role))
+                discord_roles.append(get(ctx.guild.roles, name=role))
             elif isinstance(role, int):
-                roles.append(ctx.guild.get_role(role))
+                discord_roles.append(ctx.guild.get_role(role))
             else:
                 raise ValueError(f"int or str was expected but received {type(role)}")
-        if any([role for role in roles if role and role in ctx.author.roles]):
+        if any([role for role in discord_roles if role in ctx.author.roles]):
             return True
         else:
             raise Unauthorized("User doesn't have admin permissions or specified roles")

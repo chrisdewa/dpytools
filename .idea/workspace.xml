@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="- Added more proper documentation.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/checks.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/checks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/user_interaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/user_interaction.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +252,21 @@
       <option name="project" value="LOCAL" />
       <updated>1617240332685</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added command &quot;latecy&quot;">
+      <created>1617241236548</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1617241236548</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Added instalation to readme">
+      <created>1617241552101</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1617241552101</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -286,6 +304,8 @@
     <MESSAGE value="added new functions to parsers" />
     <MESSAGE value="insted of adding owner_cog users can now add only the commands they need" />
     <MESSAGE value="Started working on 0.0.15a1 update. This commit only changes the name of a few functions. Check changelog" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started working on 0.0.15a1 update. This commit only changes the name of a few functions. Check changelog" />
+    <MESSAGE value="Added command &quot;latecy&quot;" />
+    <MESSAGE value="Added instalation to readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added instalation to readme" />
   </component>
 </project>
