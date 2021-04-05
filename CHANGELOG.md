@@ -1,3 +1,6 @@
+# 0.0.16a
+- Expanded the documentation of various functions.
+
 # 0.0.15a1
 - renamed `user_interaction` to `waiters`
 - Changed the name of `user_reply` to `wait_for_author`

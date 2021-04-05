@@ -10,11 +10,11 @@ class BaseLock:
     """
     Callable class to use with the :check: parameter in client.wait_for('message')
     The default behavior only requires to pass the context in the constructor and will perform these checks:
-        ctx.author == message.author and ctx.channel == message.channel
-    If channel is passed then it will check: channel == message.channel
-    If lock parameter is passed (differently than True) then i'll check the object against message.author.
+        `ctx.author == message.author and ctx.channel == message.channel`
+    If channel is passed then it will check `channel == message.channel`
+    If lock parameter is passed (differently than True) then it'll check the object against message.author.
 
-    The constructor Raises ValueError if channel is not a GuildChannel but lock is type Role.
+    The constructor Raises ValueError if channel is not a GuildChannel when lock is type Role.
     """
 
     def __init__(self,
@@ -54,7 +54,7 @@ async def wait_for_regex(ctx: commands.Context,
                                      bool] = True,
                          ) -> Optional[discord.Message]:
     """
-    Waits for a message with custom checks.
+    Waits for a message that contains a match for the passed :pattern:
 
     Args:
         ctx: the command context
@@ -68,13 +68,14 @@ async def wait_for_regex(ctx: commands.Context,
             bool: True -> Only ctx.author can answer
             bool: False -> Anyone can answer as long as its in the correct channel within the timeout window
     Returns:
-        Optional[discord.Message]: returns None if timeout is specified and no message matches the regex passed
+        Optional[discord.Message]: returns None if timeout is specified and reached
+        and the rest of the checks arent passed or no match for the pattern is found
+
     """
 
     class Check(BaseLock):
-        def __call__(self, *args, **kwargs):
-            if super().__call__(*args, **kwargs):
-                msg = args[0]
+        def __call__(self, msg):
+            if super().__call__(msg):
                 return re.match(pattern, msg.content, flags=re.I if ignore_case else None)
 
     check = Check(ctx, channel, lock)
