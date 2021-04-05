@@ -21,7 +21,6 @@ from datetime import timedelta
 from typing import Dict
 
 
-
 class InvalidTimeString(Exception):
     pass
 
@@ -48,7 +47,6 @@ def to_lower(string: str) -> str:
         string to lower case
     """
     return string.lower()
-
 
 
 def time_parser(string: str) -> timedelta:

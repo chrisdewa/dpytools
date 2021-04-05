@@ -11,7 +11,7 @@ from discord import Embed
 from typing import List, Optional, Union
 
 
-async def clear(msg):
+async def try_to_clear_reactions(msg):
     """helper function to remove reactions excepting forbidden
     either by context being a dm_channel or bot lacking perms"""
 
@@ -83,7 +83,7 @@ async def arrows(ctx: commands.Context,
             head = return_head(head, payload.emoji.name)
 
             if head is False:
-                await clear(msg)
+                await try_to_clear_reactions(msg)
                 await msg.edit(embed=discord.Embed(description='Closed by user.'))
 
             elif isinstance(head, int):
@@ -96,7 +96,7 @@ async def arrows(ctx: commands.Context,
                 await msg.edit(embed=emb)
 
             elif head is None:
-                await clear(msg)
+                await try_to_clear_reactions(msg)
                 break
 
 
@@ -144,10 +144,10 @@ async def confirm(ctx: commands.Context,
     try:
         payload = await ctx.bot.wait_for('raw_reaction_add', check=check, timeout=timeout)
     except asyncio.TimeoutError:
-        await clear(msg)
+        await try_to_clear_reactions(msg)
         return None
     else:
-        await clear(msg)
+        await try_to_clear_reactions(msg)
         if payload.emoji.name == '👍':
             return True
         else:

@@ -1,3 +1,8 @@
+# 0.0.16a1
+- Improved module documentation
+- bug fix in `wait_for_regex`
+- Fixed version error in PyPi
+
 # 0.0.16a
 - Expanded the documentation of various functions.
 

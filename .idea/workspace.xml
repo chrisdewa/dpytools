@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="- Added more proper documentation.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/menus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/parsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/parsers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/waiters.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/waiters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
@@ -271,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617572148527</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Updated to version 16">
+      <created>1617587102205</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1617587102205</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,7 +299,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed setup.py" />
     <MESSAGE value="change in private file names" />
     <MESSAGE value="replaced setup tools with poetry" />
     <MESSAGE value="added tools. Format updates." />
@@ -312,6 +323,7 @@
     <MESSAGE value="Added command &quot;latecy&quot;" />
     <MESSAGE value="Added instalation to readme" />
     <MESSAGE value="General improvements and a few additions. Check changelog v 15a1" />
-    <option name="LAST_COMMIT_MESSAGE" value="General improvements and a few additions. Check changelog v 15a1" />
+    <MESSAGE value="Updated to version 16" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated to version 16" />
   </component>
 </project>

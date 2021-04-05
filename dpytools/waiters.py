@@ -1,3 +1,23 @@
+# -*- coding: utf-8 -*-
+"""
+Module that holds methods related to discord's bot client method `wait_for`
+They're useful for retrieving information from users.
+This functions and classes expect at least discord.Context
+so they're have to be use with the commands extension.
+
+Example:
+     ```
+        @bot.command()
+        async def test(ctx):
+            msg_a = await ctx.send('reply with a message containing only alpha, beta or gamma')
+            msg_b = await wait_for_regex(ctx,
+                                         pattern=r"^(alpha|beta|gamma)$",
+                                         timeout=15)
+            out = "got a match" if msg_b else "I didn't get a match within 15 seconds. Try again"
+            await msg_a.edit(content=out)
+     ```
+"""
+
 import asyncio
 import re
 from typing import Union, Optional
@@ -34,6 +54,7 @@ class BaseLock:
 
     def __call__(self, message: discord.Message) -> bool:
         checks = [message.channel == self.channel]
+
         if self.lock is True:
             checks.append(self.ctx.author == message.author)
         elif isinstance(self.lock, discord.Role):
@@ -60,7 +81,7 @@ async def wait_for_regex(ctx: commands.Context,
         ctx: the command context
         pattern: regex string to look in the message
         ignore_case: Defaults to False. If True sets re.I as flag.
-        timeout: time in seconds to wait for the appropiate message
+        timeout: time in seconds to wait for the appropriate message
         channel: The channel where the message should come from. Defaults to ctx.channel.
         lock:
             discord.Role -> Only members with this role can answer
@@ -76,7 +97,7 @@ async def wait_for_regex(ctx: commands.Context,
     class Check(BaseLock):
         def __call__(self, msg):
             if super().__call__(msg):
-                return re.match(pattern, msg.content, flags=re.I if ignore_case else None)
+                return re.match(pattern, msg.content, flags=re.I if ignore_case else 0)
 
     check = Check(ctx, channel, lock)
 
@@ -103,7 +124,6 @@ async def wait_for_author(ctx: commands.Context,
         None: if :timeout: is reached or if :stop: string is passed
         discord.Message: User's reply message.
     """
-
     try:
         message = await ctx.bot.wait_for('message', timeout=timeout, check=BaseLock(ctx))
     except asyncio.TimeoutError:
@@ -111,4 +131,5 @@ async def wait_for_author(ctx: commands.Context,
     else:
         if message.content.lower() == stop:
             return
-        return message
+        else:
+            return message
