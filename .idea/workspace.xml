@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="- Added more proper documentation.">
+      <change afterPath="$PROJECT_DIR$/dpytools/unbelievaboat.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/errors.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/menus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/parsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/parsers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/waiters.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/waiters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -283,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617587102205</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Bug fixes. Function improvements. Added documentations. Check changelog">
+      <created>1617639750568</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1617639750568</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -299,7 +307,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change in private file names" />
     <MESSAGE value="replaced setup tools with poetry" />
     <MESSAGE value="added tools. Format updates." />
     <MESSAGE value="version number update" />
@@ -324,6 +331,7 @@
     <MESSAGE value="Added instalation to readme" />
     <MESSAGE value="General improvements and a few additions. Check changelog v 15a1" />
     <MESSAGE value="Updated to version 16" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated to version 16" />
+    <MESSAGE value="Bug fixes. Function improvements. Added documentations. Check changelog" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes. Function improvements. Added documentations. Check changelog" />
   </component>
 </project>

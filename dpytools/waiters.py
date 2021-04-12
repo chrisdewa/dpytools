@@ -61,6 +61,7 @@ class BaseLock:
             checks.append(self.lock in self.ctx.author.roles)
         elif isinstance(self.lock, (discord.Member, discord.User)):
             checks.append(self.lock == self.ctx.author)
+
         return all(checks)
 
 

@@ -1,3 +1,8 @@
+# 0.0.17a
+- Added README badges
+- Bug fixes and improvements in menus
+- General code improvements for readability and mantainability
+
 # 0.0.16a1
 - Improved module documentation
 - bug fix in `wait_for_regex`
