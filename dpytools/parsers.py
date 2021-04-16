@@ -16,9 +16,8 @@ Example:
     the parameter "time" will be of type timedelta.
 """
 import re
-from collections import ChainMap
 from datetime import timedelta
-from typing import Dict
+from typing import Tuple
 
 
 class InvalidTimeString(Exception):
@@ -84,15 +83,15 @@ def time_parser(string: str) -> timedelta:
 
     time_pattern = r"(\d+\.?\d?[s|m|h|d|w]{1})\s?"
 
-    def parse(time_string: str) -> Dict:
+    def parse(time_string: str) -> Tuple[str, float]:
 
         unit = time_string[-1]
 
         amount = float(time_string[:-1])
-        return {units[unit]: amount}
+        return units[unit], amount
 
     if matched := re.findall(time_pattern, string, flags=re.I):
-        time_dict = dict(ChainMap(*[parse(d) for d in matched]))
+        time_dict = dict(parse(match) for match in matched)
         return timedelta(**time_dict)
     else:
         raise InvalidTimeString("Invalid string format. Time must be in the form <number>[s|m|h|d|w].")

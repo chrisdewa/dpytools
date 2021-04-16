@@ -1,3 +1,6 @@
+# 0.0.18a
+- improved time_parser output constructor
+
 # 0.0.17a
 - Added README badges
 - Bug fixes and improvements in menus

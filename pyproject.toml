@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dpytools"
-version = "0.0.17a"
+version = "0.0.18a"
 description = "Simple tools to build discord bots using discord.py"
 keywords=["discord", "discord.py", "discord bot"]
 authors = ["chrisdewa <alexdewa@gmail.com>"]
@@ -21,7 +21,7 @@ packages = [
 python = "^3.8"
 
 [tool.poetry.dev-dependencies]
-"discord.py" = "^1.5.1"
+"discord.py" = "^1.7.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

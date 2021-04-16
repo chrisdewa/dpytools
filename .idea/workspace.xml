@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="- Added more proper documentation.">
-      <change afterPath="$PROJECT_DIR$/dpytools/unbelievaboat.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/errors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/menus.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +42,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests/cogs/other" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../unbelipy" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -54,6 +50,7 @@
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\tests\cogs\other" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\tests\modules" />
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\tests" />
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools" />
     </key>
@@ -291,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617639750568</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="General improvements. Added readme badges. Review Changelog.">
+      <created>1618242272456</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1618242272456</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -307,7 +311,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="replaced setup tools with poetry" />
     <MESSAGE value="added tools. Format updates." />
     <MESSAGE value="version number update" />
     <MESSAGE value="parse_time accepts spaces between units" />
@@ -332,6 +335,7 @@
     <MESSAGE value="General improvements and a few additions. Check changelog v 15a1" />
     <MESSAGE value="Updated to version 16" />
     <MESSAGE value="Bug fixes. Function improvements. Added documentations. Check changelog" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes. Function improvements. Added documentations. Check changelog" />
+    <MESSAGE value="General improvements. Added readme badges. Review Changelog." />
+    <option name="LAST_COMMIT_MESSAGE" value="General improvements. Added readme badges. Review Changelog." />
   </component>
 </project>

@@ -21,13 +21,4 @@ class Unauthorized(CommandError):
 class InvalidOption(CommandError):
     pass
 
-class UnbError(Exception):
-    pass
 
-
-class ResponseError(UnbError):
-    pass
-
-
-class UnbRateLimited(UnbError):
-    pass
