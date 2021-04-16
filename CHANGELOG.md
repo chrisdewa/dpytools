@@ -1,3 +1,6 @@
+# 0.0.19a
+- changed time_parser name to `to_timedelta`
+
 # 0.0.18a
 - improved time_parser output constructor
 
