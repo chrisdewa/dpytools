@@ -2,6 +2,7 @@
 """
 This Module contains all custom errors used in the package.
 """
+from discord.ext.commands import BadArgument, UserInputError
 
 from discord.ext.commands import CommandError
 
@@ -21,4 +22,11 @@ class Unauthorized(CommandError):
 class InvalidOption(CommandError):
     pass
 
+
+class InvalidTimeString(BadArgument):
+    pass
+
+
+class MemberNorUserFound(UserInputError):
+    pass
 

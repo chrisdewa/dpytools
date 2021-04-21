@@ -1,3 +1,10 @@
+# 0.0.20a
+- updated docstrings
+- added parser `to_spongebob_case`
+  present in the current guild or the command could be accessed from a direct message
+- added check `any_of_permissions` a check to see if the ctx.author matches any selected permisisons (works like 'or') 
+
+
 # 0.0.19a
 - changed time_parser name to `to_timedelta`
 

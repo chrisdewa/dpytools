@@ -44,3 +44,4 @@ def paginate_to_embeds(title: str,
                             color=color, )
                       .set_footer(text=f"page: {i + 1}/{len(paginator.pages)}"))
     return embeds
+

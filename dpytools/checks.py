@@ -17,11 +17,10 @@ Or inside Cogs:
     ```
 
 """
-
-
+from discord import Member, Permissions
 from discord.ext import commands
 from discord.ext.commands import PrivateMessageOnly
-from typing import Union, List
+from typing import Union
 from discord.utils import get
 
 from dpytools.errors import Unauthorized, IncorrectGuild, NotMemberOfCorrectGuild
@@ -120,4 +119,56 @@ def dm_from_this_guild(guild_id: int, delete: bool = False) -> commands.check:
             raise NotMemberOfCorrectGuild("This command is unavailable to you.")
 
     return commands.check(predicate)
+
+
+def any_of_permissions(**perms) -> commands.check:
+    """
+    This check returns true if ctx.author matches any permission passed in the decorator
+    Use Example:
+        ```
+        @bot.command()
+        @any_of_permissions(administrator=True, manage_guild=True, manage_messages=True)
+        async def test(ctx):
+            await ctx.send('success')
+        ```
+        The above command will send 'success' only if ctx.author has any or more
+        of administrator, manage_guild or manage_messages permissions
+
+    Args:
+        perms: kwargs with the name of the permission and its expected value
+    Raises:
+        commands.NoPrivateMessage if ran from DM
+        TypeError if passed an invalid set of permissions
+    """
+
+    async def predicate(ctx):
+        if invalid := (set(perms) - set(Permissions.VALID_FLAGS)):
+            raise TypeError('Invalid permission(s): %s' % (', '.join(invalid)))
+        elif ctx.guild is None:
+            raise commands.NoPrivateMessage("Command was called from a direct message.")
+
+        author: Member = ctx.author
+        author_perms: Permissions = author.guild_permissions
+        matched = [k for k, v in perms.items() if getattr(author_perms, k) == v]
+        return any(matched)
+
+    return commands.check(predicate)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

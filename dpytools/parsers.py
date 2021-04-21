@@ -5,23 +5,38 @@ Functions here can be used as type hints which discord.py will use as
 custom converters or they can be used as regular functions.
 Example:
     ```
+    from dpytools.parsers import to_timedelta
     @bot.command()
-    async def timedelta(ctx, time: dpytools.parsers.parse_time):
+    async def timedelta(ctx, time: to_timedelta):
         await ctx.send(f"time delta is: {time}")
     ```
     above command will be called like this: `!timedelta 2h30m`
     and it will send a message with "time delta is: 2:30:00"
 
-    This way you dont have to manually parse the time string to a timedelta object.
+    This way you don't have to manually parse the time string to a timedelta object.
     the parameter "time" will be of type timedelta.
 """
 import re
 from datetime import timedelta
-from typing import Tuple
+from typing import Tuple, Union
+
+from discord.ext.commands import Converter, Context, MemberConverter, UserConverter, MemberNotFound, UserNotFound
+from dpytools.errors import InvalidTimeString, MemberNorUserFound
 
 
-class InvalidTimeString(Exception):
-    pass
+def to_spongebob_case(string: str) -> str:
+    """
+    converts a given string to spongebob case (alternating caps)
+    Args:
+        string: the string to convert
+
+    Returns:
+        new string in sarcastic case
+    """
+    return ''.join(
+        letter.upper() if i % 2 else letter.lower()
+        for i, letter in enumerate(string)
+    )
 
 
 def to_upper(string: str) -> str:
@@ -95,3 +110,4 @@ def to_timedelta(string: str) -> timedelta:
         return timedelta(**time_dict)
     else:
         raise InvalidTimeString("Invalid string format. Time must be in the form <number>[s|m|h|d|w].")
+
