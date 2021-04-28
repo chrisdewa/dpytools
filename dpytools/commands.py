@@ -27,7 +27,12 @@ async def latency(ctx: commands.Context):
     Returns:
         None
     """
-    await ctx.send(embed=Embed(description=f"Latency: {round(ctx.bot.latency * 1000, 1)}ms"))
+    ping = await ctx.send('Checking latency...')
+    latency_ms = round((ping.created_at.timestamp() - ctx.message.created_at.timestamp()) * 1000, 1)
+    heartbeat_ms = round(ctx.bot.latency * 1000, 1)
+    description = f'Latency: `{latency_ms}ms`\nHeartbeat: `{heartbeat_ms}ms`'
+    embed = discord.Embed(description=description)
+    await ping.edit(content='', embed=embed)
 
 
 @commands.command(hidden=True)
