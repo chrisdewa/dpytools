@@ -7,10 +7,6 @@
     <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="- Added more proper documentation.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/checks.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/checks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/embeds.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/embeds.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/errors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/parsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/parsers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -313,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618585710968</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="updated version to 0.0.20a. View changelog">
+      <created>1619037592682</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1619037592682</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -329,7 +332,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="parse_time accepts spaces between units" />
     <MESSAGE value="version update" />
     <MESSAGE value="version 0.0.7a including new cog with owner commands" />
     <MESSAGE value="General fixes" />
@@ -354,6 +356,7 @@
     <MESSAGE value="General improvements. Added readme badges. Review Changelog." />
     <MESSAGE value="minor format changes. &#10;improvement in time_parser" />
     <MESSAGE value="changed name of time_parser to &quot;to_timedelta&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed name of time_parser to &quot;to_timedelta&quot;" />
+    <MESSAGE value="updated version to 0.0.20a. View changelog" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated version to 0.0.20a. View changelog" />
   </component>
 </project>

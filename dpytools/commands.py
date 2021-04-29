@@ -21,21 +21,15 @@ async def latency(ctx: commands.Context):
     """
     Command to disply latency in ms.
     Latency is displayed on plain embed in the description field
-    Args:
-        ctx: discord.Context
-
-    Returns:
-        None
     """
     ping = await ctx.send('Checking latency...')
     latency_ms = round((ping.created_at.timestamp() - ctx.message.created_at.timestamp()) * 1000, 1)
     heartbeat_ms = round(ctx.bot.latency * 1000, 1)
-    description = f'Latency: `{latency_ms}ms`\nHeartbeat: `{heartbeat_ms}ms`'
-    embed = discord.Embed(description=description)
-    await ping.edit(content='', embed=embed)
+    await ping.edit(content='', embed=Embed(description=f'Latency: `{latency_ms}ms`\nHeartbeat: `{heartbeat_ms}ms`'))
 
 
-@commands.command(hidden=True)
+@commands.command(hidden=True, help='Command to load, unload and reload extensions. '
+                                    'Usable only by the owner of the bot')
 @commands.is_owner()
 async def cogs(ctx: commands.Context,
                option: Optional[str],

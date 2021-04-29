@@ -1,3 +1,7 @@
+## 0.0.21a 
+- updated package dependencies
+
+
 # 0.0.20a
 - updated docstrings
 - added parser `to_spongebob_case`
