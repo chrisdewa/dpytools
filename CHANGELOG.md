@@ -1,6 +1,10 @@
-## 0.0.21a 
-- updated package dependencies
+# 0.2.1a
+- imprived `latency` command
+- Added F.A.Q.
+- Improved Readme
 
+# 0.0.21a 
+- updated package dependencies
 
 # 0.0.20a
 - updated docstrings

@@ -8,14 +8,15 @@
 # dpytools
 Toolset to speed up developing discord bots using discord.py
 
-<hr>
+# Features
+- Easy to read typehinted code
+- Active development
 
-## Status of the project
-
-Early development. As such it's expected to be unstable and unsuited for production.
-
-All the presented tools have stringdocs.
-<hr>
+## Main components
+- checks 
+- commands
+- menus
+- parsers
 
 # Instalation
 Install the latest version of the library with pip.
@@ -23,9 +24,19 @@ Install the latest version of the library with pip.
 pip install -U dpytools
 ```
 
+# Project Home
+https://github.com/chrisdewa/dpytools
 
+# Changelog
+https://github.com/chrisdewa/dpytools/blob/master/CHANGELOG.md
 
+# F. A. Q.
+https://github.com/chrisdewa/dpytools/blob/master/FAQ.md
 
+# Status of the project
+Early development. 
+Only se in production after extensive testing.
+Expect breaking changes in future updates
 
 # Contributing
-Feel free to make a pull request.
+Feel free to make a pull request. Or rise any issues.
