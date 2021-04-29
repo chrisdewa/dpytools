@@ -29,4 +29,3 @@ class InvalidTimeString(BadArgument):
 
 class MemberNorUserFound(UserInputError):
     pass
-

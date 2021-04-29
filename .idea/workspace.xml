@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="Minor update to latency command" />
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="readme and version update">
+      <change afterPath="$PROJECT_DIR$/FAQ.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/checks.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/checks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/errors.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -319,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619658526627</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="readme and version update">
+      <created>1619658865100</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1619658865100</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -335,7 +348,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="version 0.0.7a including new cog with owner commands" />
     <MESSAGE value="General fixes" />
     <MESSAGE value="added custom check &quot;admin_or_roles&quot;" />
     <MESSAGE value="moved all custom errors to dpytools.errors." />
@@ -360,6 +372,7 @@
     <MESSAGE value="changed name of time_parser to &quot;to_timedelta&quot;" />
     <MESSAGE value="updated version to 0.0.20a. View changelog" />
     <MESSAGE value="Minor update to latency command" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor update to latency command" />
+    <MESSAGE value="readme and version update" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme and version update" />
   </component>
 </project>

@@ -21,7 +21,7 @@ from discord import Member, Permissions
 from discord.ext import commands
 from discord.ext.commands import PrivateMessageOnly
 from typing import Union
-from discord.utils import get
+from discord import utils
 
 from dpytools.errors import Unauthorized, IncorrectGuild, NotMemberOfCorrectGuild
 
@@ -33,12 +33,18 @@ def admin_or_roles(*roles: Union[int, str]) -> commands.check:
             ctx.author has admin permissions OR has any role in :roles:
 
     Raises:
+        TypeError if roles are not strings or ints
+        ValueError if no roles are found with given parameters
         commands.NoPrivateMessage if ran from DM
         Unauthorized if user doesn't have correct roles or admin permissions
         ValueError if value passed on role_ids is not int or str
     """
 
     async def predicate(ctx):
+
+        if not all(type(r) in [int, str] for r in roles):
+            raise TypeError('Roles must be type int or str')
+
         if ctx.guild is None:
             raise commands.NoPrivateMessage()
 
@@ -48,12 +54,16 @@ def admin_or_roles(*roles: Union[int, str]) -> commands.check:
         discord_roles = []
         for role in roles:
             if isinstance(role, str):
-                discord_roles.append(get(ctx.guild.roles, name=role))
+                discord_roles.append(utils.get(ctx.guild.roles, name=role))
             elif isinstance(role, int):
                 discord_roles.append(ctx.guild.get_role(role))
             else:
                 raise ValueError(f"int or str was expected but received {type(role)}")
-        if any([role for role in discord_roles if role in ctx.author.roles]):
+
+        if not discord_roles:
+            raise ValueError('No role in the server matched parameters')
+
+        if any([role for role in discord_roles if role and role in ctx.author.roles]):
             return True
         else:
             raise Unauthorized("User doesn't have admin permissions or specified roles")
