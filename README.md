@@ -31,8 +31,8 @@ pip install -U dpytools
 
 # Status of the project
 Early development. 
-Only se in production after extensive testing.
-Expect breaking changes in future updates
+Only use in production after extensive testing.
+Expect breaking changes with future updates
 
 # Contributing
 Feel free to make a pull request or rise any issues.
