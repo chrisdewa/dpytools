@@ -9,16 +9,13 @@ bot.add_command(latency)
 
 # How to add a command to a specific cog?
 ```python
-@commands.command()
-async def new_command(ctx):
-    await ctx.send('it works')
+from dpytools.commands import cogs
 
-cog = bot.get_cog("CogName") # Gets the cog instance
-cog.__cog_commands__ += (new_command,) # Updates the __cog_commands__, this is to show up in HelpCommand
-new_command.cog = cog # Set the cog attribute with your instance, this is to make the library pass self
-bot.add_command(new_command) # Adds the command to the bot
+cog = bot.get_cog("MyCog") # Gets the cog instance
+cog.__cog_commands__ += (cogs,) # Updates the __cog_commands__, this is to show up in HelpCommand
+cogs.cog = cog # Set the cog attribute with your instance, this is to make the library pass self
+bot.add_command(cog) # Adds the command to the bot
 ```
-_Taken from R. Danny_
 
 # How to use parsers?
 ```python
