@@ -59,7 +59,8 @@ async def test(ctx):
     else:
         await msg.edit(content='Timeout')
 ```
-[!example](https://imgur.com/a/aJkO9h3)
+[!example](https://user-images.githubusercontent.com/62080903/116579539-18f45480-a8d8-11eb-9f29-b715b0a81371.mp4)
+
 
 
 
