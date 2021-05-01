@@ -1,5 +1,33 @@
 
+# How do I use Color enum class?
+```python
+from dpytools import Color
 
+@bot.command(name='color-test')
+async def color_test(ctx):
+    # Use the color class to access the color you need by getting its value
+    fire_orange = Color.FIRE_ORANGE.value
+    await ctx.send(embed=discord.Embed(description="This is fire orange color",
+                                       color=fire_orange))
+    # Or just use the class to set the embed color
+    await ctx.send(embed=discord.Embed(description="This is cyan",
+                                       color=Color.CYAN))
+```
+
+# How do I use the Emoji enum class?
+Example using reactions
+```python
+from dpytools import Emoji
+@bot.listen('on_raw_reaction_add')
+async def reaction_listener(payload):
+    if payload.user_id == bot.user.id: 
+        return
+    
+    if payload.emoji.name in [Emoji.HEART, Emoji.FIRE, Emoji.GREEN_CHECK]:
+        ch = bot.get_channel(payload.channel_id)
+        await ch.send('I love those emojis!')
+```
+This listener will wait for an appropiate reaction and send a message to the channel where it happened.
 
 # How to add a command to my bot?
 ```python
@@ -29,7 +57,6 @@ async def test(ctx, time: to_timedelta):
 to_timedelta takes a string in the format "<number>[s|m|h|d]" and turns it into a timedelta object.
 The user will call the command like this: `!test 2h30m`
 Time parameter will then be `timedelta(hours=2, minutes=30)`
-Consider the prefix to be "`!`". 
 
 # How to use checks?
 ```python

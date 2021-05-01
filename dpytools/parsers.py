@@ -111,3 +111,31 @@ def to_timedelta(string: str) -> timedelta:
     else:
         raise InvalidTimeString("Invalid string format. Time must be in the form <number>[s|m|h|d|w].")
 
+
+class Trimmer:
+    def __init__(self, max_length: int = 50, end_sequence: str = '...'):
+        """
+
+        Args:
+            max_length (int): maximum length of the string
+            end_sequence (str): character sequence that
+                denote that the full message is actually longer than the returned string
+        """
+        self.max = max_length
+        self.end_seq = end_sequence
+
+    def __call__(self, string: str) -> str:
+        """
+        This turns the class into a callable object that parses the argument
+        Args:
+            string: user text string
+
+        Returns:
+            (str) the passed string.
+                If longer than max length it will be trimmed and :end_sequence: attached at the end.
+        """
+        string = string.strip()
+        return string[: self.max - 3].strip() + "..." if len(string) > self.max else string.strip()
+
+
+

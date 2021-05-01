@@ -15,7 +15,6 @@ Or inside Cogs:
     async def magic(self, ctx):
         ...
     ```
-
 """
 from discord import Member, Permissions
 from discord.ext import commands

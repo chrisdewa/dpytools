@@ -23,7 +23,7 @@ def paginate_to_embeds(title: str,
 
     Args:
         title: Shared by all embeds
-        description: String to be split at :max_lenght: per embed.
+        description: String to be split at :max_length: per embed.
         max_size: Maximum amount of characters per embed. Discord's limit is 2000.
         prefix: Defaults to "" it will be appended at the start of the description of each embed.
                 Useful for codeblocks (use triple back quotes).

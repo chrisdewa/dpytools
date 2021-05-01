@@ -1,5 +1,11 @@
+# 0.3.0a
+- Improved package description
+- New Parser `Trimmer` callable class to convert a string to a certain maximum length
+- Added new general tool `Color` IntEnum with Hex values for truly nice colors (more will be added)
+- Added new general tool `Emoji` str Enum mixin with common emojis (more will be added)
+
 # 0.2.1a
-- imprived `latency` command
+- Improved `latency` command
 - Added F.A.Q.
 - Improved Readme
 
