@@ -25,6 +25,11 @@ from typing import Union, Optional
 import discord
 from discord.ext import commands
 
+__all__ = (
+    'wait_for_regex',
+    'wait_for_author',
+)
+
 
 class BaseLock:
     """

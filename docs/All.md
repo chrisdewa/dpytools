@@ -65,9 +65,9 @@
 
 
 # waiters `from dpytools.waiters import ...`
-1. [wait_for_regex](https://github.com/chrisdewa/dpytools/blob/master/dpytools/waiters.py#L72)
+1. [wait_for_regex](https://github.com/chrisdewa/dpytools/blob/master/dpytools/waiters.py#L73)
    - Waits for and returns a message that contains a match for the specified pattern
-2. [wait_for_author](https://github.com/chrisdewa/dpytools/blob/master/dpytools/waiters.py#L72)
+2. [wait_for_author](https://github.com/chrisdewa/dpytools/blob/master/dpytools/waiters.py#L118)
    - Returns a single message from ctx.author in ctx.channel, features a 'cancel' sequence
 
 
