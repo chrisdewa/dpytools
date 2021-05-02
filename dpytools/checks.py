@@ -57,7 +57,7 @@ def admin_or_roles(*roles: Union[int, str]) -> commands.check:
             elif isinstance(role, int):
                 discord_roles.append(ctx.guild.get_role(role))
             else:
-                raise ValueError(f"int or str was expected but received {type(role)}")
+                raise TypeError(f"int or str was expected but received {type(role)}")
 
         if not discord_roles:
             raise ValueError('No role in the server matched parameters')
@@ -163,6 +163,28 @@ def any_of_permissions(**perms) -> commands.check:
 
     return commands.check(predicate)
 
+
+def this_or_higher_role(role: Union[str, int]) -> commands.check:
+    """
+    This check will return True only if ctx.author has the specified role or another hierarchically higher
+    Args:
+        role: The role as its name (case sensitive) or id (int).
+    """
+    def predicate(ctx):
+        if ctx.guild is None:
+            raise commands.NoPrivateMessage('This command can only be used in a server.')
+        author: Member = ctx.author
+
+        if type(role) not in [int, str]:
+            raise TypeError('Roles must be type int or str')
+
+        drole = utils.get(ctx.guild.roles, name=role) if isinstance(role, str) else ctx.guild.get_role(role)
+
+        if not drole:
+            raise ValueError(f'No role found within guild {ctx.guild.name} with name or id "{role}"')
+
+        return author.top_role >= drole
+    return commands.check(predicate)
 
 
 

@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="Version update">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="Added Color and Emoji classes. Other minor improvements.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ.md" beforeDir="false" afterPath="$PROJECT_DIR$/FAQ.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FAQ.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/FAQ.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/checks.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/checks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/embeds.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/embeds.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/parsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/parsers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="general_dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -55,6 +56,7 @@
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\tests\cogs\other" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\docs" />
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\tests\modules" />
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\tests" />
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools" />
@@ -84,6 +86,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.bot" />
         <item itemvalue="Python.bot" />
       </list>
     </recent_temporary>
@@ -363,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619716825358</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Added Color and Emoji classes. Other minor improvements.">
+      <created>1619842929877</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1619842929877</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -379,7 +389,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Improved owner_cog to handle cog subfolders" />
     <MESSAGE value="fixed bug in parse_time" />
     <MESSAGE value="general bug fixes and formatting" />
     <MESSAGE value="minor updates" />
@@ -404,6 +413,7 @@
     <MESSAGE value="multiple changes review changelog" />
     <MESSAGE value="Improved FAQ, extended README" />
     <MESSAGE value="Version update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version update" />
+    <MESSAGE value="Added Color and Emoji classes. Other minor improvements." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Color and Emoji classes. Other minor improvements." />
   </component>
 </project>

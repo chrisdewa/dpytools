@@ -1,3 +1,7 @@
+# 0.4.0a
+- New check `this_or_higher_role`. Checks if user has a role or any higher than it.
+- FAQ moved to /docs
+
 # 0.3.0a
 - Improved package description
 - New Parser `Trimmer` callable class to convert a string to a certain maximum length

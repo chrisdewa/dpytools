@@ -1,7 +1,7 @@
 
 [![PyPI status](https://img.shields.io/pypi/status/dpytools.svg)](https://pypi.python.org/pypi/dpytools/)
 [![PyPI version fury.io](https://badge.fury.io/py/dpytools.svg)](https://pypi.python.org/pypi/dpytools/)
-[![PyPI downloads](https://img.shields.io/pypi/dm/dpytools.svg)](https://pypi.python.org/pypi/dpytools/)
+[![PyPI downloads](https://img.shields.io/pypi/dm/dpytools.svg)](https://pypistats.org/packages/dpytools)
 [![PyPI license](https://img.shields.io/pypi/l/dpytools.svg)](https://pypi.python.org/pypi/dpytools/)
 
 
@@ -27,7 +27,7 @@ pip install -U dpytools
 # Useful links:
 - [Project Home](https://github.com/chrisdewa/dpytools)
 - [Changelog](https://github.com/chrisdewa/dpytools/blob/master/CHANGELOG.md)
-- [F. A. Q.](https://github.com/chrisdewa/dpytools/blob/master/FAQ.md)
+- [F. A. Q.](https://github.com/chrisdewa/dpytools/blob/master/docs/FAQ.md)
 
 # Status of the project
 Early development. 
