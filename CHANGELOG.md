@@ -1,3 +1,8 @@
+# 0.4.1a
+- Added All.md a list with all the tools in the library
+- Minor fixes
+- Potentially breaking change in `Trimmer` where `max_lenght` no longer has a default.
+
 # 0.4.0a
 - New check `this_or_higher_role`. Checks if user has a role or any higher than it.
 - FAQ moved to /docs

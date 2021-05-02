@@ -12,6 +12,10 @@ import discord
 from discord import Embed
 from discord.ext import commands
 
+__all__ = (
+    "arrows",
+    "confirm",
+)
 
 async def try_clear_reactions(msg):
     """helper function to remove reactions excepting forbidden
