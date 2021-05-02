@@ -25,9 +25,10 @@ pip install -U dpytools
 ```
 
 # Useful links:
-- [Project Home](https://github.com/chrisdewa/dpytools)
+- [List](https://github.com/chrisdewa/dpytools/blob/master/docs/All.md) of all the available tools.
+- [Project Home](https://github.com/chrisdewa/dpytools) on github
 - [Changelog](https://github.com/chrisdewa/dpytools/blob/master/CHANGELOG.md)
-- [F. A. Q.](https://github.com/chrisdewa/dpytools/blob/master/docs/FAQ.md)
+- [F. A. Q.](https://github.com/chrisdewa/dpytools/blob/master/docs/FAQ.md) and examples
 
 # Status of the project
 Early development. 
