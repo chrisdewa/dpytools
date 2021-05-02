@@ -23,6 +23,13 @@ from typing import Tuple, Union
 from discord.ext.commands import Converter, Context, MemberConverter, UserConverter, MemberNotFound, UserNotFound
 from dpytools.errors import InvalidTimeString, MemberNorUserFound
 
+__all__ = (
+    'to_spongebob_case',
+    'to_upper',
+    'to_lower',
+    'to_timedelta',
+    'Trimmer',
+)
 
 def to_spongebob_case(string: str) -> str:
     """
@@ -113,7 +120,7 @@ def to_timedelta(string: str) -> timedelta:
 
 
 class Trimmer:
-    def __init__(self, max_length: int = 50, end_sequence: str = '...'):
+    def __init__(self, max_length: int, end_sequence: str = '...'):
         """
 
         Args:
@@ -135,7 +142,7 @@ class Trimmer:
                 If longer than max length it will be trimmed and :end_sequence: attached at the end.
         """
         string = string.strip()
-        return string[: self.max - 3].strip() + "..." if len(string) > self.max else string.strip()
+        return string[: self.max - len(self.end_seq)].strip() + "..." if len(string) > self.max else string.strip()
 
 
 

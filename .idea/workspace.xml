@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="Added Color and Emoji classes. Other minor improvements.">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="new check, FAQ moved to /docs">
+      <change afterPath="$PROJECT_DIR$/docs/All.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/FAQ.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/checks.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/checks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/menus.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -373,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619842929877</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="new check, FAQ moved to /docs">
+      <created>1619983987861</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1619983987861</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -389,7 +395,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed bug in parse_time" />
     <MESSAGE value="general bug fixes and formatting" />
     <MESSAGE value="minor updates" />
     <MESSAGE value="General changes, new functions." />
@@ -414,6 +419,7 @@
     <MESSAGE value="Improved FAQ, extended README" />
     <MESSAGE value="Version update" />
     <MESSAGE value="Added Color and Emoji classes. Other minor improvements." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Color and Emoji classes. Other minor improvements." />
+    <MESSAGE value="new check, FAQ moved to /docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="new check, FAQ moved to /docs" />
   </component>
 </project>
