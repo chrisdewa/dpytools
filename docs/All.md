@@ -75,10 +75,10 @@
 
 
 # embeds `from dpytools.embeds import ...`
-1. [paginate_to_embeds](https://github.com/chrisdewa/dpytools/blob/master/embeds/dict_to_fields.py#L13)
+1. [paginate_to_embeds](https://github.com/chrisdewa/dpytools/blob/master/dpytools/embeds.py#L13)
    - Takes a long string and returns a list of embeds paginating the string.
    - Sets the footer to `{page_number}/{total_pages}`
-2. [dict_to_fields](https://github.com/chrisdewa/dpytools/blob/master/embeds/dict_to_fields.py#L50)
+2. [dict_to_fields](https://github.com/chrisdewa/dpytools/blob/master/dpytools/embeds.py##L50)
    - Takes a dictionary where each pair of key/value sets acordingly the name and value of a field in the passed embed.
    - Credit to [fuyu78](https://github.com/fuyu78)
 
