@@ -1,3 +1,7 @@
+# 0.4.3a
+- Minor documentation improvement
+- new tool `dict_to_fields` in embeds
+
 # 0.4.2a
 - new colors
 - Documentation improvements

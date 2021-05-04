@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="new colors, docs improvements">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="Minor changes in embeds. Added dpytools.embeds to All.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/All.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/All.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/embeds.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/embeds.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -407,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620163803449</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Minor changes in embeds. Added dpytools.embeds to All.md">
+      <created>1620164905594</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1620164905594</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -423,7 +430,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="general changes and fixes. New functions. check changelog" />
     <MESSAGE value="changed module `input` to `user_interaction` and `reply` to `user_reply`" />
     <MESSAGE value="added new functions to parsers" />
     <MESSAGE value="insted of adding owner_cog users can now add only the commands they need" />
@@ -448,6 +454,7 @@
     <MESSAGE value="added all.md to README.md" />
     <MESSAGE value="version update" />
     <MESSAGE value="new colors, docs improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="new colors, docs improvements" />
+    <MESSAGE value="Minor changes in embeds. Added dpytools.embeds to All.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor changes in embeds. Added dpytools.embeds to All.md" />
   </component>
 </project>
