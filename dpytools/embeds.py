@@ -45,3 +45,19 @@ def paginate_to_embeds(title: str,
                       .set_footer(text=f"page: {i + 1}/{len(paginator.pages)}"))
     return embeds
 
+def dict_to_fields(embed: Embed, 
+                   fields: Dict[str, str], 
+                   inline: bool=False) -> Embed:
+    """
+    Iterates through dict keys and appends them to the embed fields
+    Args:
+        embed: Embed object
+        dict: dict object that will be appended to the embed fields
+        inline: Specfiy whether if the fields should be inline or not.
+    Returns:
+        discord.Embed
+    """
+    for k, v in fields.items():
+        embed.add_field(name=k, value=v, inline=inline)
+   
+    return embed
