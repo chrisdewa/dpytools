@@ -12,12 +12,6 @@ Collection of tools to speed up developing discord bots using discord.py
 - Easy to read typehinted code
 - Active development
 
-## Main components
-- checks - commands' checks
-- commands - Commands that are so frequent, why code them every time when you can just import them from dpytools
-- menus - Reaction menus to improve your commands
-- parsers - Functions and converters for use as typehints in command arguments so that you don't have to deal with parsing 
-
 # Instalation
 Install the latest version of the library with pip.
 ```
@@ -25,7 +19,7 @@ pip install -U dpytools
 ```
 
 # Useful links:
-- [List](https://github.com/chrisdewa/dpytools/blob/master/docs/All.md) of all the available tools.
+- [List](https://github.com/chrisdewa/dpytools/blob/master/docs/All.md) of all the tools.
 - [Project Home](https://github.com/chrisdewa/dpytools) on github
 - [Changelog](https://github.com/chrisdewa/dpytools/blob/master/CHANGELOG.md)
 - [F. A. Q.](https://github.com/chrisdewa/dpytools/blob/master/docs/FAQ.md) and examples

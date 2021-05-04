@@ -1,3 +1,7 @@
+# 0.4.2a
+- new colors
+- Documentation improvements
+
 # 0.4.1a
 - Added All.md a list with all the tools in the library
 - Minor fixes

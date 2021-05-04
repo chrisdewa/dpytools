@@ -1,4 +1,4 @@
-# The following are the current list of tools included in the library
+# Tools included in the library:
 
 ## General: `from dpytools import ...`
 1. [Color](https://github.com/chrisdewa/dpytools/blob/master/dpytools/__init__.py#L14):

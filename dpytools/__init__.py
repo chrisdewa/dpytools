@@ -26,6 +26,7 @@ class Color(IntEnum):
     LIME = 0x00FF00
     VIOLET = 0xEE82EE
     PINK = 0xFFC0CB
+    FUCHSIA = 0xFF00FF
     BLUE = 0x0000FF
     PURPLE = 0x8A2BE2
     FIRE_ORANGE = 0xFF4500
