@@ -24,6 +24,7 @@
 ## Commands (discord.ext.commands.command) `from dpytools.commands import ...`
 1. [latency](https://github.com/chrisdewa/dpytools/blob/master/dpytools/commands.py#L20)
    - Returns plain embed with hearbeat and latency in ms.
+   - Credit to [ComfortablyCoding](https://github.com/ComfortablyCoding)
 2. [cogs](https://github.com/chrisdewa/dpytools/blob/master/dpytools/commands.py#L34)
    - Easy way to load, unload and reload cogs. 
    - Has `commands.is_owner` check
@@ -70,6 +71,14 @@
 2. [wait_for_author](https://github.com/chrisdewa/dpytools/blob/master/dpytools/waiters.py#L118)
    - Returns a single message from ctx.author in ctx.channel, features a 'cancel' sequence
 
+
+# embeds `from dpytools.embeds import ...`
+1. [paginate_to_embeds](https://github.com/chrisdewa/dpytools/blob/master/embeds/dict_to_fields.py#L13)
+   - Takes a long string and returns a list of embeds paginating the string.
+   - Sets the footer to `{page_number}/{total_pages}`
+2. [dict_to_fields](https://github.com/chrisdewa/dpytools/blob/master/embeds/dict_to_fields.py#L50)
+   - Takes a dictionary where each pair of key/value sets acordingly the name and value of a field in the passed embed.
+   - Credit to [fuyu78](https://github.com/fuyu78)
 
 
 More to come...

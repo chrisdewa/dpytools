@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="version update">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="new colors, docs improvements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/All.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/All.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/embeds.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/embeds.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -402,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619992030636</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="new colors, docs improvements">
+      <created>1620163803448</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1620163803449</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -418,7 +423,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="General changes, new functions." />
     <MESSAGE value="general changes and fixes. New functions. check changelog" />
     <MESSAGE value="changed module `input` to `user_interaction` and `reply` to `user_reply`" />
     <MESSAGE value="added new functions to parsers" />
@@ -443,6 +447,7 @@
     <MESSAGE value="minor bug fix" />
     <MESSAGE value="added all.md to README.md" />
     <MESSAGE value="version update" />
-    <option name="LAST_COMMIT_MESSAGE" value="version update" />
+    <MESSAGE value="new colors, docs improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="new colors, docs improvements" />
   </component>
 </project>

@@ -3,14 +3,15 @@
 This module holds functions to work with embeds in different ways.
 """
 
+from typing import List, Optional, Union, Dict
+
 import discord
 from discord import Embed
 from discord.ext.commands import Paginator
-from typing import List, Optional, Union
 
 
-def paginate_to_embeds(title: str,
-                       description: str,
+def paginate_to_embeds(description: str,
+                       title: Optional[str],
                        max_size: int = 2000,
                        prefix: Optional[str] = "",
                        suffix: Optional[str] = "",
@@ -45,19 +46,18 @@ def paginate_to_embeds(title: str,
                       .set_footer(text=f"page: {i + 1}/{len(paginator.pages)}"))
     return embeds
 
-def dict_to_fields(embed: Embed, 
-                   fields: Dict[str, str], 
-                   inline: bool=False) -> Embed:
+
+def dict_to_fields(embed: Embed,
+                   fields: Dict[str, str],
+                   inline: bool = False) -> None:
     """
     Iterates through dict keys and appends them to the embed fields
     Args:
-        embed: Embed object
-        dict: dict object that will be appended to the embed fields
-        inline: Specfiy whether if the fields should be inline or not.
-    Returns:
-        discord.Embed
+        embed: Embed instance
+        fields (dict): each key, value pair will be set as an independent field.
+            They key corresponds to field.name and value to field.value.
+        inline: Specfiy whether if the fields should be inline or not. (Defaults to True)
+
     """
     for k, v in fields.items():
         embed.add_field(name=k, value=v, inline=inline)
-   
-    return embed
