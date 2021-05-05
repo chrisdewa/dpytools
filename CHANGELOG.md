@@ -1,3 +1,6 @@
+# 0.5.0a
+- New checks `between_times` and `between_datetimes`
+
 # 0.4.3a
 - Minor documentation improvement
 - new tool `dict_to_fields` in embeds

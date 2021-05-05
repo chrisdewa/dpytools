@@ -20,6 +20,10 @@
    - Checks if `ctx.author` has any of the passed permissions.
 5. [this_or_higher_role](https://github.com/chrisdewa/dpytools/blob/master/dpytools/checks.py#L167)
    - Checks if the top role of `ctx.author` is equal or higher than specified role (id)
+6. [between_times](https://github.com/chrisdewa/dpytools/blob/master/dpytools/checks.py#L192)
+   - Checks if `ctx.message.created_at.time()` is in the specified interval
+7. [between_datetime](https://github.com/chrisdewa/dpytools/blob/master/dpytools/checks.py#L208)
+   - Checks if `ctx.message.created_at` is in the specified interval
 
 
 ## Commands (discord.ext.commands.command) `from dpytools.commands import ...`

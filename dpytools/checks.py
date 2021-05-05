@@ -16,9 +16,11 @@ Or inside Cogs:
         ...
     ```
 """
+from datetime import datetime, time
+
 from discord import Member, Permissions
 from discord.ext import commands
-from discord.ext.commands import PrivateMessageOnly
+from discord.ext.commands import PrivateMessageOnly, Context
 from typing import Union
 from discord import utils
 
@@ -187,8 +189,37 @@ def this_or_higher_role(role: Union[str, int]) -> commands.check:
     return commands.check(predicate)
 
 
+def between_times(from_time: time, to_time: time):
+    """
+    Check decorator that returns True only when the command is run in the given time interval
+    Note that arguments must be datetime.time objects.
+    This will be checked against the ctx.message creation time (UTC)
+    Args:
+        from_time: minimum time
+        to_time: maximum time
+    """
+    def predicate(ctx: Context):
+        cmd_time = ctx.message.created_at.time()
+        return from_time <= cmd_time <= to_time
+
+    return commands.check(predicate)
 
 
+def between_datetimes(from_datetime: datetime, to_datetime: datetime):
+    """
+    Check decorator that returns True only when the command is run in the given time interval
+    Note that arguments must be datetime.time objects.
+        This will be checked against the ctx.message creation datetime (UTC)
+
+    Args:
+        from_datetime:
+        to_datetime:
+    """
+    def predicate(ctx: Context):
+        cmd_datetime = ctx.message.created_at
+        return from_datetime <= cmd_datetime <= to_datetime
+
+    return commands.check(predicate)
 
 
 
