@@ -1,3 +1,7 @@
+# 0.5.1a
+- check `between_datetimes` can now handle aware datetime objects.
+  - If the params are aware then ctx.message.created_at will be converted to that timezone for comparisons.
+
 # 0.5.0a
 - New checks `between_times` and `between_datetimes`
 

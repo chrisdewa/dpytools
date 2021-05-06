@@ -16,7 +16,7 @@ Or inside Cogs:
         ...
     ```
 """
-from datetime import datetime, time
+from datetime import datetime, time, timezone
 
 from discord import Member, Permissions
 from discord.ext import commands
@@ -24,7 +24,7 @@ from discord.ext.commands import PrivateMessageOnly, Context
 from typing import Union
 from discord import utils
 
-from dpytools.errors import Unauthorized, IncorrectGuild, NotMemberOfCorrectGuild
+from dpytools.errors import Unauthorized, IncorrectGuild, NotMemberOfCorrectGuild, OutsidePermittedDatetime
 
 
 def admin_or_roles(*roles: Union[int, str]) -> commands.check:
@@ -189,7 +189,7 @@ def this_or_higher_role(role: Union[str, int]) -> commands.check:
     return commands.check(predicate)
 
 
-def between_times(from_time: time, to_time: time):
+def between_times(from_time: time, to_time: time) -> commands.check:
     """
     Check decorator that returns True only when the command is run in the given time interval
     Note that arguments must be datetime.time objects.
@@ -205,19 +205,42 @@ def between_times(from_time: time, to_time: time):
     return commands.check(predicate)
 
 
-def between_datetimes(from_datetime: datetime, to_datetime: datetime):
+def between_datetimes(from_dt: datetime,
+                      to_dt: datetime,
+                      ) -> commands.check:
     """
     Check decorator that returns True only when the command is run in the given time interval
     Note that arguments must be datetime.time objects.
         This will be checked against the ctx.message creation datetime (UTC)
 
     Args:
-        from_datetime:
-        to_datetime:
+        from_dt:
+        to_dt:
+    Note:
+        from_dt and to_dt must be both either aware or naive. If they're aware they must share the same tz
+        If params are aware then ctx.message.created_at will be converted to their timezone.
+    Raises:
+        Value error if the :tz: name cannot be found
     """
     def predicate(ctx: Context):
-        cmd_datetime = ctx.message.created_at
-        return from_datetime <= cmd_datetime <= to_datetime
+        tzs = (from_dt.tzinfo, to_dt.tzinfo)
+        if any(tzs) and not all(tzs):
+            raise TypeError("Either from_dt and to_dt are both aware or both naive")
+
+        dt: datetime = ctx.message.created_at
+
+        if all(tzs):
+            if tzs[0] != tzs[1]:
+                raise ValueError("When both params are aware their timezones must match.")
+            else:
+                tzconvert = tzs[0]
+                dt = dt.replace(tzinfo=timezone.utc).astimezone(tzconvert)
+        check = from_dt <= dt <= to_dt
+        if check:
+            return True
+        else:
+            raise OutsidePermittedDatetime(f"This command can only run from {from_dt.strftime('%x %X')} "
+                                           f"to {to_dt.strftime('%x %X')} timezone={dt.tzname()}")
 
     return commands.check(predicate)
 
