@@ -1,3 +1,6 @@
+# 0.6.0a
+- new parser `to_month`
+
 # 0.5.1a
 - check `between_datetimes` can now handle aware datetime objects.
   - If the params are aware then ctx.message.created_at will be converted to that timezone for comparisons.

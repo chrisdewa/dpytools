@@ -20,8 +20,9 @@ import re
 from datetime import timedelta
 from typing import Tuple, Union
 
-from discord.ext.commands import Converter, Context, MemberConverter, UserConverter, MemberNotFound, UserNotFound
-from dpytools.errors import InvalidTimeString, MemberNorUserFound
+from discord.ext.commands import ArgumentParsingError
+
+from dpytools.errors import InvalidTimeString
 
 __all__ = (
     'to_spongebob_case',
@@ -30,6 +31,7 @@ __all__ = (
     'to_timedelta',
     'Trimmer',
 )
+
 
 def to_spongebob_case(string: str) -> str:
     """
@@ -145,4 +147,37 @@ class Trimmer:
         return string[: self.max - len(self.end_seq)].strip() + "..." if len(string) > self.max else string.strip()
 
 
-
+def to_month(string: Union[str, int]) -> int:
+    """
+    This converter takes a string and checks if it contains a valid month.
+    If the argument is the months name check is case insensitive
+    returns the month number (int)
+    Formats:
+        January/jan/1
+    Args:
+        string: the string to parse
+    Raises:
+        ValueError if argument is not a valid month
+    """
+    months = {
+        1: ['january', 'jan'],
+        2: ['february', 'feb'],
+        3: ['march', 'mar'],
+        4: ['april', 'apr'],
+        5: ['may', 'may'],
+        6: ['june', 'jun'],
+        7: ['july', 'jul'],
+        8: ['august', 'aug'],
+        9: ['september', 'sep'],
+        10: ['october', 'oct'],
+        11: ['november', 'nov'],
+        12: ['december', 'dec'],
+    }
+    try:
+        if (m := int(string)) in months:
+            return m
+    except ValueError:
+        if m := next((k for k, v in months.items() if string.lower() in v), None):
+            return m
+        else:
+            raise ValueError(f'Argument "{string}" is not a valid month.')

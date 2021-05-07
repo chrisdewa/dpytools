@@ -69,7 +69,10 @@
       - `trimmer = Trimmer(50)` 
       - Input: `'this is a very long and boring text that should be trimmed for whatever reason'`
       - Output: `'this is a very long and boring text that should...'`
-
+5. [to_month](https://github.com/chrisdewa/dpytools/blob/master/dpytools/parsers.py#L150)
+   - Returns the passed month as integer.
+   - input argument can be complete name of the month ('january'), short ('jan') or number ('01'/'1')
+   - Case insensitive
 
 # waiters `from dpytools.waiters import ...`
 1. [wait_for_regex](https://github.com/chrisdewa/dpytools/blob/master/dpytools/waiters.py#L73)
