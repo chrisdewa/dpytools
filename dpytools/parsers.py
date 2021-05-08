@@ -25,11 +25,11 @@ from discord.ext.commands import ArgumentParsingError
 from dpytools.errors import InvalidTimeString
 
 __all__ = (
-    'to_spongebob_case',
-    'to_upper',
+    'to_spongebob_case', 'to_upper',
     'to_lower',
     'to_timedelta',
     'Trimmer',
+    'to_month',
 )
 
 

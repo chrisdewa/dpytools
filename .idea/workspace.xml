@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="improvements in between_datetimes">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="new parser `to_month`">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/parsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/parsers.py" afterDir="false" />
     </list>
@@ -110,7 +110,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611186585227</updated>
-      <workItem from="1620398884928" duration="2246000" />
+      <workItem from="1620398884928" duration="5779000" />
     </task>
     <task id="LOCAL-00001" summary="fixed setup.py">
       <created>1611187918533</created>
@@ -448,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620260433733</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="new parser `to_month`">
+      <created>1620404104641</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1620404104641</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,7 +474,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added command &quot;latecy&quot;" />
     <MESSAGE value="Added instalation to readme" />
     <MESSAGE value="General improvements and a few additions. Check changelog v 15a1" />
     <MESSAGE value="Updated to version 16" />
@@ -492,6 +498,7 @@
     <MESSAGE value="fixes All.md bug" />
     <MESSAGE value="new checks" />
     <MESSAGE value="improvements in between_datetimes" />
-    <option name="LAST_COMMIT_MESSAGE" value="improvements in between_datetimes" />
+    <MESSAGE value="new parser `to_month`" />
+    <option name="LAST_COMMIT_MESSAGE" value="new parser `to_month`" />
   </component>
 </project>
