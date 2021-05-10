@@ -1,3 +1,9 @@
+# 0.1.0b
+- Improved readme
+- Added some emojis
+- Tested functions
+- Development advanced to beta
+
 # 0.6.0a
 - new parser `to_month`
 

@@ -55,6 +55,10 @@ class Emoji(str, Enum):
     PLAY = '▶️'
     NEXT_TRACK = '⏭'
     PAUSE = '⏸'
+    FIRST_PLACE_MEDAL = '🥇'
+    SECOND_PLACE_MEDAL = '🥈'
+    THIRD_PLACE_MEDAL = '🥉'
+
 
 
 

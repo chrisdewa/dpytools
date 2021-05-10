@@ -10,8 +10,10 @@
 Collection of tools to speed up developing discord bots using discord.py
 
 # Features
-- Easy to read typehinted code
+- The batteries of discord.py
+- Easy to read type-hinted code
 - Active development
+- Minimal dependencies
 
 # Instalation
 Install the latest version of the library with pip.
@@ -26,9 +28,10 @@ pip install -U dpytools
 - [F. A. Q.](https://github.com/chrisdewa/dpytools/blob/master/docs/FAQ.md) and examples
 
 # Status of the project
-Early development. 
-Only use in production after extensive testing.
-Expect breaking changes with future updates
+Beta.
+All functions have been tested but new tools are frequently added.
+Breaking changes may come depending on changes on API or discord.
+Use in production only after extensive testing.
 
 # Contributing
 Feel free to make a pull request or rise any issues.
