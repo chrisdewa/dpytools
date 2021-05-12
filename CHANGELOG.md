@@ -1,4 +1,10 @@
-# 0.1.0b
+# 0.8.0b
+- New general functions `chunkify` and `chunkify_string_list` and `EmojiNumbers`
+- New menu tool `multichoice` (must check out!)
+- Reformatted All.md because it was too hard to keep up with links
+
+
+# 0.7.0b
 - Improved readme
 - Added some emojis
 - Tested functions

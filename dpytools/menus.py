@@ -6,16 +6,22 @@ All menus are reaction based.
 """
 
 import asyncio
+from copy import copy
 from typing import List, Optional, Union
 
 import discord
 from discord import Embed
 from discord.ext import commands
+from discord.ext.commands import Context
+
+from dpytools import EmojiNumbers, Emoji, chunkify_string_list
 
 __all__ = (
     "arrows",
     "confirm",
+    "multichoice"
 )
+
 
 async def try_clear_reactions(msg):
     """helper function to remove reactions excepting forbidden
@@ -165,3 +171,115 @@ async def confirm(ctx: commands.Context,
             return True
         else:
             return False
+
+
+async def multichoice(ctx: Context,  # the command's context
+                      options: List[str],  # a list with strings to present the user
+                      timeout: int = 60,  # a timeout before each interaction before the embed closes
+                      base_embed: Embed = Embed()  # an optional base embed for each pagination
+                      ) -> Optional[str]:
+
+    if not options:
+        raise ValueError("Options cannot be empty")
+    elif (t := type(options)) is not list:
+        raise TypeError(f'"options" param must be :list: but is {t}')
+    elif all([type(item) is str for item in options]):
+        raise TypeError(f'All of the "options" param contents must be :str:')
+    elif any([len(opt) > 2000 for opt in options]):
+        raise ValueError("The maximum length for any option is 2000")
+
+    multiple = len(options) > 10
+    head = 0
+    embeds = []
+    nums = {
+        EmojiNumbers.ONE.value: 0,
+        EmojiNumbers.TWO.value:  1,
+        EmojiNumbers.THREE.value:  2,
+        EmojiNumbers.FOUR.value:  3,
+        EmojiNumbers.FIVE.value:  4,
+        EmojiNumbers.SIX.value:  5,
+        EmojiNumbers.SEVEN.value: 6,
+        EmojiNumbers.EIGHT.value:  7,
+        EmojiNumbers.NINE.value:  8,
+        EmojiNumbers.TEN.value:  9
+    }
+
+    for i, chunk in enumerate(chunkify_string_list(options, 10, 2000, separator_length=10)):
+        description = "".join(f"{list(nums)[i]} {opt.strip()}\n\n" for i, opt in enumerate(chunk))
+        embed = copy(base_embed)
+        embed.description = description
+        embeds.append((chunk, embed))
+
+    def get_nums(_chunk):
+        return list(nums)[:len(_chunk)]
+
+    def get_reactions():
+        to_react = get_nums(embeds[head][0])
+        if multiple:
+            if head not in [0, len(embeds)-1]:
+                to_react = [Emoji.LAST_TRACK, Emoji.REVERSE] + to_react + [Emoji.PLAY, Emoji.NEXT_TRACK]
+            elif head == 0:
+                to_react = to_react + [Emoji.PLAY, Emoji.NEXT_TRACK]
+            elif head == len(embeds)-1:
+                to_react = [Emoji.LAST_TRACK, Emoji.REVERSE] + to_react
+        return to_react + [Emoji.X]
+
+    def adjust_head(head_: int, emoji: str):
+        if not multiple:
+            return
+        else:
+            if emoji == Emoji.LAST_TRACK:
+                head_ = 0
+            elif emoji == Emoji.REVERSE:
+                head_ -= 1 if head_ > 0 else 0
+            elif emoji == Emoji.PLAY:
+                head_ += 1 if head_ < len(embeds) - 1 else 0
+            elif emoji == Emoji.NEXT_TRACK:
+                head_ = len(embeds) - 1
+        return head_
+
+    def check(reaction: discord.Reaction,
+              user: Union[discord.User, discord.Member]):
+
+        return all([
+            user != ctx.bot.user,
+            user == ctx.author,
+            ctx.channel == reaction.message.channel,
+            reaction.emoji in to_react,
+        ])
+
+    to_react = get_reactions()
+    first_embed = embeds[0][1]
+    first_embed.set_footer(text=f"Page 1/{len(embeds)}")
+    msg = await ctx.send(embed=first_embed)
+
+    for reaction in to_react:
+        await msg.add_reaction(reaction)
+
+    while True:
+        try:
+            reaction, user = await ctx.bot.wait_for('reaction_add', check=check, timeout=timeout)
+        except asyncio.TimeoutError:
+            await msg.delete()
+            return
+        else:
+            emoji = reaction.emoji
+            if emoji == Emoji.X:
+                return
+            else:
+                if emoji in nums:
+                    await msg.delete()
+                    return embeds[head][0][nums[emoji]]
+                else:
+                    head = adjust_head(head, emoji)
+                    next_embed = embeds[head][1]
+                    next_embed.set_footer(text=f"Page {head+1}/{len(embeds)}")
+                    await msg.edit(embed=next_embed)
+                    try:
+                        await msg.clear_reactions()
+                    except discord.errors.Forbidden:
+                        pass
+                    else:
+                        to_react = get_reactions()
+                        for reaction in to_react:
+                            await msg.add_reaction(reaction)
