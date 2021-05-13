@@ -59,6 +59,16 @@
    - If timeout is reached returns `None`
 3. **multichoice**:
    - Takes a list of strings for the user to select one from using reactions
+   - Simple example:
+      ```python
+      @bot.command()
+         async def test(ctx):
+            options = [str(uuid4()) + '\n\n' for _ in range(110)]
+            choice = await multichoice(ctx, options)
+            await ctx.send(f'You selected: {choice}')
+      ```
+      ![multichoice](https://user-images.githubusercontent.com/62080903/118138429-ed8b6280-b3cb-11eb-9f06-415b8cb22822.gif)
+
 
 
 ## [parsers](https://github.com/chrisdewa/dpytools/blob/master/dpytools/parsers.py) (discord.ext.commands.command argument converters) 
