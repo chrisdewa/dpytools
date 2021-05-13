@@ -115,7 +115,7 @@ def chunkify_string_list(list_: List[str],
     Yields:
         List[List[str]]
     """
-    if any([len(item) > max_length+separator_length for item in list_]):
+    if any([len(item) > max_length-separator_length for item in list_]):
         raise ValueError(f"All items should be of length {max_length} or less.")
 
     for i in range(0, len(list_), max_number):
