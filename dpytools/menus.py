@@ -277,6 +277,7 @@ async def multichoice(ctx: Context,  # the command's context
         else:
             emoji = reaction.emoji
             if emoji == Emoji.X:
+                await msg.delete()
                 return
             else:
                 if emoji in nums:
