@@ -173,6 +173,7 @@ def to_month(string: Union[str, int]) -> int:
         11: ['november', 'nov'],
         12: ['december', 'dec'],
     }
+    error = ValueError(f'Argument "{string}" is not a valid month.')
     try:
         if (m := int(string)) in months:
             return m
@@ -180,4 +181,7 @@ def to_month(string: Union[str, int]) -> int:
         if m := next((k for k, v in months.items() if string.lower() in v), None):
             return m
         else:
-            raise ValueError(f'Argument "{string}" is not a valid month.')
+            raise error
+    else:
+        raise error
+

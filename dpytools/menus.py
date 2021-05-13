@@ -178,7 +178,19 @@ async def multichoice(ctx: Context,  # the command's context
                       timeout: int = 60,  # a timeout before each interaction before the embed closes
                       base_embed: Embed = Embed()  # an optional base embed for each pagination
                       ) -> Optional[str]:
-
+    """
+    Takes a list of strings and creates a selection menu.
+    The ctx.author will select and item and the function will return it.
+    Args:
+        ctx: Command Context
+        options: list of strings that the user must select from
+        timeout: maximum time to wait before canceling (returns None)
+        base_embed: an optional embed object to take as a blueprint.
+            The menu will only modify the footer and description.
+            All other fields are free to be set by you.
+    Returns:
+        str: the item selected by the user
+    """
     if not options:
         raise ValueError("Options cannot be empty")
     elif (t := type(options)) is not list:

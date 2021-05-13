@@ -57,6 +57,8 @@
    - If reaction is 👍 returns `True`
    - If reaction is ❌ returns `False`
    - If timeout is reached returns `None`
+3. **multichoice**:
+   - Takes a list of strings for the user to select one from using reactions
 
 
 ## [parsers](https://github.com/chrisdewa/dpytools/blob/master/dpytools/parsers.py) (discord.ext.commands.command argument converters) 

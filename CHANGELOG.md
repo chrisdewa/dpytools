@@ -1,3 +1,7 @@
+# 0.8.1b
+- bug fixes
+- minor improvements
+
 # 0.8.0b
 - New general functions `chunkify` and `chunkify_string_list` and `EmojiNumbers`
 - New menu tool `multichoice` (must check out!)
