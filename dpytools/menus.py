@@ -195,7 +195,7 @@ async def multichoice(ctx: Context,  # the command's context
         raise ValueError("Options cannot be empty")
     elif (t := type(options)) is not list:
         raise TypeError(f'"options" param must be :list: but is {t}')
-    elif all([type(item) is str for item in options]):
+    elif not all([type(item) is str for item in options]):
         raise TypeError(f'All of the "options" param contents must be :str:')
     elif any([len(opt) > 2000 for opt in options]):
         raise ValueError("The maximum length for any option is 2000")

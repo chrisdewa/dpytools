@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="added four new tools. improved All.md">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="patch bug in `to_month`, added docstring to `multichoice`">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/All.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/All.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/menus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/parsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/parsers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,14 +135,8 @@
       <workItem from="1620398884928" duration="6530000" />
       <workItem from="1620618449646" duration="952000" />
       <workItem from="1620828459675" duration="10381000" />
-      <workItem from="1620848471391" duration="5551000" />
-    </task>
-    <task id="LOCAL-00005" summary="version number update">
-      <created>1611253049209</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1611253049209</updated>
+      <workItem from="1620848471391" duration="5618000" />
+      <workItem from="1620874302254" duration="151000" />
     </task>
     <task id="LOCAL-00006" summary="parse_time accepts spaces between units">
       <created>1611259534722</created>
@@ -485,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620853838213</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="patch bug in `to_month`, added docstring to `multichoice`">
+      <created>1620868616150</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1620868616150</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,7 +500,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="General improvements. Added readme badges. Review Changelog." />
     <MESSAGE value="minor format changes. &#10;improvement in time_parser" />
     <MESSAGE value="changed name of time_parser to &quot;to_timedelta&quot;" />
     <MESSAGE value="updated version to 0.0.20a. View changelog" />
@@ -529,7 +524,8 @@
     <MESSAGE value="." />
     <MESSAGE value="corrected version error" />
     <MESSAGE value="added four new tools. improved All.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="added four new tools. improved All.md" />
+    <MESSAGE value="patch bug in `to_month`, added docstring to `multichoice`" />
+    <option name="LAST_COMMIT_MESSAGE" value="patch bug in `to_month`, added docstring to `multichoice`" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dpytools$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1620852117575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
