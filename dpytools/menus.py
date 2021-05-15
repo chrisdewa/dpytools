@@ -36,7 +36,7 @@ async def try_clear_reactions(msg):
 
 async def arrows(ctx: commands.Context,
                  embed_list: List[Embed],
-                 content: Optional[str]=None,
+                 content: Optional[str] = None,
                  head: int = 0,
                  timeout: int = 30,
                  closed_embed: Optional[Embed] = None,
@@ -70,11 +70,11 @@ async def arrows(ctx: commands.Context,
     closed_embed = closed_embed or Embed(description="Closed by user")
 
     if len(embed_list) == 1:
-        return await channel.send(embed=embed_list[0])
+        return await channel.send(content=content,embed=embed_list[0])
 
     emojis = ['⏮', '◀', '▶', '⏭', '❌', '⏸']
 
-    msg = await channel.send(embed=embed_list[head])
+    msg = await channel.send(content=content, embed=embed_list[head])
 
     for emoji in emojis:
         await msg.add_reaction(emoji)

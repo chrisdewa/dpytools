@@ -1,3 +1,6 @@
+# 0.8.7b
+- fix bug in arrows
+
 # 0.8.2b-0.8.6b
 - minor bug fixes and general improvements
 
