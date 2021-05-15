@@ -1,3 +1,6 @@
+# 0.8.2b-0.8.6b
+- minor bug fixes and general improvements
+
 # 0.8.1b
 - bug fixes
 - minor improvements

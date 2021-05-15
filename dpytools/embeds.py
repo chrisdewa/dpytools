@@ -11,7 +11,7 @@ from discord.ext.commands import Paginator
 
 
 def paginate_to_embeds(description: str,
-                       title: Optional[str],
+                       title: Optional[str] = None,
                        max_size: int = 2000,
                        prefix: Optional[str] = "",
                        suffix: Optional[str] = "",
@@ -23,8 +23,8 @@ def paginate_to_embeds(description: str,
     track of pages.
 
     Args:
-        title: Shared by all embeds
         description: String to be split at :max_length: per embed.
+        title: Shared by all embeds
         max_size: Maximum amount of characters per embed. Discord's limit is 2000.
         prefix: Defaults to "" it will be appended at the start of the description of each embed.
                 Useful for codeblocks (use triple back quotes).
@@ -40,10 +40,11 @@ def paginate_to_embeds(description: str,
     for line in to_list:
         paginator.add_line(line)
     for i, page in enumerate(paginator.pages):
-        embeds.append(Embed(title=title,
-                            description=page,
-                            color=color, )
-                      .set_footer(text=f"page: {i + 1}/{len(paginator.pages)}"))
+        embed = Embed(description=page,
+                      color=color).set_footer(text=f"page: {i + 1}/{len(paginator.pages)}")
+        if title:
+            embed.title = title
+        embeds.append(embed)
     return embeds
 
 

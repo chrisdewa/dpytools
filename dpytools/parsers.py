@@ -20,8 +20,6 @@ import re
 from datetime import timedelta
 from typing import Tuple, Union
 
-from discord.ext.commands import ArgumentParsingError
-
 from dpytools.errors import InvalidTimeString
 
 __all__ = (
@@ -184,4 +182,3 @@ def to_month(string: Union[str, int]) -> int:
             raise error
     else:
         raise error
-

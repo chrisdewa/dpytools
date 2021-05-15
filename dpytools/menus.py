@@ -36,6 +36,7 @@ async def try_clear_reactions(msg):
 
 async def arrows(ctx: commands.Context,
                  embed_list: List[Embed],
+                 content: Optional[str]=None,
                  head: int = 0,
                  timeout: int = 30,
                  closed_embed: Optional[Embed] = None,
@@ -48,6 +49,9 @@ async def arrows(ctx: commands.Context,
             The context where this function is called.
         embed_list  (List[Embed])
             An ordered list containing the embeds to be sent.
+        content (str)
+            A static string. This wont change with pagination.
+            It will be cleared when its closed, but will persist on pause
         head (int)
             The index in embed_list of the first Embed to be displayed.
         timeout (int: seconds)
@@ -66,7 +70,7 @@ async def arrows(ctx: commands.Context,
     closed_embed = closed_embed or Embed(description="Closed by user")
 
     if len(embed_list) == 1:
-        return await ctx.send(embed=embed_list[0])
+        return await channel.send(embed=embed_list[0])
 
     emojis = ['⏮', '◀', '▶', '⏭', '❌', '⏸']
 
@@ -108,7 +112,7 @@ async def arrows(ctx: commands.Context,
 
             if head is False:
                 await try_clear_reactions(msg)
-                return await msg.edit(embed=closed_embed)
+                return await msg.edit(content=None, embed=closed_embed)
 
             elif isinstance(head, int):
                 try:
