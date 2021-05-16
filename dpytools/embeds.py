@@ -62,3 +62,57 @@ def dict_to_fields(embed: Embed,
     """
     for k, v in fields.items():
         embed.add_field(name=k, value=v, inline=inline)
+
+
+class Embed(discord.Embed):
+    def __init__(self, **kwargs):
+        """
+        Attributes
+        ----------------------
+        title:
+            The title of the embed.
+        type:
+            The type of embed. Usually "rich".
+            Official documentation stats this is soon to be deprecated
+        description:
+            The description of the embed.
+        url:
+            The URL of the embed.
+        timestamp:
+            The timestamp of the embed content. This could be a naive or aware datetime.
+        colour (or color):
+            The colour code of the embed.
+        ----------------------
+        Added by dpytools:
+        ----------------------
+        image:
+            The image url
+            Calls the internal "set_image" method with the kwarg value as the url
+        thumbnail:
+            The thumbnail url
+            Calls the internal "set_thumbnail" method with the kwarg value as the url
+        """
+        super().__init__(**kwargs)
+        if image := kwargs.get('image', None):
+            self.set_image(url=image)
+
+        if thumbnail := kwargs.get('thumbnail', None):
+            self.set_thumbnail(url=thumbnail)
+
+    def add_fields(self, inline=True, **kwargs):
+        """
+        Works in a similar way to Embed.add_field but you can add as many fields as you need by passing them as
+        kwargs in the constructor.
+        Example:
+            embed = Embed()
+            embed.add_fields(inline=False, first="this is the first field's value", second="Second field value")
+        Note:
+             If you need to add a sentence in the field's name just construct a dictionary and pass it with **.
+             Example:
+                 embed.add_fields(**{'first field': 'first field value'})
+        Args:
+            inline: if the fields will be inline or not
+            **kwargs: key/value pairs for each field's name and value respectively
+        """
+        for field, value in kwargs.items():
+            self.add_field(name=field, value=value, inline=inline)

@@ -1,3 +1,6 @@
+# 0.9.0b
+- Added a subclass of discord.Embed with added functionality
+
 # 0.8.7b
 - fix bug in arrows
 

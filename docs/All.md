@@ -114,12 +114,26 @@
 2. **dict_to_fields**:
    - Takes a dictionary where each pair of key/value sets acordingly the name and value of a field in the passed embed.
    - Credit to [fuyu78](https://github.com/fuyu78)
-
+3. **Embed**:
+   - Modification of the base `discord.Embed` class that has some added functionality.
+   - Additions to the main class:
+      - The constructor accepts image and thumbnail.
+      - Custom method `add_fields` that accepts kwargs and takes each key/value pair as the name and value 
+        parameter of each field.
+      - example:
+          ```python
+          embed = Embed(
+              title="The title",  
+              description="the description",
+              color=0x00FFFF,
+              image="https://live.staticflickr.com/4520/37911599015_17f305061d_b.jpg",
+              thumbnail="https://cdn.discordapp.com/avatars/365957462333063170/21bc9c9032b373f88db88723c5d5a9ee.webp",
+              timestamp=datetime.utcnow(),
+          )
+          embed.add_fields(inline=False, first='first field', second='second field')
+          ```
 
 More to come...
-
-
-
 
 
 

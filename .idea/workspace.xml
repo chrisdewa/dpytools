@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="patch bug in `to_month`, added docstring to `multichoice`">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="bug fix for arrows">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +71,7 @@
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.bot">
+  <component name="RunManager" selected="Python.scratch_2">
     <configuration name="bot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="dpytools" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -118,8 +118,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.bot" />
         <item itemvalue="Python.scratch_2" />
+        <item itemvalue="Python.bot" />
         <item itemvalue="Python.bot" />
       </list>
     </recent_temporary>
@@ -137,62 +137,8 @@
       <workItem from="1620828459675" duration="10381000" />
       <workItem from="1620848471391" duration="5618000" />
       <workItem from="1620874302254" duration="151000" />
-    </task>
-    <task id="LOCAL-00006" summary="parse_time accepts spaces between units">
-      <created>1611259534722</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1611259534722</updated>
-    </task>
-    <task id="LOCAL-00007" summary="version update">
-      <created>1611259583062</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1611259583062</updated>
-    </task>
-    <task id="LOCAL-00008" summary="version 0.0.7a including new cog with owner commands">
-      <created>1611335582218</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1611335582218</updated>
-    </task>
-    <task id="LOCAL-00009" summary="version 0.0.7a including new cog with owner commands">
-      <created>1611335617122</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1611335617122</updated>
-    </task>
-    <task id="LOCAL-00010" summary="General fixes">
-      <created>1611512571601</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1611512571601</updated>
-    </task>
-    <task id="LOCAL-00011" summary="added custom check &quot;admin_or_roles&quot;">
-      <created>1611599558608</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1611599558608</updated>
-    </task>
-    <task id="LOCAL-00012" summary="moved all custom errors to dpytools.errors.">
-      <created>1611605680732</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1611605680732</updated>
-    </task>
-    <task id="LOCAL-00013" summary="- Added more proper documentation.">
-      <created>1611694191166</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1611694191166</updated>
+      <workItem from="1620878710250" duration="13909000" />
+      <workItem from="1621088378050" duration="1464000" />
     </task>
     <task id="LOCAL-00014" summary="Improved owner_cog to handle cog subfolders">
       <created>1612366718824</created>
@@ -481,7 +427,63 @@
       <option name="project" value="LOCAL" />
       <updated>1620868616150</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="fix bug in `multichoice`">
+      <created>1620879824497</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1620879824497</updated>
+    </task>
+    <task id="LOCAL-00056" summary="fix bug in `multichoice`">
+      <created>1620881440161</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1620881440161</updated>
+    </task>
+    <task id="LOCAL-00057" summary="fix bug in `multichoice`">
+      <created>1620881460069</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1620881460069</updated>
+    </task>
+    <task id="LOCAL-00058" summary="improved navigation emojis">
+      <created>1620881953550</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1620881953550</updated>
+    </task>
+    <task id="LOCAL-00059" summary="fix chunkify strings bug">
+      <created>1620915960037</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1620915960037</updated>
+    </task>
+    <task id="LOCAL-00060" summary="fix chunkify strings bug">
+      <created>1620915992153</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1620915992153</updated>
+    </task>
+    <task id="LOCAL-00061" summary="minor improvements">
+      <created>1621047334631</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1621047334631</updated>
+    </task>
+    <task id="LOCAL-00062" summary="bug fix for arrows">
+      <created>1621048145245</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1621048145245</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,11 +502,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="minor format changes. &#10;improvement in time_parser" />
-    <MESSAGE value="changed name of time_parser to &quot;to_timedelta&quot;" />
-    <MESSAGE value="updated version to 0.0.20a. View changelog" />
-    <MESSAGE value="Minor update to latency command" />
-    <MESSAGE value="readme and version update" />
     <MESSAGE value="added FAQ, general patches, readme improvements" />
     <MESSAGE value="multiple changes review changelog" />
     <MESSAGE value="Improved FAQ, extended README" />
@@ -525,10 +522,15 @@
     <MESSAGE value="corrected version error" />
     <MESSAGE value="added four new tools. improved All.md" />
     <MESSAGE value="patch bug in `to_month`, added docstring to `multichoice`" />
-    <option name="LAST_COMMIT_MESSAGE" value="patch bug in `to_month`, added docstring to `multichoice`" />
+    <MESSAGE value="fix bug in `multichoice`" />
+    <MESSAGE value="improved navigation emojis" />
+    <MESSAGE value="fix chunkify strings bug" />
+    <MESSAGE value="minor improvements" />
+    <MESSAGE value="bug fix for arrows" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix for arrows" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/dpytools$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1620852117575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
-    <SUITE FILE_PATH="coverage/dpytools$bot.coverage" NAME="bot Coverage Results" MODIFIED="1620852691065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/dpytools$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1621089598879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/dpytools$bot.coverage" NAME="bot Coverage Results" MODIFIED="1621089428436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
