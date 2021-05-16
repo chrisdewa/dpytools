@@ -62,10 +62,10 @@
    - Simple example:
       ```python
       @bot.command()
-         async def test(ctx):
-            options = [str(uuid4()) + '\n\n' for _ in range(110)]
-            choice = await multichoice(ctx, options)
-            await ctx.send(f'You selected: {choice}')
+      async def test(ctx):
+         options = [str(uuid4()) + '\n\n' for _ in range(110)]
+         choice = await multichoice(ctx, options)
+         await ctx.send(f'You selected: {choice}')
       ```
       ![multichoice](https://user-images.githubusercontent.com/62080903/118138429-ed8b6280-b3cb-11eb-9f06-415b8cb22822.gif)
 
