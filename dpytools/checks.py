@@ -245,6 +245,18 @@ def between_datetimes(from_dt: datetime,
     return commands.check(predicate)
 
 
+def only_these_users(*users: int) -> commands.check:
+    """
+    This check returns True only when ctx.author is authorized by this check
+    Args:
+        *users: one or more user id's
+    Returns:
+        commands.check
+    """
+    def predicate(ctx):
+        return ctx.author.id in users
+
+    return commands.check(predicate)
 
 
 

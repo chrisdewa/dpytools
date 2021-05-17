@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="bug fix for arrows">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="fixed error in example">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/errors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/parsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/parsers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +68,7 @@
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\tests\cogs\other" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\dpytools\embeds" />
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\docs" />
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\tests\modules" />
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\tests" />
@@ -139,20 +143,9 @@
       <workItem from="1620874302254" duration="151000" />
       <workItem from="1620878710250" duration="13909000" />
       <workItem from="1621088378050" duration="1464000" />
-    </task>
-    <task id="LOCAL-00014" summary="Improved owner_cog to handle cog subfolders">
-      <created>1612366718824</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1612366718824</updated>
-    </task>
-    <task id="LOCAL-00015" summary="fixed bug in parse_time">
-      <created>1612721373737</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1612721373737</updated>
+      <workItem from="1621135173367" duration="7041000" />
+      <workItem from="1621142611008" duration="293000" />
+      <workItem from="1621197861883" duration="3004000" />
     </task>
     <task id="LOCAL-00016" summary="general bug fixes and formatting">
       <created>1612721416120</created>
@@ -483,7 +476,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621048145245</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="added Embed">
+      <created>1621140579510</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1621140579510</updated>
+    </task>
+    <task id="LOCAL-00064" summary="fixed error in example">
+      <created>1621142627633</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1621142627633</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,8 +509,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added FAQ, general patches, readme improvements" />
-    <MESSAGE value="multiple changes review changelog" />
     <MESSAGE value="Improved FAQ, extended README" />
     <MESSAGE value="Version update" />
     <MESSAGE value="Added Color and Emoji classes. Other minor improvements." />
@@ -527,7 +532,9 @@
     <MESSAGE value="fix chunkify strings bug" />
     <MESSAGE value="minor improvements" />
     <MESSAGE value="bug fix for arrows" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix for arrows" />
+    <MESSAGE value="added Embed" />
+    <MESSAGE value="fixed error in example" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed error in example" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dpytools$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1621089598879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />

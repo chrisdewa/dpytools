@@ -32,6 +32,8 @@
    - Checks if `ctx.message.created_at.time()` is in the specified interval
 7. **between_datetime**:
    - Checks if `ctx.message.created_at` is in the specified interval
+8. **only_these_users**:
+   - Checks if ctx.author's id is authorized to run command.
 
 
 ## [Commands](https://github.com/chrisdewa/dpytools/blob/master/dpytools/commands.py) (discord.ext.commands.command)

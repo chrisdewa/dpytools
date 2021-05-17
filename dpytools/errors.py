@@ -30,5 +30,6 @@ class InvalidTimeString(BadArgument):
 class MemberNorUserFound(UserInputError):
     pass
 
+
 class OutsidePermittedDatetime(CheckFailure):
     pass

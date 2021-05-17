@@ -114,5 +114,5 @@ class Embed(discord.Embed):
             inline: if the fields will be inline or not
             **kwargs: key/value pairs for each field's name and value respectively
         """
-        for field, value in kwargs.items():
-            self.add_field(name=field, value=value, inline=inline)
+        for name, value in kwargs.items():
+            self.add_field(name=name, value=value, inline=inline)

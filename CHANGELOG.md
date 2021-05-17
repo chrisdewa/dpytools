@@ -1,3 +1,6 @@
+# 0.10.0b
+- Added new check `only_these_users`
+
 # 0.9.0b
 - Added a subclass of discord.Embed with added functionality
 
