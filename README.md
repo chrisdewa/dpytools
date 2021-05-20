@@ -2,7 +2,7 @@
 
 [![PyPI status](https://img.shields.io/pypi/status/dpytools.svg)](https://pypi.python.org/pypi/dpytools/)
 [![PyPI version fury.io](https://badge.fury.io/py/dpytools.svg)](https://pypi.python.org/pypi/dpytools/)
-[![PyPI downloads](https://img.shields.io/pypi/dm/dpytools.svg)](https://pypistats.org/packages/dpytools)
+[![Downloads](https://pepy.tech/badge/dpytools)](https://pepy.tech/project/dpytools)
 [![PyPI license](https://img.shields.io/pypi/l/dpytools.svg)](https://pypi.python.org/pypi/dpytools/)
 
 

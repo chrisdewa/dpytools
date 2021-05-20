@@ -34,6 +34,9 @@
    - Checks if `ctx.message.created_at` is in the specified interval
 8. **only_these_users**:
    - Checks if ctx.author's id is authorized to run command.
+9. **in_these_channels**:
+   - Checks if ctx.channel is in the approved list
+   - Credit to [Kshitiz-Arya](https://github.com/Kshitiz-Arya)
 
 
 ## [Commands](https://github.com/chrisdewa/dpytools/blob/master/dpytools/commands.py) (discord.ext.commands.command)
@@ -98,6 +101,10 @@
    - Returns the passed month as integer.
    - input argument can be complete name of the month ('january'), short ('jan') or number ('01'/'1')
    - Case insensitive
+6. **MemberUserProxy**:
+   - Tries to convert argument to a Member object, then to User and finally to a snowflake-like object assuming the
+     argument was an int.
+   - Useful for bans and database lookups.
 
 
 ## [waiters](https://github.com/chrisdewa/dpytools/blob/master/dpytools/waiters.py)

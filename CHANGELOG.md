@@ -1,3 +1,8 @@
+# 0.11.0b
+- Added new check `in_these_channels` by Kshitiz-Arya
+- Added new parser `MemberUserProxy`
+- Improved docs
+
 # 0.10.0b
 - Added new check `only_these_users`
 
