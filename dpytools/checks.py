@@ -259,6 +259,20 @@ def only_these_users(*users: int) -> commands.check:
     return commands.check(predicate)
 
 
+def in_these_channels(*channels: int) -> commands.check:
+    """
+    This check returns True only when ctx.channel is authorized by this check
+    Args:
+        *channels: one or more channel id's
+    Returns:
+        commands.check
+    """
+    def predicate(ctx):
+        return ctx.channel.id in channels
+    
+    return commands.check(predicate)
+
+
 
 
 
