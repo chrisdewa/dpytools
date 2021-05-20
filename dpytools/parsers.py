@@ -21,6 +21,7 @@ from datetime import timedelta
 from typing import Tuple, Union
 
 import discord.abc
+from discord import NotFound, HTTPException
 from discord.ext.commands import Converter, MemberConverter, UserConverter, MemberNotFound, UserNotFound, BadArgument
 
 from dpytools.errors import InvalidTimeString
@@ -184,12 +185,13 @@ class MemberUserProxy(Converter):
     Tries to convert the argument first to a member and then to a user, if it cannot be found returns
         a snowflake-like object
 
-    If the bot cannot find the member or user object, the argument must be an id.
+    If the bot cannot find the member or user object, the argument must be an id (int).
     Returns:
         Union[discord.Member, discord.User, discord.object.Object]
     Raises
         BadArgument: if member or user cannot be found and and the argument cannot be converted to :class:`int`
     """
+
     async def convert(self, ctx, argument):
         try:
             target = await MemberConverter().convert(ctx, argument)
@@ -200,13 +202,10 @@ class MemberUserProxy(Converter):
                 try:
                     _id = int(argument)
                 except ValueError:
-                    raise BadArgument('When the user or member cannot be found you need to '
-                                      'supply the id to build the proxy')
-                target = discord.Object(id=_id)
-                print(type(target))
+                    raise BadArgument('When user or member cannot be found you need to supply the id to build '
+                                      'the proxy')
+                try:
+                    target = await ctx.bot.fetch_bot(_id)
+                except (NotFound, HTTPException):
+                    target = discord.Object(id=_id)
         return target
-
-
-
-
-
