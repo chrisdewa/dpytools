@@ -37,6 +37,8 @@
 9. **in_these_channels**:
    - Checks if ctx.channel is in the approved list
    - Credit to [Kshitiz-Arya](https://github.com/Kshitiz-Arya)
+10. **is_guild_owner**:
+   - As the name implies, it checks if `ctx.author` is the owner of the guild. 
 
 
 ## [Commands](https://github.com/chrisdewa/dpytools/blob/master/dpytools/commands.py) (discord.ext.commands.command)

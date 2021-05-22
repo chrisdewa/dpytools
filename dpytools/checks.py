@@ -273,6 +273,24 @@ def in_these_channels(*channels: int) -> commands.check:
     return commands.check(predicate)
 
 
+def is_guild_owner() -> commands.check:
+    """
+    Returns True if ctx.author is the guild's owner
+
+    Raises:
+        commands.NoPrivateMessage if called outside a guild
+        commands.Not
+
+    Returns:
+        commands.check
+    """
+    def predicate(ctx):
+        if ctx.guild is None:
+            raise commands.NoPrivateMessage('This command can only be used in a server.')
+        author: Member = ctx.author
+        if author != ctx.guild.owner.id:
+            commands.MissingPermissions('This command can only be run by the owner of this guild.')
+    return commands.check(predicate)
 
 
 

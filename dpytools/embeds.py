@@ -73,7 +73,7 @@ class Embed(discord.Embed):
             The title of the embed.
         type:
             The type of embed. Usually "rich".
-            Official documentation stats this is soon to be deprecated
+            Official documentation states this is soon to be deprecated.
         description:
             The description of the embed.
         url:
