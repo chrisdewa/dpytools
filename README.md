@@ -27,6 +27,54 @@ pip install -U dpytools
 - [Changelog](https://github.com/chrisdewa/dpytools/blob/master/CHANGELOG.md)
 - [F. A. Q.](https://github.com/chrisdewa/dpytools/blob/master/docs/FAQ.md) and examples
 
+# Use Examples:
+The library has a couple of reaction menus that are really easy to use.
+`dpytools.menus.arrows` takes a list of embeds and displays it using a reaction menu.
+```python
+@bot.command()
+async def arrow_menu(ctx):
+    """
+    This command sends a list of embeds in a reaction menu with emojis aid in navigation
+    """
+    from dpytools.menus import arrows
+    long_list_of_embeds = [discord.Embed(...), ...]
+    await arrows(ctx, long_list_of_embeds)
+```
+There are multiple checks you can use directly on your commands
+`dpytools.checks.admin_or_roles` takes any number of strings (Role names) and ints  (role ID) 
+and checks if the person using the command has those roles or has administrator permissions. 
+```python
+from dpytools.checks import admin_or_roles
+@bot.command()
+@admin_or_roles('Moderator', 123456789)
+async def moderation(ctx):
+    ctx.send('Only admins and people witha a role named "Moderator" ' 
+             'or with a role with id 123456789 can use this command')
+```
+There are also multiple argument parsers. Functions that convert a user's input to something more useful.
+`dpytools.parsers.to_timedelta` takes a string in the format `<number>[s|m|h|d|w]` and returns a timedelta object
+```python
+from dpytools.parsers import to_timedelta
+@bot.command()
+@commands.guild_only()
+async def mute(ctx, member: discord.Member, time: to_timedelta):
+    await ctx.send(f"{member.mention} muted for {time.total_seconds()} seconds")
+    mute_role = ctx.guild.get_role(1234567890)
+    await member.add_roles(mute_role)
+    await asyncio.sleep(time.total_seconds())
+    await member.remove_roles(mute_role)
+    await ctx.send(f"{member.mention} unmuted")
+```
+This argument parsers can also be used outside the context of `discord.ext.commands`
+In the end most of them only take a string and return the appropriate object.
+Only converter classes that inherit from `discord.ext.commands.Converter` require a command context to work.
+
+There are many other tools available in the library, check them in [docs/All.md](https://github.com/chrisdewa/dpytools/blob/master/docs/All.md)
+
+# Todos:
+1. Adjust Menus to use buttons where it makes sense.
+2. Add proper documentation
+
 # Status of the project
 Beta.
 All functions have been tested but new tools are frequently added.

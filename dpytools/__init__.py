@@ -7,7 +7,7 @@ from enum import IntEnum, Enum
 
 __all__ = ('Color', 'Emoji', 'EmojiNumbers', 'chunkify', 'chunkify_string_list')
 
-from typing import Iterable, List, Any
+from typing import List, Any
 
 
 class Color(IntEnum):
@@ -115,13 +115,13 @@ def chunkify_string_list(list_: List[str],
     Yields:
         List[List[str]]
     """
-    if any([len(item) > max_length-separator_length for item in list_]):
+    if any([len(item) > max_length - separator_length for item in list_]):
         raise ValueError(f"All items should be of length {max_length} or less.")
 
     for i in range(0, len(list_), max_number):
         n = max_number
         l = list_[i:i + n]
-        while len(''.join(opt + '_'*separator_length for opt in l))-separator_length > max_length:
+        while len(''.join(opt + '_' * separator_length for opt in l)) - separator_length > max_length:
             n -= 1
             l = list_[i:i + n]
         yield l

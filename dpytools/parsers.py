@@ -68,7 +68,7 @@ def to_lower(string: str) -> str:
 
 def to_timedelta(string: str) -> timedelta:
     """
-    Converts a string with format <number>[s|m|h|d] to a timedelta object
+    Converts a string with format <number>[s|m|h|d|w] to a timedelta object
     <number> must be convertible to float.
     Uses regex to match groups and consumes all groups into one timedelta.
 

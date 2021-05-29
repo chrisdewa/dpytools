@@ -40,10 +40,12 @@ def paginate_to_embeds(description: str,
     for line in to_list:
         paginator.add_line(line)
     for i, page in enumerate(paginator.pages):
-        embed = Embed(description=page,
-                      color=color).set_footer(text=f"page: {i + 1}/{len(paginator.pages)}")
-        if title:
-            embed.title = title
+        embed = Embed(description=page).set_footer(text=f"page: {i + 1}/{len(paginator.pages)}")
+        d = {'title': title, 'colour': color}
+        for attr in d:
+            if value := d[attr]:
+                setattr(embed, attr, value)
+
         embeds.append(embed)
     return embeds
 

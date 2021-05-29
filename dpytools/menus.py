@@ -14,7 +14,7 @@ from discord import Embed
 from discord.ext import commands
 from discord.ext.commands import Context
 
-from dpytools import EmojiNumbers, Emoji, chunkify_string_list
+from dpytools import EmojiNumbers, Emoji, chunkify_string_list, Color
 
 __all__ = (
     "arrows",
@@ -67,38 +67,48 @@ async def arrows(ctx: commands.Context,
         None
     """
     channel = channel or ctx.channel
-    closed_embed = closed_embed or Embed(description="Closed by user")
+    closed_embed = closed_embed or Embed(description="Closed by user", color=Color.RED)
 
     if len(embed_list) == 1:
-        return await channel.send(content=content,embed=embed_list[0])
+        return await channel.send(content=content, embed=embed_list[0])
 
-    emojis = ['⏮', '◀', '▶', '⏭', '❌', '⏸']
+    def get_reactions(_head: int):
+        _to_react = []
+        emb_range = range(len(embed_list))
+        if _head - 2 in emb_range:
+            _to_react.append(Emoji.LAST_TRACK.value)
+        if _head - 1 in emb_range:
+            _to_react.append(Emoji.REVERSE.value)
+        if _head + 1 in emb_range:
+            _to_react.append(Emoji.PLAY.value)
+        if _head + 2 in emb_range:
+            _to_react.append(Emoji.NEXT_TRACK.value)
+        _to_react += [Emoji.PAUSE.value, Emoji.X.value]
+        return _to_react
 
     msg = await channel.send(content=content, embed=embed_list[head])
 
-    for emoji in emojis:
+    to_react = get_reactions(head)
+    for emoji in to_react:
         await msg.add_reaction(emoji)
 
-    def check(payload):
+    def check(payload_):
         return all([
-            payload.user_id == ctx.author.id,
-            payload.emoji.name in emojis,
-            msg.id == payload.message_id
+            msg.id == payload_.message_id,
+            payload_.user_id == ctx.author.id,
+            payload_.emoji.name in to_react,
         ])
 
-    def return_head(head: int, emoji: str) -> Union[bool, int]:
-        if emoji == '⏮':  # return to the first Embed
-            return 0
-        elif emoji == '◀':  # one left
-            return head - 1 if head > 0 else 0
-        elif emoji == '▶':  # one right
-            return head + 1 if head < (len(embed_list) - 1) else len(embed_list) - 1
-        elif emoji == '⏭':  # go to the end
-            return len(embed_list) - 1
-        elif emoji == '❌':  # close the menu
-            return False
-        elif emoji == '⏸':  # remove the reactions and keep the selected embed open.
-            return True
+    def get_head(head_: int, emoji_) -> Union[bool, int]:
+        actions = {
+            Emoji.LAST_TRACK: 0,
+            Emoji.REVERSE: head_ - 1 if head_ else 0,
+            Emoji.PLAY: head_ + 1 if head_ < len(embed_list) - 1 else len(embed_list),
+            Emoji.NEXT_TRACK: len(embed_list) - 1,
+            Emoji.X: False,
+            Emoji.PAUSE: True,
+        }
+        return actions[emoji_]
 
     while True:
         try:
@@ -106,21 +116,20 @@ async def arrows(ctx: commands.Context,
         except asyncio.TimeoutError:
             return await try_clear_reactions(msg)
         else:
-            head = return_head(head, payload.emoji.name)
-            if head is True:
+            head = get_head(head, payload.emoji.name)
+            if head is True:  # pause emoji triggered
                 return await try_clear_reactions(msg)
 
-            if head is False:
+            if head is False:  # X emoji triggered
                 await try_clear_reactions(msg)
-                return await msg.edit(content=None, embed=closed_embed)
+                return await msg.edit(content=None, embed=closed_embed, delete_after=10)
 
-            elif isinstance(head, int):
-                try:
-                    await msg.remove_reaction(payload.emoji, ctx.author)
-                except discord.errors.Forbidden:
-                    pass
-
+            else:
+                await try_clear_reactions(msg)
                 await msg.edit(embed=embed_list[head])
+                to_react = get_reactions(head)
+                for emoji in to_react:
+                    await msg.add_reaction(emoji)
 
 
 async def confirm(ctx: commands.Context,
@@ -209,15 +218,15 @@ async def multichoice(ctx: Context,  # the command's context
     embeds = []
     nums = {
         EmojiNumbers.ONE.value: 0,
-        EmojiNumbers.TWO.value:  1,
-        EmojiNumbers.THREE.value:  2,
-        EmojiNumbers.FOUR.value:  3,
-        EmojiNumbers.FIVE.value:  4,
-        EmojiNumbers.SIX.value:  5,
+        EmojiNumbers.TWO.value: 1,
+        EmojiNumbers.THREE.value: 2,
+        EmojiNumbers.FOUR.value: 3,
+        EmojiNumbers.FIVE.value: 4,
+        EmojiNumbers.SIX.value: 5,
         EmojiNumbers.SEVEN.value: 6,
-        EmojiNumbers.EIGHT.value:  7,
-        EmojiNumbers.NINE.value:  8,
-        EmojiNumbers.TEN.value:  9
+        EmojiNumbers.EIGHT.value: 7,
+        EmojiNumbers.NINE.value: 8,
+        EmojiNumbers.TEN.value: 9,
     }
 
     for i, chunk in enumerate(chunkify_string_list(options, 10, 2000, separator_length=10)):
@@ -232,11 +241,11 @@ async def multichoice(ctx: Context,  # the command's context
     def get_reactions():
         to_react = get_nums(embeds[head][0])
         if multiple:
-            if head not in [0, len(embeds)-1]:
+            if head not in [0, len(embeds) - 1]:
                 to_react = [Emoji.LAST_TRACK, Emoji.REVERSE] + to_react + [Emoji.PLAY, Emoji.NEXT_TRACK]
             elif head == 0:
                 to_react = to_react + [Emoji.PLAY, Emoji.NEXT_TRACK]
-            elif head == len(embeds)-1:
+            elif head == len(embeds) - 1:
                 to_react = [Emoji.LAST_TRACK, Emoji.REVERSE] + to_react
         return to_react + [Emoji.X]
 
@@ -290,7 +299,7 @@ async def multichoice(ctx: Context,  # the command's context
                 else:
                     head = adjust_head(head, emoji)
                     next_embed = embeds[head][1]
-                    next_embed.set_footer(text=f"Page {head+1}/{len(embeds)}")
+                    next_embed.set_footer(text=f"Page {head + 1}/{len(embeds)}")
                     await msg.edit(embed=next_embed)
                     try:
                         await msg.clear_reactions()

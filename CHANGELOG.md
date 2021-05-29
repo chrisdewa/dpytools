@@ -1,3 +1,9 @@
+# 0.13.0b
+- Improved `arrows` with better emojis and logic
+- Small bugfixes
+- Improved Readme
+- Refractor format and imports
+
 # 0.11.1b
 - Improved `MemberUserProxy`
 
