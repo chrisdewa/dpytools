@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "dpytools"
-version = "0.13.0b"
-description = "Toolset to speed up discord bot development using discord.py"
+version = "0.14.0b"
+description = "Collection of easy to use, beginner friendly but powerful, orthogonal tools to speed up discord bots development (discord.py)"
 keywords=["discord", "discord.py", "discord bot"]
 authors = ["chrisdewa <alexdewa@gmail.com>"]
 readme = "README.md"

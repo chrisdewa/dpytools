@@ -1,22 +1,45 @@
 # -*- coding: utf-8 -*-
 """
-Uncategorized generic tools and utility functions
+MIT License
+
+Copyright (c) 2021 ChrisDewa
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 """
-
 from enum import IntEnum, Enum
-
-__all__ = ('Color', 'Emoji', 'EmojiNumbers', 'chunkify', 'chunkify_string_list')
-
 from typing import List, Any
+
+__title__ = 'dpytools'
+__author__ = 'ChrisDewa'
+__license__ = 'MIT'
+__copyright__ = 'Copyright 2020-2021 ChrisDewa'
+__version__ = '0.14.0b'
 
 
 class Color(IntEnum):
     """
-    Enum class with nice color values
-    Can be used directly on embeds:
-        ```
-        embed = discord.Embed(description="embed example", color=dpytools.Color.FIRE_ORANGE)
-        ```
+    Enum class with nice color values that can be used directly on embeds
+
+    :Example:
+
+    from dpytools import Color
+    embed = discord.Embed(description="embed example", color=Color.FIRE_ORANGE)
     """
     CYAN = 0x00FFFF
     GOLD = 0xFFD700
@@ -36,6 +59,11 @@ class Color(IntEnum):
 class Emoji(str, Enum):
     """
     Enum class with common emojis used for reaction messages or related interactions
+
+    :Example:
+
+    from dpytools import Emoji
+    message.add_reaction(Emoji.SMILE)
     """
     SMILE = '🙂'
     THUMBS_UP = '👍'
@@ -71,7 +99,7 @@ class Emoji(str, Enum):
 
 
 class EmojiNumbers(str, Enum):
-    """Shortcut enum class that contains the number emojis from Emoji class"""
+    """Shortcut enum class that contains the number emojis from :class:`Emoji`"""
     ONE = Emoji.ONE.value
     TWO = Emoji.TWO.value
     THREE = Emoji.THREE.value
@@ -85,43 +113,51 @@ class EmojiNumbers(str, Enum):
     ZERO = Emoji.ZERO.value
 
 
-def chunkify(list_: List[Any],
+def chunkify(input_list: List[Any],
              max_number: int
              ) -> List[List[Any]]:
     """
     Splits a list into :n: sized chunks
-    Args:
-        list_: a list
-        max_number: an integer
+
+    Parameters:
+        :param input_list: The list to make chunks from
+        :param max_number: The maximum amount of items per chunk
     Yields:
-        Chunks of :l: of :n: size
+        Chunks of size equal or lower to :param max_number:
     """
-    for i in range(0, len(list_), max_number):
-        yield list_[i:i + max_number]
+    for i in range(0, len(input_list), max_number):
+        yield input_list[i:i + max_number]
 
 
-def chunkify_string_list(list_: List[str],
+def chunkify_string_list(input_list: List[str],
                          max_number: int,
                          max_length: int,
                          separator_length: int = 0
                          ) -> List[List[str]]:
     """
-    Splits a list of strings into :max_number: sized chunks or sized at maximum joint length of :max_length:
-    Args:
-        list_: a list
-        max_number (int): maximum number of items per chunk
-        max_length (int): maximum length of characters in a chunk (considering all items)
-        separator_length (int): Defaults to 0. If the strings will be eventually joined together this considers it
+    Splits a list of strings into :param max_number: sized chunks or sized at maximum joint length of :param max_length:
+
+    Parameters
+    ----------
+    input_list: :class:`List[str]`
+        A list of strings
+    max_number: :class:`int`
+        Maximum amount of items per chunk
+    max_length: :class:`int`
+        Maximum amount of characters per chunk
+    separator_length: :class:`int`
+        If the strings will be eventually joined together, the :param separator_length:
+        is considered into :param max_length:
     Yields:
-        List[List[str]]
+        :class:`List[List[str]]`
     """
-    if any([len(item) > max_length - separator_length for item in list_]):
+    if any([len(item) > max_length - separator_length for item in input_list]):
         raise ValueError(f"All items should be of length {max_length} or less.")
 
-    for i in range(0, len(list_), max_number):
+    for i in range(0, len(input_list), max_number):
         n = max_number
-        l = list_[i:i + n]
+        l = input_list[i:i + n]
         while len(''.join(opt + '_' * separator_length for opt in l)) - separator_length > max_length:
             n -= 1
-            l = list_[i:i + n]
+            l = input_list[i:i + n]
         yield l

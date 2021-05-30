@@ -1,3 +1,7 @@
+# 0.14.0b
+- Started working on migrating docstrings from google format to RST for future formal documentation generation
+- Minor bug fixes
+
 # 0.13.0b
 - Improved `arrows` with better emojis and logic
 - Small bugfixes
