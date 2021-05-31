@@ -36,7 +36,7 @@ async def cogs(ctx: commands.Context,
                cog: Optional[str],
                cogs_dir: str = "./cogs"):
     """
-    Command to load, unload and reload extensions.
+    Command to load, unload and reload extensions
 
     .. notes::
         Checks:
