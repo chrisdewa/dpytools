@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="cmd">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="updated pyproject.toml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,20 +203,6 @@
       <workItem from="1622311030648" duration="316000" />
       <workItem from="1622393249921" duration="1230000" />
       <workItem from="1622427867235" duration="823000" />
-    </task>
-    <task id="LOCAL-00022" summary="insted of adding owner_cog users can now add only the commands they need">
-      <created>1615526627970</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1615526627970</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Started working on 0.0.15a1 update. This commit only changes the name of a few functions. Check changelog">
-      <created>1617240332685</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1617240332685</updated>
     </task>
     <task id="LOCAL-00024" summary="Added command &quot;latecy&quot;">
       <created>1617241236548</created>
@@ -546,7 +533,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622429356447</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="updated toml version">
+      <created>1622429542616</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1622429542616</updated>
+    </task>
+    <task id="LOCAL-00072" summary="updated pyproject.toml">
+      <created>1622429813884</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1622429813884</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,8 +566,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="new colors, docs improvements" />
-    <MESSAGE value="Minor changes in embeds. Added dpytools.embeds to All.md" />
     <MESSAGE value="minor doc improvements" />
     <MESSAGE value="fixes All.md bug" />
     <MESSAGE value="new checks" />
@@ -590,7 +589,9 @@
     <MESSAGE value="new check. fix typos" />
     <MESSAGE value="minor improvements&#10;Improved logic and emojis of arrows menu.&#10;Improved readme&#10;Minor bug fixes" />
     <MESSAGE value="cmd" />
-    <option name="LAST_COMMIT_MESSAGE" value="cmd" />
+    <MESSAGE value="updated toml version" />
+    <MESSAGE value="updated pyproject.toml" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated pyproject.toml" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dpytools$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1622238960660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
