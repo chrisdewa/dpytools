@@ -9,7 +9,7 @@ __title__ = 'dpytools'
 __author__ = 'ChrisDewa'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2020-2021 ChrisDewa'
-__version__ = '0.15.0b'
+__version__ = '0.15.5b'
 
 
 class Color(IntEnum):
