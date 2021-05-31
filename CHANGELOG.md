@@ -1,3 +1,6 @@
+# 0.15.5b
+- Documentation is live and can be accessed [here](https://dpytools.readthedocs.io/en/master/)
+
 # 0.15.0b
 - Introducing proper documentation
 - General improvements
