@@ -18,9 +18,10 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-"discord.py" = "^1.7.1"
+"discord.py" = "^1.5<2.0"
 
 [tool.poetry.dev-dependencies]
+sphinxcontrib-trio = "1.1.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
