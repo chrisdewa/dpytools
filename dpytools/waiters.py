@@ -4,18 +4,6 @@ Module that holds methods related to discord's bot client method `wait_for`
 They're useful for retrieving information from users.
 This functions and classes expect at least discord.Context
 so they're have to be use with the commands extension.
-
-Example:
-     ```
-        @bot.command()
-        async def test(ctx):
-            msg_a = await ctx.send('reply with a message containing only alpha, beta or gamma')
-            msg_b = await wait_for_regex(ctx,
-                                         pattern=r"^(alpha|beta|gamma)$",
-                                         timeout=15)
-            out = "got a match" if msg_b else "I didn't get a match within 15 seconds. Try again"
-            await msg_a.edit(content=out)
-     ```
 """
 
 import asyncio
@@ -81,21 +69,30 @@ async def wait_for_regex(ctx: commands.Context,
                                      bool] = True,
                          ) -> Optional[discord.Message]:
     """
-    Waits for a message that contains a match for the passed :pattern:
+    Waits for a message that contains a match for the passed :param pattern:
 
-    Args:
-        ctx: the command context
-        pattern: regex string to look in the message
-        ignore_case: Defaults to False. If True sets re.I as flag.
-        timeout: time in seconds to wait for the appropriate message
-        channel: The channel where the message should come from. Defaults to ctx.channel.
-        lock:
-            discord.Role -> Only members with this role can answer
-            discord.Member -> only specified member can answer
-            bool: True -> Only ctx.author can answer
-            bool: False -> Anyone can answer as long as its in the correct channel within the timeout window
-    Returns:
-        Optional[discord.Message]: returns None if timeout is specified and reached
+    Parameters
+    ----------
+    ctx: :class:`discord.ext.commands.Context`
+        The command context
+    pattern: :class:`str`
+        Regex string to look in the message
+    ignore_case: :class:`bool`
+        Defaults to False. If True sets re.I as flag.
+    timeout: :class:`int` (seconds)
+        Time in seconds to wait for the appropriate message
+    channel: `discord.TextChannel`
+        The channel where the message should come from. Defaults to ctx.channel.
+    lock:
+        - :class:`discord.Role` -> Only members with this role can answer
+        - :class:`discord.Member` -> only specified member can answer
+        - :class:`bool`: True -> Only ctx.author can answer
+        - :class:`bool`: False -> Anyone can answer as long as its in the correct channel within the timeout window
+
+    Returns
+    -------
+    :class:`Optional[discord.Message]`
+        Returns **None** if timeout is specified and reached
         and the rest of the checks arent passed or no match for the pattern is found
 
     """
@@ -121,14 +118,22 @@ async def wait_for_author(ctx: commands.Context,
                           ) -> Optional[discord.Message]:
     """
     This function returns a single message from ctx.author in ctx.channel.
-    Args:
-        ctx: the command context
-        stop: string to stop this function
-        timeout: time in seconds to wait for a reply or None if the function should wait forever (usual maximum is a day)
 
-    Returns:
-        None: if :timeout: is reached or if :stop: string is passed
-        discord.Message: User's reply message.
+    Parameters
+    ----------
+    ctx: :class:`discord.ext.commands.Context`
+        the command context
+    stop: :class:`str` (defaults to 'cancel')
+        String to stop this function
+    timeout: :class:`int` (seconds)
+        time in seconds to wait for a reply or None if the function should wait forever (usual maximum is a day)
+
+    Returns
+    -------
+    :class:`Optional[discord.Message]`
+        The user's reply **message**.
+
+        **None** if **timeout** is reached or if **stop** string is passed
     """
     try:
         message = await ctx.bot.wait_for('message', timeout=timeout, check=BaseLock(ctx))

@@ -1,20 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-This module holds parsers and converters to use with user input
-Functions here can be used as type hints which discord.py will use as
-custom converters or they can be used as regular functions.
-Example:
-    ```
-    from dpytools.parsers import to_timedelta
-    @bot.command()
-    async def timedelta(ctx, time: to_timedelta):
-        await ctx.send(f"time delta is: {time}")
-    ```
-    above command will be called like this: `!timedelta 2h30m`
-    and it will send a message with "time delta is: 2:30:00"
+Functions and classes used to convert :class:`str` into more useful classes.
+This work very well with `discord.ext.commands` commands and can be used as typehints for arguments.
+Function type parsers can work with any strings.
 
-    This way you don't have to manually parse the time string to a timedelta object.
-    the parameter "time" will be of type timedelta.
+Function parameters are not generally documented here because they're the same, a **string**.
+
 """
 import re
 from datetime import timedelta
@@ -29,12 +20,12 @@ from dpytools.errors import InvalidTimeString
 
 def to_spongebob_case(string: str) -> str:
     """
-    converts a given string to spongebob case (alternating caps)
-    Args:
-        string: the string to convert
+    Converts a given string to spongebob case (alternating caps)
 
-    Returns:
-        new string in sarcastic case
+    Returns
+    -------
+    :class:`str`
+        New string in sarcastic (spongebob) case
     """
     return ''.join(
         letter.upper() if i % 2 else letter.lower()
@@ -45,11 +36,11 @@ def to_spongebob_case(string: str) -> str:
 def to_upper(string: str) -> str:
     """
     Converts :string: to upper case. Intended to be used as argument converter.
-    Args:
-        string: string to format
 
-    Returns:
-        string to upper case
+    Returns
+    -------
+    :class:`str`
+        String to upper case
     """
     return string.upper()
 
@@ -57,10 +48,10 @@ def to_upper(string: str) -> str:
 def to_lower(string: str) -> str:
     """
     Converts :string: to lower case. Intended to be used as argument converter.
-    Args:
-        string: string to format
 
-    Returns:
+    Returns
+    -------
+    :class:`str`
         string to lower case
     """
     return string.lower()
@@ -68,27 +59,46 @@ def to_lower(string: str) -> str:
 
 def to_timedelta(string: str) -> timedelta:
     """
-    Converts a string with format <number>[s|m|h|d|w] to a timedelta object
+    Converts a string with format <number>[s|m|h|d|w] to :class:`timedelta` object
     <number> must be convertible to float.
+
     Uses regex to match groups and consumes all groups into one timedelta.
 
     Units:
-        s: second
-        m: minute
-        h: hour
-        d: day
-        w: weeks
+        - s: second
+        - m: minute
+        - h: hour
+        - d: day
+        - w: weeks
 
-    Args:
-        string: with format <number>[s|m|h|d].
-            parse_time("2h") == timedelta(hours=2)
+    Parameters
+    ----------
+        string: :class:`str`
+            format <number>[s|m|h|d|w].
 
-    Returns:
-        timedelta
+    Returns
+    -------
+    :class:`timedelta`
+        the argument converted to a timedelta object
 
-    Raises:
-        ValueError: if string number cannot be converted to float
-        InvalidTimeString: if string isn't in the valid form.
+    Raises
+    ------
+        :class:`ValueError`
+            If string number cannot be converted to float
+        :class:`InvalidTimeString`:
+            If string isn't in the valid form.
+
+    Example
+    -------
+    ::
+
+        from dpytools.parsers import to_timedelta
+        @bot.command(name='time')
+        async def _time(ctx, time: to_timedelta):
+            print(time)
+
+        # user's input: "2h30m"
+        >>> timedelta(hours=2, minutes=30)
 
     """
     units = {
@@ -116,42 +126,63 @@ def to_timedelta(string: str) -> timedelta:
 
 
 class Trimmer:
-    def __init__(self, max_length: int, end_sequence: str = '...'):
-        """
+    """
+    Callable Class that trims strings to fit a maximum length
 
-        Args:
-            max_length (int): maximum length of the string
-            end_sequence (str): character sequence that
-                denote that the full message is actually longer than the returned string
-        """
+    Parameters
+    ----------
+        max_length: :class:`ìnt`
+            Maximum length of the string
+        end_sequence: :class:`str`
+            Character sequence that denote that the full message is actually longer than the returned string
+    """
+    def __init__(self, max_length: int, end_sequence: str = '...'):
         self.max = max_length
         self.end_seq = end_sequence
 
     def __call__(self, string: str) -> str:
         """
         This turns the class into a callable object that parses the argument
-        Args:
-            string: user text string
+        This is the actual parser
 
-        Returns:
-            (str) the passed string.
-                If longer than max length it will be trimmed and :end_sequence: attached at the end.
+        Returns
+        -------
+        :class:`str`
+            The processed string
         """
         string = string.strip()
         return string[: self.max - len(self.end_seq)].strip() + "..." if len(string) > self.max else string.strip()
 
 
-def to_month(string: Union[str, int]) -> int:
+def to_month(string: str) -> int:
     """
-    This converter takes a string and checks if it contains a valid month.
-    If the argument is the months name check is case insensitive
-    returns the month number (int)
-    Formats:
-        January/jan/1
-    Args:
-        string: the string to parse
-    Raises:
-        ValueError if argument is not a valid month
+    This converter takes a string and checks if it contains a valid month of the year
+
+    Parameters
+    ----------
+    string: :class:`str`
+        Can be the full name, the shorter three leters conventional name or the number of the month
+
+    Returns
+    -------
+    :class:`int`
+        The number of the selected month
+
+    Example
+    -------
+    ::
+
+        from dpytools.parsers import to_month
+        @bot.command(name='month')
+        async def somemonth(ctx, month: to_month):
+            print(month)
+
+        # user's input: "jan"
+        >>> 1
+        # user's input "february"
+        >>> 2
+        # user's input "5"
+        >>> 5
     """
     months = {
         1: ['january', 'jan'],
@@ -182,17 +213,39 @@ def to_month(string: Union[str, int]) -> int:
 
 class MemberUserProxy(Converter):
     """
-    Tries to convert the argument first to a member and then to a user, if it cannot be found returns
-        a snowflake-like object
+    Tries to convert the argument first to :class:`discord.Member` and then to :class:`discord.User`,
+    if it cannot be found returns :class:`discord.Object`
 
-    If the bot cannot find the member or user object, the argument must be an id (int).
-    Returns:
-        Union[discord.Member, discord.User, discord.object.Object]
+
+    If the bot cannot find the member or user object, the argument must be an id :class:`ìnt`.
+
+    Returns
+    -------
+        :class:`Union[discord.Member, discord.User, discord.Object]`
+
     Raises
+    ------
         BadArgument: if member or user cannot be found and and the argument cannot be converted to :class:`int`
     """
 
     async def convert(self, ctx, argument):
+        """
+        This does the actual conversion
+
+        Parameters
+        -----------
+        ctx: :class:`.Context`
+            The invocation context that the argument is being used in.
+        argument: :class:`str`
+            The argument that is being converted.
+
+        Raises
+        -------
+        :exc:`.CommandError`
+            A generic exception occurred when converting the argument.
+        :exc:`.BadArgument`
+            The converter failed to convert the argument.
+        """
         try:
             target = await MemberConverter().convert(ctx, argument)
         except MemberNotFound:

@@ -1,26 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-MIT License
-
-Copyright (c) 2021 ChrisDewa
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Checks ready to use with **discord.ext.commands**
 """
 from datetime import datetime, time, timezone
 from typing import Union
@@ -30,7 +10,7 @@ from discord import utils
 from discord.ext import commands
 from discord.ext.commands import PrivateMessageOnly, Context
 
-from dpytools.errors import Unauthorized, IncorrectGuild, NotMemberOfCorrectGuild, OutsidePermittedDatetime
+from dpytools.errors import IncorrectGuild, NotMemberOfCorrectGuild, OutsidePermittedDatetime
 
 
 def admin_or_roles(*roles: Union[int, str]) -> commands.check:
@@ -47,9 +27,9 @@ def admin_or_roles(*roles: Union[int, str]) -> commands.check:
 
     Raises
     ------
-        :class:`NoPrivateMessage`
+        :class:`discord.ext.commands.NoPrivateMessage`
             If ran from DM
-        :class:`Unauthorized`
+        :class:`discord.ext.commands.MissingPermissions`
             If user doesn't have correct roles or admin permissions
     """
 
@@ -79,7 +59,7 @@ def admin_or_roles(*roles: Union[int, str]) -> commands.check:
         if any([role for role in discord_roles if role and role in ctx.author.roles]):
             return True
         else:
-            raise Unauthorized("User doesn't have admin permissions or specified roles")
+            raise commands.MissingPermissions("User doesn't have admin permissions or specified roles")
 
     return commands.check(predicate)
 
@@ -92,7 +72,7 @@ def only_this_guild(guild_id: int) -> commands.check:
 
     Raises
     ------
-        :class:`NoPrivateMessage`
+        :class:`discord.ext.commands.NoPrivateMessage`
             If ran outside a guild
         :class:`IncorrectGuild`
             If id doesn't check
@@ -128,7 +108,7 @@ def dm_from_this_guild(guild_id: int, delete: bool = False) -> commands.check:
 
     Raises
     ------
-        :class:`PrivateMessageOnly`
+        :class:`discord.ext.commands.PrivateMessageOnly`
             If called from a guild
         :class:`NotMemberOfCorrectGuild`
             If not a member of the specified guild
@@ -153,14 +133,15 @@ def dm_from_this_guild(guild_id: int, delete: bool = False) -> commands.check:
     return commands.check(predicate)
 
 
-def any_of_permissions(**kwargs) -> commands.check:
+def any_of_permissions(**permissions) -> commands.check:
     """
-    Returns True under the following conditions::
+    Returns True under the following conditions:
+
         - **ctx.author** matches any permission passed in the decorator
 
     Parameters
     ----------
-        kwargs:
+        permissions:
             appropriate permission flags. Keys are the permissions names and values the :class:`bool` setting
 
     Example
@@ -175,25 +156,25 @@ def any_of_permissions(**kwargs) -> commands.check:
 
     Raises
     ------
-        :class:`NoPrivateMessage`
+        :class:`discord.ext.commands.NoPrivateMessage`
             If ran outside a guild
-        :class:`Unauthorized`
+        :class:`discord.ext.commands.MissingPermissions`
             If ctx.author does not have any of the passed permissions
     """
 
     async def predicate(ctx):
-        if invalid := (set(kwargs) - set(Permissions.VALID_FLAGS)):
+        if invalid := (set(permissions) - set(Permissions.VALID_FLAGS)):
             raise TypeError('Invalid permission(s): %s' % (', '.join(invalid)))
         elif ctx.guild is None:
             raise commands.NoPrivateMessage("Command was called from a direct message.")
 
         author: Member = ctx.author
         author_perms: Permissions = author.guild_permissions
-        matched = [k for k, v in kwargs.items() if getattr(author_perms, k) == v]
+        matched = [k for k, v in permissions.items() if getattr(author_perms, k) == v]
         if any(matched):
             return True
         else:
-            raise Unauthorized("'You are missing one or more permission(s) to run this command.")
+            raise commands.MissingPermissions("'You are missing one or more permission(s) to run this command.")
 
     return commands.check(predicate)
 
@@ -210,7 +191,7 @@ def this_or_higher_role(role: Union[str, int]) -> commands.check:
 
     Raise
     -----
-        :class:`NoPrivateMessage`
+        :class:`discord.ext.commands.NoPrivateMessage`
             If called outside a guild
     """
 
@@ -302,7 +283,7 @@ def only_these_users(*users: int) -> commands.check:
         - ctx.author is authorized by this check
 
     .. warning::
-        If no users are specified this command will be effectively sealed.
+        If no users are specified this command will be effectively unusable.
 
     Parameters
     ----------
@@ -322,7 +303,7 @@ def in_these_channels(*channels: int) -> commands.check:
         - **ctx.channel.id** is found within :param channels:
 
     .. warning::
-        If no channels are specified this command will be effectively sealed
+        If no channels are specified this command will be effectively unusable
 
     Parameters
     ----------
@@ -341,6 +322,7 @@ def is_guild_owner() -> commands.check:
     Returns True under the following conditions:
         - **ctx.author** is the owner of the guild where this command was called from
     """
+
     def predicate(ctx):
         if ctx.guild is None:
             raise commands.NoPrivateMessage('This command can only be used in a server.')

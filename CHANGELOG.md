@@ -1,3 +1,9 @@
+# 0.15.0b
+- Introducing proper documentation
+- General improvements
+- **Breaking changes**:
+  - Deprecating error class `Unauthorized`, substituted with `discord.ext.commands.MissingPermissions`
+
 # 0.14.0b
 - Started working on migrating docstrings from google format to RST for future formal documentation generation
 - Minor bug fixes

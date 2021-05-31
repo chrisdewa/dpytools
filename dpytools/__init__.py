@@ -1,26 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-MIT License
-
-Copyright (c) 2021 ChrisDewa
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Collection of uncategorized tools
 """
 from enum import IntEnum, Enum
 from typing import List, Any
@@ -29,17 +9,17 @@ __title__ = 'dpytools'
 __author__ = 'ChrisDewa'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2020-2021 ChrisDewa'
-__version__ = '0.14.0b'
+__version__ = '0.15.0b'
 
 
 class Color(IntEnum):
     """
     Enum class with nice color values that can be used directly on embeds
 
-    :Example:
+    Example::
 
-    from dpytools import Color
-    embed = discord.Embed(description="embed example", color=Color.FIRE_ORANGE)
+        from dpytools import Color
+        embed = discord.Embed(description="embed example", color=Color.FIRE_ORANGE)
     """
     CYAN = 0x00FFFF
     GOLD = 0xFFD700
@@ -60,10 +40,10 @@ class Emoji(str, Enum):
     """
     Enum class with common emojis used for reaction messages or related interactions
 
-    :Example:
+    Example::
 
-    from dpytools import Emoji
-    message.add_reaction(Emoji.SMILE)
+        from dpytools import Emoji
+        message.add_reaction(Emoji.SMILE)
     """
     SMILE = '🙂'
     THUMBS_UP = '👍'
@@ -99,7 +79,11 @@ class Emoji(str, Enum):
 
 
 class EmojiNumbers(str, Enum):
-    """Shortcut enum class that contains the number emojis from :class:`Emoji`"""
+    """
+    Shortcut enum class that contains the number emojis from :class:`Emoji`
+
+
+    """
     ONE = Emoji.ONE.value
     TWO = Emoji.TWO.value
     THREE = Emoji.THREE.value
@@ -119,11 +103,16 @@ def chunkify(input_list: List[Any],
     """
     Splits a list into :n: sized chunks
 
-    Parameters:
-        :param input_list: The list to make chunks from
-        :param max_number: The maximum amount of items per chunk
-    Yields:
-        Chunks of size equal or lower to :param max_number:
+    Parameters
+    ----------
+    input_list: :class:`List[Any]`
+        The list to make chunks from
+    max_number: :class:`int`
+        The maximum amount of items per chunk
+
+    Yields
+    ------
+    Chunks of size equal or lower to *max_number*
     """
     for i in range(0, len(input_list), max_number):
         yield input_list[i:i + max_number]
@@ -148,8 +137,12 @@ def chunkify_string_list(input_list: List[str],
     separator_length: :class:`int`
         If the strings will be eventually joined together, the :param separator_length:
         is considered into :param max_length:
-    Yields:
-        :class:`List[List[str]]`
+
+    Yields
+    ------
+    :class:`List[List[str]]`
+
+
     """
     if any([len(item) > max_length - separator_length for item in input_list]):
         raise ValueError(f"All items should be of length {max_length} or less.")
