@@ -1,3 +1,7 @@
+# 0.15.6b
+- Documentation improvements
+- `dpytools.embeds.Embed.add_fields` now returns the embed to make chaining easier
+
 # 0.15.5b
 - Documentation is live and can be accessed [here](https://dpytools.readthedocs.io/en/master/)
 

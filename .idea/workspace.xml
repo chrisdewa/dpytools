@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="updated pyproject.toml">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="version update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/embeds.rst" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/embeds.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/embeds.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/embeds.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +53,7 @@
     <setting file="file://$PROJECT_DIR$/dpytools/waiters.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/LICENCE" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/dpytools/__init__.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/env/Lib/site-packages/discord/embeds.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1nM4NLliVhW09mqMon6Ipua98l9" />
   <component name="ProjectViewState">
@@ -205,20 +212,8 @@
       <workItem from="1622311030648" duration="316000" />
       <workItem from="1622393249921" duration="1230000" />
       <workItem from="1622427867235" duration="823000" />
-    </task>
-    <task id="LOCAL-00025" summary="Added instalation to readme">
-      <created>1617241552101</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1617241552101</updated>
-    </task>
-    <task id="LOCAL-00026" summary="General improvements and a few additions. Check changelog v 15a1">
-      <created>1617572148527</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1617572148527</updated>
+      <workItem from="1622435460275" duration="42000" />
+      <workItem from="1622484129310" duration="3579000" />
     </task>
     <task id="LOCAL-00027" summary="Updated to version 16">
       <created>1617587102205</created>
@@ -549,7 +544,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622430432522</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="final documentation update">
+      <created>1622431258813</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1622431258814</updated>
+    </task>
+    <task id="LOCAL-00075" summary="version update">
+      <created>1622431291001</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1622431291001</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,8 +577,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="minor doc improvements" />
-    <MESSAGE value="fixes All.md bug" />
     <MESSAGE value="new checks" />
     <MESSAGE value="improvements in between_datetimes" />
     <MESSAGE value="new parser `to_month`" />
@@ -593,7 +600,9 @@
     <MESSAGE value="cmd" />
     <MESSAGE value="updated toml version" />
     <MESSAGE value="updated pyproject.toml" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated pyproject.toml" />
+    <MESSAGE value="final documentation update" />
+    <MESSAGE value="version update" />
+    <option name="LAST_COMMIT_MESSAGE" value="version update" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dpytools$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1622238960660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />

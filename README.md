@@ -9,7 +9,7 @@
 
 
 # dpytools
-Collection of tools to speed up developing discord bots using discord.py
+Collection of easy to use, beginner friendly but powerful, orthogonal tools to speed up discord bots development (discord.py)
 
 # Features
 - The batteries of discord.py
@@ -24,11 +24,11 @@ pip install -U dpytools
 ```
 
 # Useful links:
-- [List](https://github.com/chrisdewa/dpytools/blob/master/docs/All.md) of all the tools.
-- [Project Home](https://github.com/chrisdewa/dpytools) on github
-- [Changelog](https://github.com/chrisdewa/dpytools/blob/master/CHANGELOG.md)
-- [F. A. Q.](https://github.com/chrisdewa/dpytools/blob/master/docs/FAQ.md) and examples
 - [Documentation](https://dpytools.readthedocs.io/en/master/)
+- [List](https://github.com/chrisdewa/dpytools/blob/master/docs/All.md) of all the tools.
+- [F. A. Q.](https://github.com/chrisdewa/dpytools/blob/master/docs/FAQ.md) and examples
+- [Changelog](https://github.com/chrisdewa/dpytools/blob/master/CHANGELOG.md)
+- [Project Home](https://github.com/chrisdewa/dpytools) on github
 
 # Use Examples:
 The library has a couple of reaction menus that are really easy to use.

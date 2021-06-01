@@ -114,7 +114,7 @@ class Embed(discord.Embed):
         if thumbnail := kwargs.get('thumbnail', None):
             self.set_thumbnail(url=thumbnail)
 
-    def add_fields(self, inline=True, **kwargs):
+    def add_fields(self, inline=True, **kwargs) -> Embed:
         """
         Works in a similar way to **Embed.add_field** but you can add as many fields as you need by passing them as
         kwargs in the constructor.
@@ -143,3 +143,4 @@ class Embed(discord.Embed):
         """
         for name, value in kwargs.items():
             self.add_field(name=name, value=value, inline=inline)
+        return self

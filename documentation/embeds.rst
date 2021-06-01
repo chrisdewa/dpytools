@@ -1,5 +1,5 @@
 Embed tools
-=============
+===========
 
 
 .. automodule:: dpytools.embeds

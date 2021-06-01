@@ -9,7 +9,6 @@ __title__ = 'dpytools'
 __author__ = 'ChrisDewa'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2020-2021 ChrisDewa'
-__version__ = '0.15.5b'
 
 
 class Color(IntEnum):
@@ -20,6 +19,23 @@ class Color(IntEnum):
 
         from dpytools import Color
         embed = discord.Embed(description="embed example", color=Color.FIRE_ORANGE)
+
+    .. note::
+        Available colors:
+            CYAN = 0x00FFFF
+            GOLD = 0xFFD700
+            YELLOW = 0xffff00
+            RED = 0xFF0000
+            LIME = 0x00FF00
+            VIOLET = 0xEE82EE
+            PINK = 0xFFC0CB
+            FUCHSIA = 0xFF00FF
+            BLUE = 0x0000FF
+            PURPLE = 0x8A2BE2
+            FIRE_ORANGE = 0xFF4500
+            COSMIC_LATTE = 0xFFF8E7
+            BABY_BLUE = 0x89cff0
+
     """
     CYAN = 0x00FFFF
     GOLD = 0xFFD700
@@ -44,6 +60,30 @@ class Emoji(str, Enum):
 
         from dpytools import Emoji
         message.add_reaction(Emoji.SMILE)
+
+    .. note::
+        Included Emojis:
+            SMILE = 🙂, THUMBS_UP = 👍, THUMBS_DOWN = 👎,
+
+            HEART = ❤️,GREEN_CHECK = ✅, X = ❌,
+
+            PROHIBITED = 🚫, FIRE = 🔥, STAR = ⭐,
+
+            RED_CIRCLE = 🔴, GREEN_CIRCLE = 🟢, YELLOW_CIRCLE = 🟡,
+
+            LAST_TRACK = ⏮️, REVERSE = ◀️, PLAY = ▶️,
+
+            NEXT_TRACK = ⏭️, PAUSE = ⏸️, FIRST_PLACE_MEDAL = 🥇,
+
+            SECOND_PLACE_MEDAL = 🥈, THIRD_PLACE_MEDAL = 🥉,
+
+            ONE = 1️⃣, TWO = 2️⃣, THREE = 3️⃣,
+
+            FOUR = 4️⃣, FIVE = 5️⃣, SIX = 6️⃣,
+
+            SEVEN = 7️⃣, EIGHT = 8️⃣, NINE = 9️⃣,
+
+            TEN = 🔟, ZERO = 0️⃣
     """
     SMILE = '🙂'
     THUMBS_UP = '👍'
@@ -81,8 +121,6 @@ class Emoji(str, Enum):
 class EmojiNumbers(str, Enum):
     """
     Shortcut enum class that contains the number emojis from :class:`Emoji`
-
-
     """
     ONE = Emoji.ONE.value
     TWO = Emoji.TWO.value
@@ -141,8 +179,6 @@ def chunkify_string_list(input_list: List[str],
     Yields
     ------
     :class:`List[List[str]]`
-
-
     """
     if any([len(item) > max_length - separator_length for item in input_list]):
         raise ValueError(f"All items should be of length {max_length} or less.")

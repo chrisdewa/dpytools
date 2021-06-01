@@ -2,23 +2,23 @@
 """
 Common general purpose commands
 
-Add them to your bot by simply doing
-    ```
+Add them to your bot by simply doing::
+
         bot.add_command(command)
-    ```
 """
 
 import os
 from typing import Optional
+from functools import wraps
 
 from discord import Embed, Color
 from discord.ext import commands
 from discord.ext.commands import ExtensionError
 
-
 @commands.command(aliases=['lat'])
 async def latency(ctx: commands.Context):
     """
+    latency()
     Command to display latency in ms.
     Latency is displayed on plain embed in the description field
     """
@@ -36,11 +36,12 @@ async def cogs(ctx: commands.Context,
                cog: Optional[str],
                cogs_dir: str = "./cogs"):
     """
+    cogs()
     Command to load, unload and reload extensions
 
     .. notes::
         Checks:
-            commands.is_owner
+            :function:`commands.is_owner`
 
         Attributes:
             hidden=True
