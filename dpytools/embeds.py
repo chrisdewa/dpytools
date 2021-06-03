@@ -8,7 +8,7 @@ from typing import List, Optional, Union, Dict
 import discord
 from discord import Embed
 from discord.ext.commands import Paginator
-from datetime import datetime
+from itertools import islice
 
 
 def paginate_to_embeds(description: str,
@@ -121,50 +121,40 @@ class Embed(discord.Embed):
             self.add_field(name=name, value=value, inline=inline)
 
             
-class EmbedList:
+class PaginatedEmbeds:
     
-    """A class that takes dictionary containing name and value and splint them into several Embeds.
+    """A class that takes dictionary containing name and value as key-value pair and paginates them according to fields.
 
     Attributes
     -----------
-    dicts: Optional[:class:`dict`]
-        The dictionary containing name and values as key-value pair. Must not be empty
-    title: Optional[:class:`str`]
-        Title of the embeds. 
-    description: :class:`int`
-        Description of the embeds.
-    footer: Optional[:class:`str`]
-        Footer of the embeds
-    author: Optional[:class:`str`]
-        Author of the embeds
-    inline: Optional[:class:`bool`]
-        Bool variable if fields will be inline or not. Defaults to True
+    embed: [:class:``Embed`]
+        Base Embed, which acts as a template for paginated embeds. This embed will have everything initiatized except fields.
+    dicts: [:class:`dict`]
+        The dictionary containing name and values as key-value pair. Must not be empty.
     size: Optional[:class:`int`]
-        Number of field in each embed. Must be greater then 0. Defaults to 25
-    color: Optional[:class:`discord.Color`, :class: `int`]
-        The color of the disord embed. Default is Black
+        Number of field in each embed. Must be greater then 0. Defaults to 25.
+    inline: Optional[:class:`bool`]
+        Bool variable if fields will be inline or not. Defaults to True.
+ 
     """
 
-    def __init__(self, **options):
-        self.dicts = options.pop('dicts')
-        self.title = options.pop('title', '')
-        self.description = options.pop('description', '')
-        self.footer = options.pop('footer', '')
-        self.author = options.pop('author', '')
-        self.inline = options.pop('inline', True)
-        self.colour = options.pop('colour', 0)
-        self.size = options.pop('size', 25)
+    def __init__(self, embed:Embed, fields_dict:Dict[str, str],size:int=25, inline:bool=True):
+        embed.clear_fields()    # Clearing the fields just in case embed is not empty
+        self.embed = embed
+        self.size = size
+        self.fields_dict = fields_dict
+        self.inline = inline
         
         self.field_limit = 25
         self.char_limit = 6000
-        self.clear()
-        self._add_embed(self.dicts)
+        self._pages = []
+        self._add_embed(self.fields_dict)
 
     def clear(self):
         """Clears the paginator to have no pages."""
         self._pages = []
 
-    def _check_embed(self, embed: discord.Embed, *chars: str):
+    def _check_embed(self, embed:Embed, *chars: str):
         """
         Check if the emebed is too big to be sent on discord
 
@@ -180,68 +170,62 @@ class EmbedList:
         )
         return check
 
-    def _new_page(self):
+    def _new_page(self) -> Embed:
         """
         Create a new page
 
-        Args:
-            title (str): The title of the new page
-
         Returns:
-            discord.Emebed: Returns an embed with the title and color set
+            Embed: Return a new Embed for new page
         """
-        return discord.Embed(title=self.title, description=self.description, timestamp=datetime.now(), color=self.colour)
+        return Embed.from_dict(self.embed.to_dict())    # This convert discord.Embed to Embed and return it
 
-    def _add_page(self, page: discord.Embed):
+    def _add_page(self, page: Embed):
         """
         Add a page to the paginator
 
         Args:
             page (discord.Embed): The page to add
         """
-        page.set_footer(text=self.footer)
-        page.set_author(name=self.author)
+
         self._pages.append(page)
 
-    def _chunks(self, dicts:dict):
+    def _chunks(self, fields_dict:Dict[str, str]) -> Dict[str, str]:
         """Yield successive chunks of num size from dicts
 
         Args:
-            dicts (dict): Dictionary containing name and value
+            dicts (dict): Dictionary containing name and value as key-value pair
 
         Yields:
             tuple_list (list): list chunks of size num containing name and value
         """        
 
         num = self.size
-        if not dicts:
+        if not fields_dict:
             raise ValueError("Dictionary containing name and value can't be empty!")
 
-        tuple_list = [(name, value) for name, value in dicts.items()]
 
         if num < 1:
             raise ValueError("Number of Embed fields can't be zero")
 
-        for i in range(0, len(tuple_list), num):
-            yield tuple_list[i:i+num]
+        field_iter = iter(fields_dict)
+        for _ in range(0, len(fields_dict), num):
+            yield {k:fields_dict[k] for k in islice(field_iter, num)}
+
     
-    def _add_embed(self, dicts):
+    def _add_embed(self, fields_dicts:dict):
         """Add embeds to pages
 
         Args:
-            dicts :- Name, Value dictionary to generate embed from
+            dicts :- Dictionary containing name and value as key-value pair
 
         Returns:
             None
 
         """        
-        for d in self._chunks(dicts):
+        for field_dict_chunk in self._chunks(fields_dicts):
             embed = self._new_page()
 
-            for tup in d:
-                name, value = tup
-                embed.add_field(name=name, value=value, inline=self.inline)
-
+            embed.add_fields(field_dict_chunk)
             self._add_page(embed)
 
     @property
