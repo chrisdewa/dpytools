@@ -151,20 +151,32 @@ class PaginatedEmbeds:
     
     """A class that takes dictionary containing name and value as key-value pair and paginates them according to fields.
 
-    Attributes
+    Parameters
     -----------
-    embed: [:class:``Embed`]
+    embed: :class:`Embed`
         Base Embed, which acts as a template for paginated embeds. This embed will have everything initiatized except fields.
-    dicts: [:class:`dict`]
+    fields_dict: :class:`dict`
         The dictionary containing name and values as key-value pair. Must not be empty.
     size: Optional[:class:`int`]
         Number of field in each embed. Must be greater then 0. Defaults to 25.
     inline: Optional[:class:`bool`]
         Bool variable if fields will be inline or not. Defaults to True.
+       
+    Example
+    -------
+    ::
+        
+        from dpytools.embeds import PaginatedEmbeds
+        from dpytools.menus import arrows
+        @bot.command(name='send-fields')
+        async def send_fields(ctx):
+            lots_of_fields = {f'{i}': f'{i+1}' for i in range(1000)}
+            pages = PaginatedEmbeds(Embed(title='Embed blueprint', color=0x00FFFF), lots_of_fields)
+            await arrows(ctx, pages)
  
     """
 
-    def __init__(self, embed:Embed, fields_dict:Dict[str, str],size:int=25, inline:bool=True):
+    def __init__(self, embed: Embed, fields_dict: Dict[str, str], size: int = 25, inline: bool = True):
         embed.clear_fields()    # Clearing the fields just in case embed is not empty
         self.embed = embed
         self.size = size
@@ -180,15 +192,19 @@ class PaginatedEmbeds:
         """Clears the paginator to have no pages."""
         self._pages = []
 
-    def _check_embed(self, embed:Embed, *chars: str):
+    def _check_embed(self, embed: Embed, *chars: str):
         """
         Check if the emebed is too big to be sent on discord
 
-        Args:
-            embed (discord.Embed): The embed to check
+        Parameters
+        ----------
+            embed: :class:`Embed`: 
+                The embed to check
 
-        Returns:
-            bool: Will return True if the emebed isn't too large
+        Returns
+        -------
+            :class:`bool`
+                Will return **True** if the emebed isn't too large
         """
         check = (
             len(embed) + sum(len(char) for char in chars if char) < self.char_limit
@@ -209,8 +225,10 @@ class PaginatedEmbeds:
         """
         Add a page to the paginator
 
-        Args:
-            page (discord.Embed): The page to add
+        Parameters
+        ----------
+            page: :class:`Embed`
+                The page to add
         """
 
         self._pages.append(page)
@@ -238,17 +256,17 @@ class PaginatedEmbeds:
             yield {k:fields_dict[k] for k in islice(field_iter, num)}
 
     
-    def _add_embed(self, fields_dicts:dict):
+    def _add_embed(self, fields_dict: dict):
         """Add embeds to pages
 
         Args:
-            dicts :- Dictionary containing name and value as key-value pair
+            fields_dict :- Dictionary containing name and value as key-value pair
 
         Returns:
             None
 
         """        
-        for field_dict_chunk in self._chunks(fields_dicts):
+        for field_dict_chunk in self._chunks(fields_dict):
             embed = self._new_page()
 
             embed.add_fields(field_dict_chunk)
@@ -256,7 +274,7 @@ class PaginatedEmbeds:
 
     @property
     def pages(self):
-        """Returns the rendered list of pages."""
+        """Returns the rendered list of pages"""
         if len(self._pages) == 1:
             return self._pages
         lst = []
