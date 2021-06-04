@@ -1,12 +1,13 @@
 [tool.poetry]
 name = "dpytools"
-version = "0.13.0b"
-description = "Toolset to speed up discord bot development using discord.py"
+version = "0.15.6b"
+description = "Collection of easy to use, beginner friendly but powerful, orthogonal tools to speed up discord bots development (discord.py)"
 keywords=["discord", "discord.py", "discord bot"]
 authors = ["chrisdewa <alexdewa@gmail.com>"]
 readme = "README.md"
 license = "MIT"
 repository = "https://github.com/chrisdewa/dpytools"
+documentation = "https://dpytools.readthedocs.io/en/master/"
 classifiers=[
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -18,7 +19,13 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-"discord.py" = "^1.7.1"
+"discord.py" = "^1.5<2.0"
+"sphinxcontrib-trio" = {version = "1.1.2", optional = true}
+sphinx = {version = "4.0.2", optional = true}
+"sphinx-rtd-theme" = {version = "0.5.2", optional= true}
+
+[tool.poetry.extras]
+docs = ["sphinxcontrib-trio", "sphinx", "sphinx-rtd-theme"]
 
 [tool.poetry.dev-dependencies]
 

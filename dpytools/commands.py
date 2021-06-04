@@ -2,24 +2,24 @@
 """
 Common general purpose commands
 
-Add them to your bot by simply doing
-    ```
+Add them to your bot by simply doing::
+
         bot.add_command(command)
-    ```
 """
 
 import os
 from typing import Optional
+from functools import wraps
 
 from discord import Embed, Color
 from discord.ext import commands
 from discord.ext.commands import ExtensionError
 
-
 @commands.command(aliases=['lat'])
 async def latency(ctx: commands.Context):
     """
-    Command to disply latency in ms.
+    latency()
+    Command to display latency in ms.
     Latency is displayed on plain embed in the description field
     """
     ping = await ctx.send('Checking latency...')
@@ -36,25 +36,26 @@ async def cogs(ctx: commands.Context,
                cog: Optional[str],
                cogs_dir: str = "./cogs"):
     """
-    Command to load, unload and reload extensions.
+    cogs()
+    Command to load, unload and reload extensions
 
-    Checks:
-        commands.is_owner
+    .. notes::
+        Checks:
+            :function:`commands.is_owner`
 
-    Attributes:
-        hidden=True
+        Attributes:
+            hidden=True
 
-    Args:
-        ctx: commands.Context
-        option:
-            load: loads :cog:
-            unload: unloads :cog:
-            reload: relaods :cog:
-            list: lists available cogs in :cogs_dir:
+    Parameters
+    ----------
+        option: :class:`str`
+            load: loads the extension
+            unload: unloads the extension
+            reload: reloads the extension
+            list: lists available cogs in :param cogs_dir:
 
         cog: filename of the extension to load, without the file extension ('my_cog' not 'my_cog.py')
         cogs_dir: directory to operate command, defaults to ./cogs
-
 
     """
     if option.lower() not in ['load', 'unload', 'reload', 'list']:

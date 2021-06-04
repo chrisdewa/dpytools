@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="new check. fix typos">
-      <change afterPath="$PROJECT_DIR$/dpytools/context.py" afterDir="false" />
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="version update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/embeds.rst" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/embeds.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/index.rst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/commands.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/embeds.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/embeds.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/menus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/parsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/parsers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +53,7 @@
     <setting file="file://$PROJECT_DIR$/dpytools/waiters.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/LICENCE" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/dpytools/__init__.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/env/Lib/site-packages/discord/embeds.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1nM4NLliVhW09mqMon6Ipua98l9" />
   <component name="ProjectViewState">
@@ -69,7 +71,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -174,9 +176,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.bot" />
-        <item itemvalue="Python.scratch" />
+        <item itemvalue="Python.scratch_2" />
         <item itemvalue="Python.scratch_1" />
+        <item itemvalue="Python.scratch" />
+        <item itemvalue="Python.bot" />
         <item itemvalue="Python.scratch_2" />
       </list>
     </recent_temporary>
@@ -204,56 +207,13 @@
       <workItem from="1621955160195" duration="4898000" />
       <workItem from="1621993246551" duration="2481000" />
       <workItem from="1622131406461" duration="2676000" />
-      <workItem from="1622236368914" duration="5959000" />
-    </task>
-    <task id="LOCAL-00020" summary="changed module `input` to `user_interaction` and `reply` to `user_reply`">
-      <created>1615239411519</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1615239411519</updated>
-    </task>
-    <task id="LOCAL-00021" summary="added new functions to parsers">
-      <created>1615495190927</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1615495190927</updated>
-    </task>
-    <task id="LOCAL-00022" summary="insted of adding owner_cog users can now add only the commands they need">
-      <created>1615526627970</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1615526627970</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Started working on 0.0.15a1 update. This commit only changes the name of a few functions. Check changelog">
-      <created>1617240332685</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1617240332685</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Added command &quot;latecy&quot;">
-      <created>1617241236548</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1617241236548</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Added instalation to readme">
-      <created>1617241552101</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1617241552101</updated>
-    </task>
-    <task id="LOCAL-00026" summary="General improvements and a few additions. Check changelog v 15a1">
-      <created>1617572148527</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1617572148527</updated>
+      <workItem from="1622236368914" duration="6607000" />
+      <workItem from="1622254314004" duration="6109000" />
+      <workItem from="1622311030648" duration="316000" />
+      <workItem from="1622393249921" duration="1230000" />
+      <workItem from="1622427867235" duration="823000" />
+      <workItem from="1622435460275" duration="42000" />
+      <workItem from="1622484129310" duration="3579000" />
     </task>
     <task id="LOCAL-00027" summary="Updated to version 16">
       <created>1617587102205</created>
@@ -549,7 +509,56 @@
       <option name="project" value="LOCAL" />
       <updated>1621653617395</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="minor improvements&#10;Improved logic and emojis of arrows menu.&#10;Improved readme&#10;Minor bug fixes">
+      <created>1622247598703</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1622247598703</updated>
+    </task>
+    <task id="LOCAL-00070" summary="cmd">
+      <created>1622429356447</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1622429356447</updated>
+    </task>
+    <task id="LOCAL-00071" summary="updated toml version">
+      <created>1622429542616</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1622429542616</updated>
+    </task>
+    <task id="LOCAL-00072" summary="updated pyproject.toml">
+      <created>1622429813884</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1622429813884</updated>
+    </task>
+    <task id="LOCAL-00073" summary="updated pyproject.toml">
+      <created>1622430432522</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1622430432522</updated>
+    </task>
+    <task id="LOCAL-00074" summary="final documentation update">
+      <created>1622431258813</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1622431258814</updated>
+    </task>
+    <task id="LOCAL-00075" summary="version update">
+      <created>1622431291001</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1622431291001</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,12 +577,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added all.md to README.md" />
-    <MESSAGE value="version update" />
-    <MESSAGE value="new colors, docs improvements" />
-    <MESSAGE value="Minor changes in embeds. Added dpytools.embeds to All.md" />
-    <MESSAGE value="minor doc improvements" />
-    <MESSAGE value="fixes All.md bug" />
     <MESSAGE value="new checks" />
     <MESSAGE value="improvements in between_datetimes" />
     <MESSAGE value="new parser `to_month`" />
@@ -593,7 +596,13 @@
     <MESSAGE value="version update to 0.11.0b" />
     <MESSAGE value="improved MemberUserProxy" />
     <MESSAGE value="new check. fix typos" />
-    <option name="LAST_COMMIT_MESSAGE" value="new check. fix typos" />
+    <MESSAGE value="minor improvements&#10;Improved logic and emojis of arrows menu.&#10;Improved readme&#10;Minor bug fixes" />
+    <MESSAGE value="cmd" />
+    <MESSAGE value="updated toml version" />
+    <MESSAGE value="updated pyproject.toml" />
+    <MESSAGE value="final documentation update" />
+    <MESSAGE value="version update" />
+    <option name="LAST_COMMIT_MESSAGE" value="version update" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dpytools$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1622238960660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />

@@ -1,3 +1,20 @@
+# 0.15.6b
+- Documentation improvements
+- `dpytools.embeds.Embed.add_fields` now returns the embed to make chaining easier
+
+# 0.15.5b
+- Documentation is live and can be accessed [here](https://dpytools.readthedocs.io/en/master/)
+
+# 0.15.0b
+- Introducing proper documentation
+- General improvements
+- **Breaking changes**:
+  - Deprecating error class `Unauthorized`, substituted with `discord.ext.commands.MissingPermissions`
+
+# 0.14.0b
+- Started working on migrating docstrings from google format to RST for future formal documentation generation
+- Minor bug fixes
+
 # 0.13.0b
 - Improved `arrows` with better emojis and logic
 - Small bugfixes

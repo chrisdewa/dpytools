@@ -3,11 +3,13 @@
 [![PyPI status](https://img.shields.io/pypi/status/dpytools.svg)](https://pypi.python.org/pypi/dpytools/)
 [![PyPI version fury.io](https://badge.fury.io/py/dpytools.svg)](https://pypi.python.org/pypi/dpytools/)
 [![Downloads](https://pepy.tech/badge/dpytools)](https://pepy.tech/project/dpytools)
+[![Documentation Status](https://readthedocs.org/projects/dpytools/badge/?version=master)](https://dpytools.readthedocs.io/en/latest/?badge=master)
 [![PyPI license](https://img.shields.io/pypi/l/dpytools.svg)](https://pypi.python.org/pypi/dpytools/)
 
 
+
 # dpytools
-Collection of tools to speed up developing discord bots using discord.py
+Collection of easy to use, beginner friendly but powerful, orthogonal tools to speed up discord bots development (discord.py)
 
 # Features
 - The batteries of discord.py
@@ -22,10 +24,11 @@ pip install -U dpytools
 ```
 
 # Useful links:
+- [Documentation](https://dpytools.readthedocs.io/en/master/)
 - [List](https://github.com/chrisdewa/dpytools/blob/master/docs/All.md) of all the tools.
-- [Project Home](https://github.com/chrisdewa/dpytools) on github
-- [Changelog](https://github.com/chrisdewa/dpytools/blob/master/CHANGELOG.md)
 - [F. A. Q.](https://github.com/chrisdewa/dpytools/blob/master/docs/FAQ.md) and examples
+- [Changelog](https://github.com/chrisdewa/dpytools/blob/master/CHANGELOG.md)
+- [Project Home](https://github.com/chrisdewa/dpytools) on github
 
 # Use Examples:
 The library has a couple of reaction menus that are really easy to use.
@@ -72,8 +75,7 @@ Only converter classes that inherit from `discord.ext.commands.Converter` requir
 There are many other tools available in the library, check them in [docs/All.md](https://github.com/chrisdewa/dpytools/blob/master/docs/All.md)
 
 # Todos:
-1. Adjust Menus to use buttons where it makes sense.
-2. Add proper documentation
+1. Add interactions
 
 # Status of the project
 Beta.

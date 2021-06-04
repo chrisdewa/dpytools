@@ -16,12 +16,6 @@ from discord.ext.commands import Context
 
 from dpytools import EmojiNumbers, Emoji, chunkify_string_list, Color
 
-__all__ = (
-    "arrows",
-    "confirm",
-    "multichoice"
-)
-
 
 async def try_clear_reactions(msg):
     """helper function to remove reactions excepting forbidden
@@ -44,27 +38,35 @@ async def arrows(ctx: commands.Context,
     """
     Sends multiple embeds with a reaction navigation menu.
 
-    Args:
-        ctx:
-            The context where this function is called.
-        embed_list  (List[Embed])
-            An ordered list containing the embeds to be sent.
-        content (str)
-            A static string. This wont change with pagination.
-            It will be cleared when its closed, but will persist on pause
-        head (int)
-            The index in embed_list of the first Embed to be displayed.
-        timeout (int: seconds)
-            The time before the bot closes the menu.
-            This is reset with each interaction.
-        closed_embed (Optional[Embed]):
-            The embed to be displayed when the user closes the menu.
-            Defaults to plain embed with "Closed by user" in description
+    Parameters
+    ----------
+    ctx: :class:`discord.ext.commands.Context`
+        The context where this function is called.
+    embed_list: :class:`List[Embed]`
+        An ordered list containing the embeds to be sent.
+    content: :class:`str`
+        A static string. This wont change with pagination.
+        It will be cleared when its closed, but will persist on pause
+    head: :class:`int`
+        The index in embed_list of the first Embed to be displayed.
+    timeout: :class:`int` (seconds)
+        The time before the bot closes the menu.
+        This is reset with each interaction.
+    closed_embed: :class:`Optional[Embed]`
+        The embed to be displayed when the user closes the menu.
+        Defaults to plain embed with "Closed by user" in description
+    channel: :class:`discord.abc.Messageable`
+        The channel to be used for displaying the menu, defaults to ctx.channel.
 
-        channel (discord.abc.Messageable)
-            The channel to be used for displaying the menu, defaults to ctx.channel.
-    Returns:
-        None
+    Example
+    -------
+    ::
+
+        from dpytools.menus import arrows
+        @bot.command()
+        async def test(ctx):
+            embed_list = [Embed(...), Embed(...), ...)
+            await arrows(ctx, embed_list)
     """
     channel = channel or ctx.channel
     closed_embed = closed_embed or Embed(description="Closed by user", color=Color.RED)
@@ -136,22 +138,49 @@ async def confirm(ctx: commands.Context,
                   msg: discord.Message,
                   lock: Union[discord.Member, discord.Role, bool, None] = True,
                   timeout: int = 30) -> Optional[bool]:
-    """Helps to create a reaction menu to confirm an action.
-    :Parameters:
-        ctx                    - the context for the menu
-        msg                    - the message to confirm or deny by the user.
-        lock                   -
-            :Bool:             -
-                True (default) - the menu will only listen for the author's reactions.
-                False          - ANY user can react to the menu
-            :discord.Member:   - only target member will be able to react
-            :discord.Role:     - ANY user with target role will be able to react.
-        timeout (seconds)      - Timeout before the menu closes.
+    """
+    Helps to create a reaction menu to confirm an action.
 
-    Returns:
-        True if the message was confirmed
-        False if it was denied
-        None if timeout
+    Parameters
+    ----------
+    ctx: :class:`discord.ext.commands.Context`
+        the context for the menu
+    msg: :class:`Message`
+        the message to confirm or deny by the user.
+    lock: :class:`Union[discord.Member, discord.Role, bool, None]`
+        - **True** (default)
+            - the menu will only listen for the author's reactions.
+        - **False**
+            - ANY user can react to the menu
+        - :class:`discord.Member`
+            - Only target member will be able to react
+        - :class:`discord.Role`
+            - ANY user with target role will be able to react.
+    timeout: :class:ìnt` (seconds)
+        Timeout before the menu closes.
+
+    Returns
+    -------
+    :class:`Optional[bool]`
+        - **True** if the message was confirmed
+        - **False** if it was denied
+        - **None** if timeout
+
+    Example
+    -------
+    ::
+
+        from dpytools.menus import confirm
+        @bot.command()
+        async def test(ctx):
+            msg = await ctx.send('Please confirm to this important message')
+            confirmation = await confirm(ctx, msg)
+            if confirmation:
+                await msg.edit(content='Confirmed')
+            elif confirmation is False:
+                await msg.edit(content='Cancelled')
+            else:
+                await msg.edit(content='Timeout')
     """
 
     emojis = ['👍', '❌']
@@ -186,23 +215,45 @@ async def confirm(ctx: commands.Context,
             return False
 
 
-async def multichoice(ctx: Context,  # the command's context
-                      options: List[str],  # a list with strings to present the user
-                      timeout: int = 60,  # a timeout before each interaction before the embed closes
-                      base_embed: Embed = Embed()  # an optional base embed for each pagination
+async def multichoice(ctx: Context,
+                      options: List[str],
+                      timeout: int = 60,
+                      base_embed: Embed = Embed()
                       ) -> Optional[str]:
     """
     Takes a list of strings and creates a selection menu.
-    The ctx.author will select and item and the function will return it.
-    Args:
-        ctx: Command Context
-        options: list of strings that the user must select from
-        timeout: maximum time to wait before canceling (returns None)
-        base_embed: an optional embed object to take as a blueprint.
-            The menu will only modify the footer and description.
-            All other fields are free to be set by you.
-    Returns:
-        str: the item selected by the user
+    **ctx.author** will select and item and the function will return it.
+
+
+    Parameters
+    ----------
+    ctx: :class:`Context`
+        The command's context
+    options: :class:`List[str]`
+        List of strings that the user must select from
+    timeout: :class:ìnt` (seconds)
+        Timeout before the menu closes.
+    base_embed: :class:`Optional[discord.Embed]`
+        An optional embed object to take as a blueprint.
+            - The menu will only modify the footer and description.
+            - All other fields are free to be set by you.
+
+    Example
+    -------
+    ::
+
+        from dpytools.menus import multichoice
+        @bot.command()
+        async def test(ctx):
+            options = [str(uuid4()) + for _ in range(110)]
+            choice = await multichoice(ctx, options)
+            await ctx.send(f'You selected: {choice}')
+
+    Returns
+    -------
+        :class:`str`
+            The item selected by the user.
+
     """
     if not options:
         raise ValueError("Options cannot be empty")

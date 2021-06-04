@@ -1,44 +1,36 @@
 # -*- coding: utf-8 -*-
 """
-This module holds different command checks to add as decorator for custom commands.
-Use this checks on your code like this:
-    ```
-    @bot.command()
-    @admin_or_roles('Moderator')
-    async def mute(ctx, member: discord.Member):
-        ...
-    ```
-Or inside Cogs:
-    ```
-    @commands.command()
-    @only_this_guild(123456789...)
-    async def magic(self, ctx):
-        ...
-    ```
+Checks ready to use with **discord.ext.commands**
 """
 from datetime import datetime, time, timezone
+from typing import Union
 
 from discord import Member, Permissions
+from discord import utils
 from discord.ext import commands
 from discord.ext.commands import PrivateMessageOnly, Context
-from typing import Union
-from discord import utils
 
-from dpytools.errors import Unauthorized, IncorrectGuild, NotMemberOfCorrectGuild, OutsidePermittedDatetime
+from dpytools.errors import IncorrectGuild, NotMemberOfCorrectGuild, OutsidePermittedDatetime
 
 
 def admin_or_roles(*roles: Union[int, str]) -> commands.check:
     """
-    This check returns true under these conditions:
-        The command is run in a guild AND:
-            ctx.author has admin permissions OR has any role in :roles:
+    Returns True under these conditions:
 
-    Raises:
-        TypeError if roles are not strings or ints
-        ValueError if no roles are found with given parameters
-        commands.NoPrivateMessage if ran from DM
-        Unauthorized if user doesn't have correct roles or admin permissions
-        ValueError if value passed on role_ids is not int or str
+        - The command is run in a **guild**
+        - **ctx.author** has admin permissions OR has any role in :param roles:
+
+    Parameters
+    ----------
+    roles: :class:`Union[int,str]`
+        Any number of strings or integers corresponding to the desired roles
+
+    Raises
+    ------
+        :class:`discord.ext.commands.NoPrivateMessage`
+            If ran from DM
+        :class:`discord.ext.commands.MissingPermissions`
+            If user doesn't have correct roles or admin permissions
     """
 
     async def predicate(ctx):
@@ -59,7 +51,7 @@ def admin_or_roles(*roles: Union[int, str]) -> commands.check:
             elif isinstance(role, int):
                 discord_roles.append(ctx.guild.get_role(role))
             else:
-                raise TypeError(f"int or str was expected but received {type(role)}")
+                raise TypeError(f'int or str was expected but received "{type(role)}"')
 
         if not discord_roles:
             raise ValueError('No role in the server matched parameters')
@@ -67,18 +59,23 @@ def admin_or_roles(*roles: Union[int, str]) -> commands.check:
         if any([role for role in discord_roles if role and role in ctx.author.roles]):
             return True
         else:
-            raise Unauthorized("User doesn't have admin permissions or specified roles")
+            raise commands.MissingPermissions("User doesn't have admin permissions or specified roles")
 
     return commands.check(predicate)
 
 
 def only_this_guild(guild_id: int) -> commands.check:
-    """This check returns true if ctx.guild has same id as param :guild_id:
+    """
+    Returns True under the following conditions:
 
-    Raises:
-        commands.NoPrivateMessage if ran from DM
-        Custom IncorrectGuild commands.CommandError if id doesn't check
+        - **ctx.guild** has same id as :param guild_id:
 
+    Raises
+    ------
+        :class:`discord.ext.commands.NoPrivateMessage`
+            If ran outside a guild
+        :class:`IncorrectGuild`
+            If id doesn't check
     """
 
     async def predicate(ctx):
@@ -93,27 +90,30 @@ def only_this_guild(guild_id: int) -> commands.check:
 
 def dm_from_this_guild(guild_id: int, delete: bool = False) -> commands.check:
     """
-    The check returns true only if the specified :guild_id: is found within the bot's guilds.
+    Returns True under the following conditions:
+
+        - :param guild_id: is found within the **ctx.bot.guilds**.
+        - **ctx.guild** is **None**
+
     For this check to work the guilds and members intents must be enabled.
 
-    Args:
-        guild_id: id of the guild the author of the context must be a part of for check to return True
-        delete: if True, it will try to delete ctx.message. This will only happen if the message is called
+    Parameters
+    ----------
+        guild_id: :class:`int`
+            id of the guild the author of the context must be a part of
+        delete: :class:`bool` (default: **False**)
+                If True, it will try to delete ctx.message. This will only happen if the message is called
                 from the specificed guild_id, if the command is called from another guild the check will
                 just return False.
 
-            Possible exceptions by discord.py library:
-                commands.Forbidden – You do not have proper permissions to delete the message.
-                commands.NotFound – The message was deleted already
-                commands.HTTPException – Deleting the message failed.
-
-    Returns:
-        commands.check
-
-    Raises:
-        commands.PrivateMessageOnly: if called from a guild
-        dpytools.errors.NotMemberOfCorrectGuild: if not a member of the specified guild
+    Raises
+    ------
+        :class:`discord.ext.commands.PrivateMessageOnly`
+            If called from a guild
+        :class:`NotMemberOfCorrectGuild`
+            If not a member of the specified guild
     """
+
     async def predicate(ctx):
         if ctx.guild and ctx.guild.id == guild_id:
             if delete is True:
@@ -123,7 +123,8 @@ def dm_from_this_guild(guild_id: int, delete: bool = False) -> commands.check:
             return False
 
         guild = ctx.bot.get_guild(guild_id)
-
+        if not guild:
+            raise ValueError("Guild not found in the bot's guild cache")
         if ctx.author in guild.members:
             return True
         else:
@@ -132,46 +133,68 @@ def dm_from_this_guild(guild_id: int, delete: bool = False) -> commands.check:
     return commands.check(predicate)
 
 
-def any_of_permissions(**perms) -> commands.check:
+def any_of_permissions(**permissions) -> commands.check:
     """
-    This check returns true if ctx.author matches any permission passed in the decorator
-    Use Example:
-        ```
-        @bot.command()
-        @any_of_permissions(administrator=True, manage_guild=True, manage_messages=True)
-        async def test(ctx):
-            await ctx.send('success')
-        ```
-        The above command will send 'success' only if ctx.author has any or more
-        of administrator, manage_guild or manage_messages permissions
+    Returns True under the following conditions:
 
-    Args:
-        perms: kwargs with the name of the permission and its expected value
-    Raises:
-        commands.NoPrivateMessage if ran from DM
-        TypeError if passed an invalid set of permissions
+        - **ctx.author** matches any permission passed in the decorator
+
+    Parameters
+    ----------
+        permissions:
+            appropriate permission flags. Keys are the permissions names and values the :class:`bool` setting
+
+    Example
+    -------
+        The command below will send **success** only if **ctx.author** has any or more of **administrator**,
+        **manage_guild** or **manage_messages** permissions::
+
+            @bot.command()
+            @any_of_permissions(administrator=True, manage_guild=True, manage_messages=True)
+            async def test(ctx):
+                await ctx.send('success')
+
+    Raises
+    ------
+        :class:`discord.ext.commands.NoPrivateMessage`
+            If ran outside a guild
+        :class:`discord.ext.commands.MissingPermissions`
+            If ctx.author does not have any of the passed permissions
     """
 
     async def predicate(ctx):
-        if invalid := (set(perms) - set(Permissions.VALID_FLAGS)):
+        if invalid := (set(permissions) - set(Permissions.VALID_FLAGS)):
             raise TypeError('Invalid permission(s): %s' % (', '.join(invalid)))
         elif ctx.guild is None:
             raise commands.NoPrivateMessage("Command was called from a direct message.")
 
         author: Member = ctx.author
         author_perms: Permissions = author.guild_permissions
-        matched = [k for k, v in perms.items() if getattr(author_perms, k) == v]
-        return any(matched)
+        matched = [k for k, v in permissions.items() if getattr(author_perms, k) == v]
+        if any(matched):
+            return True
+        else:
+            raise commands.MissingPermissions("'You are missing one or more permission(s) to run this command.")
 
     return commands.check(predicate)
 
 
 def this_or_higher_role(role: Union[str, int]) -> commands.check:
     """
-    This check will return True only if ctx.author has the specified role or another hierarchically higher
-    Args:
-        role: The role as its name (case sensitive) or id (int).
+    Returns True under the following conditions:
+        - **ctx.author** has the specified role or another hierarchically higher
+
+    Parameters
+    ----------
+        role: :class:`Union[str, int]`
+            The role as its name (case sensitive) or id (int).
+
+    Raise
+    -----
+        :class:`discord.ext.commands.NoPrivateMessage`
+            If called outside a guild
     """
+
     def predicate(ctx):
         if ctx.guild is None:
             raise commands.NoPrivateMessage('This command can only be used in a server.')
@@ -186,18 +209,24 @@ def this_or_higher_role(role: Union[str, int]) -> commands.check:
             raise ValueError(f'No role found within guild {ctx.guild.name} with name or id "{role}"')
 
         return author.top_role >= drole
+
     return commands.check(predicate)
 
 
 def between_times(from_time: time, to_time: time) -> commands.check:
     """
-    Check decorator that returns True only when the command is run in the given time interval
-    Note that arguments must be datetime.time objects.
-    This will be checked against the ctx.message creation time (UTC)
-    Args:
-        from_time: minimum time
-        to_time: maximum time
+    Returns True under the following conditions:
+        - **ctx.message.created_at.time()** is in the interval from :param from_time: to :param to_time:
+
+    .. note::
+        Parameters must be :class:`datetime.time` instances
+
+    Parameters
+    ----------
+        from_time: :class:`datetime.time`
+        to_time: :class:`datetime.time`
     """
+
     def predicate(ctx: Context):
         cmd_time = ctx.message.created_at.time()
         return from_time <= cmd_time <= to_time
@@ -209,23 +238,26 @@ def between_datetimes(from_dt: datetime,
                       to_dt: datetime,
                       ) -> commands.check:
     """
-    Check decorator that returns True only when the command is run in the given time interval
-    Note that arguments must be datetime.time objects.
-        This will be checked against the ctx.message creation datetime (UTC)
+    Returns True under the following conditions:
+        - **ctx.message.created_at** is in the interval from :param from_dt: to :param to_dt:
 
-    Args:
-        from_dt:
-        to_dt:
-    Note:
-        from_dt and to_dt must be both either aware or naive. If they're aware they must share the same tz
-        If params are aware then ctx.message.created_at will be converted to their timezone.
-    Raises:
-        Value error if the :tz: name cannot be found
+    .. note::
+        Parameters must be of type :class:`datetime`
+
+    .. note::
+        If parameters are timezone aware they must share the same timezone.
+        In this case The check will convert **ctx.message.created_at** to the timezone of the parameters
+
+    Parameters
+    ----------
+        from_dt: :class:`datetime`
+        to_dt: :class:`datetime`
     """
+
     def predicate(ctx: Context):
         tzs = (from_dt.tzinfo, to_dt.tzinfo)
         if any(tzs) and not all(tzs):
-            raise TypeError("Either from_dt and to_dt are both aware or both naive")
+            raise TypeError("Either from_dt and to_dt must be both aware or both naive")
 
         dt: datetime = ctx.message.created_at
 
@@ -247,12 +279,18 @@ def between_datetimes(from_dt: datetime,
 
 def only_these_users(*users: int) -> commands.check:
     """
-    This check returns True only when ctx.author is authorized by this check
-    Args:
-        *users: one or more user id's
-    Returns:
-        commands.check
+    Returns True under the following conditions:
+        - ctx.author is authorized by this check
+
+    .. warning::
+        If no users are specified this command will be effectively unusable.
+
+    Parameters
+    ----------
+        users: :class:`int`
+            the ids of the user's that are authorized to use this command
     """
+
     def predicate(ctx):
         return ctx.author.id in users
 
@@ -261,43 +299,35 @@ def only_these_users(*users: int) -> commands.check:
 
 def in_these_channels(*channels: int) -> commands.check:
     """
-    This check returns True only when ctx.channel is authorized by this check
-    Args:
-        *channels: one or more channel id's
-    Returns:
-        commands.check
+    Returns True under the following conditions:
+        - **ctx.channel.id** is found within :param channels:
+
+    .. warning::
+        If no channels are specified this command will be effectively unusable
+
+    Parameters
+    ----------
+        channels: :class:`int`
+            One or more channel ids where this command can run
     """
+
     def predicate(ctx):
         return ctx.channel.id in channels
-    
+
     return commands.check(predicate)
 
 
 def is_guild_owner() -> commands.check:
     """
-    Returns True if ctx.author is the guild's owner
-
-    Raises:
-        commands.NoPrivateMessage if called outside a guild
-        commands.Not
-
-    Returns:
-        commands.check
+    Returns True under the following conditions:
+        - **ctx.author** is the owner of the guild where this command was called from
     """
+
     def predicate(ctx):
         if ctx.guild is None:
             raise commands.NoPrivateMessage('This command can only be used in a server.')
         author: Member = ctx.author
         if author != ctx.guild.owner.id:
             commands.MissingPermissions('This command can only be run by the owner of this guild.')
+
     return commands.check(predicate)
-
-
-
-
-
-
-
-
-
-
