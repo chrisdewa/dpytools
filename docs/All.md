@@ -143,6 +143,11 @@
           )
           embed.add_fields(inline=False, first='first field', second='second field')
           ```
+4. **PaginatedEmbeds**:
+   - The class takes a base embed and a dictionary with any amount of fields and returns a list
+   of embeds with the maximum amount of fields by field number AND maximum embed character limit.
+   - Credit to [Kshitiz-Arya](https://github.com/Kshitiz-Arya)
+
 
 More to come...
 

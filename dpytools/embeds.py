@@ -3,12 +3,12 @@
 This module holds functions to work with embeds in different ways.
 """
 
+from itertools import islice
 from typing import List, Optional, Union, Dict
 
 import discord
 from discord import Embed
 from discord.ext.commands import Paginator
-from itertools import islice
 
 
 def paginate_to_embeds(description: str,
@@ -107,6 +107,7 @@ class Embed(discord.Embed):
         The thumbnail url
         Calls the internal "set_thumbnail" method with the kwarg value as the url
     """
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         if image := kwargs.get('image', None):
@@ -146,9 +147,8 @@ class Embed(discord.Embed):
             self.add_field(name=name, value=value, inline=inline)
         return self
 
-            
+
 class PaginatedEmbeds:
-    
     """A class that takes dictionary containing name and value as key-value pair and paginates them according to fields.
 
     Parameters
@@ -173,22 +173,28 @@ class PaginatedEmbeds:
             lots_of_fields = {f'{i}': f'{i+1}' for i in range(1000)}
             pages = PaginatedEmbeds(Embed(title='Embed blueprint', color=0x00FFFF), lots_of_fields)
             await arrows(ctx, pages)
- 
+
+    .. warning::
+
+        If parameter **embed** already has fields they will be cleared.
+        Its suggested that the base embed has no fields before using this class.
+        This will be issued in a coming update.
+
     """
 
     def __init__(self, embed: Embed, fields_dict: Dict[str, str], size: int = 25, inline: bool = True):
-        embed.clear_fields()    # Clearing the fields just in case embed is not empty
+        embed.clear_fields()  # Clearing the fields just in case embed is not empty
         self.embed = embed
-        self.size = size
+        self.size: int = size
         self.fields_dict = fields_dict
-        self.inline = inline
-        
+        self.inline: bool = inline
+
         self.field_limit = 25
         self.char_limit = 6000
         self._pages = []
         self._add_embed(self.fields_dict)
 
-    def clear(self):
+    def _clear(self):
         """Clears the paginator to have no pages."""
         self._pages = []
 
@@ -207,8 +213,8 @@ class PaginatedEmbeds:
                 Will return **True** if the emebed isn't too large
         """
         check = (
-            len(embed) + sum(len(char) for char in chars if char) < self.char_limit
-            and len(embed.fields) < self.field_limit
+                len(embed) + sum(len(char) for char in chars if char) < self.char_limit
+                and len(embed.fields) < self.field_limit
         )
         return check
 
@@ -219,7 +225,7 @@ class PaginatedEmbeds:
         Returns:
             Embed: Return a new Embed for new page
         """
-        return Embed.from_dict(self.embed.to_dict())    # This convert discord.Embed to Embed and return it
+        return Embed.from_dict(self.embed.to_dict())  # This convert discord.Embed to Embed and return it
 
     def _add_page(self, page: Embed):
         """
@@ -233,43 +239,38 @@ class PaginatedEmbeds:
 
         self._pages.append(page)
 
-    def _chunks(self, fields_dict:Dict[str, str]) -> Dict[str, str]:
+    def _chunks(self, fields_dict: Dict[str, str]) -> Dict[str, str]:
         """Yield successive chunks of num size from dicts
 
         Args:
-            dicts (dict): Dictionary containing name and value as key-value pair
+            fields_dict (dict): Dictionary containing name and value as key-value pair
 
         Yields:
-            tuple_list (list): list chunks of size num containing name and value
-        """        
+            dict: dictionary with size :param num: containing name and value of each field
+        """
 
         num = self.size
         if not fields_dict:
             raise ValueError("Dictionary containing name and value can't be empty!")
-
 
         if num < 1:
             raise ValueError("Number of Embed fields can't be zero")
 
         field_iter = iter(fields_dict)
         for _ in range(0, len(fields_dict), num):
-            yield {k:fields_dict[k] for k in islice(field_iter, num)}
+            yield {k: fields_dict[k] for k in islice(field_iter, num)}
 
-    
     def _add_embed(self, fields_dict: dict):
         """Add embeds to pages
 
         Args:
             fields_dict :- Dictionary containing name and value as key-value pair
-
-        Returns:
-            None
-
-        """        
+        """
         for field_dict_chunk in self._chunks(fields_dict):
+            field_dict_chunk: dict  # just to appease the linter
             embed = self._new_page()
 
-            embed.add_fields(field_dict_chunk)
+            embed.add_fields(**field_dict_chunk)  # dict should be passed as kwargs or it will be taken as bool
             self._add_page(embed)
 
     @property

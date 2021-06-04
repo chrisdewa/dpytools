@@ -1,3 +1,6 @@
+# 0.15.7b
+- added new embed tool `PaginatedEmbeds`
+
 # 0.15.6b
 - Documentation improvements
 - `dpytools.embeds.Embed.add_fields` now returns the embed to make chaining easier
