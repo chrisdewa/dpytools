@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="docs improvements.&#10;improved `Embed`">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="version bump">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/All.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/All.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/embeds.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/embeds.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/checks.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/checks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +78,7 @@
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.scratch_1">
+  <component name="RunManager" selected="Python.bot">
     <configuration name="bot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="dpytools" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -93,6 +93,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/bot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="s" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="dpytools" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/s.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -169,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.bot" />
         <item itemvalue="Python.scratch_1" />
+        <item itemvalue="Python.s" />
         <item itemvalue="Python.scratch_2" />
         <item itemvalue="Python.scratch" />
-        <item itemvalue="Python.bot" />
-        <item itemvalue="Python.scratch_2" />
       </list>
     </recent_temporary>
   </component>
@@ -208,21 +230,8 @@
       <workItem from="1622435460275" duration="42000" />
       <workItem from="1622484129310" duration="3579000" />
       <workItem from="1622646584999" duration="72000" />
-      <workItem from="1622819253349" duration="2278000" />
-    </task>
-    <task id="LOCAL-00027" summary="Updated to version 16">
-      <created>1617587102205</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1617587102205</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Bug fixes. Function improvements. Added documentations. Check changelog">
-      <created>1617639750568</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1617639750568</updated>
+      <workItem from="1622819253349" duration="9675000" />
+      <workItem from="1623086528270" duration="8224000" />
     </task>
     <task id="LOCAL-00029" summary="General improvements. Added readme badges. Review Changelog.">
       <created>1618242272456</created>
@@ -553,7 +562,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622431291001</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="minor fixes&#10;improved docs fro `PaginatedEmbeds`">
+      <created>1622821721729</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1622821721730</updated>
+    </task>
+    <task id="LOCAL-00077" summary="version bump">
+      <created>1622821769292</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1622821769292</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,8 +595,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="new checks" />
-    <MESSAGE value="improvements in between_datetimes" />
     <MESSAGE value="new parser `to_month`" />
     <MESSAGE value="`to_month` added to module __all__" />
     <MESSAGE value="." />
@@ -597,12 +618,15 @@
     <MESSAGE value="updated pyproject.toml" />
     <MESSAGE value="final documentation update" />
     <MESSAGE value="version update" />
-    <option name="LAST_COMMIT_MESSAGE" value="version update" />
+    <MESSAGE value="minor fixes&#10;improved docs fro `PaginatedEmbeds`" />
+    <MESSAGE value="version bump" />
+    <option name="LAST_COMMIT_MESSAGE" value="version bump" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dpytools$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1622238960660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/dpytools$s.coverage" NAME="s Coverage Results" MODIFIED="1623097000365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/dpytools$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1621089598879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
-    <SUITE FILE_PATH="coverage/dpytools$bot.coverage" NAME="bot Coverage Results" MODIFIED="1622239890759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/dpytools$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1622821240177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/dpytools$bot.coverage" NAME="bot Coverage Results" MODIFIED="1623103240772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/dpytools$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1623097868040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
   </component>
 </project>

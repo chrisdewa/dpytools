@@ -39,6 +39,8 @@
    - Credit to [Kshitiz-Arya](https://github.com/Kshitiz-Arya)
 10. **is_guild_owner**:
    - As the name implies, it checks if `ctx.author` is the owner of the guild. 
+11. **any_checks**:
+   - A simple decorator that makes any checks below it be processed with a logical **OR**
 
 
 ## [Commands](https://github.com/chrisdewa/dpytools/blob/master/dpytools/commands.py) (discord.ext.commands.command)

@@ -51,9 +51,22 @@ from dpytools.checks import admin_or_roles
 @bot.command()
 @admin_or_roles('Moderator', 123456789)
 async def moderation(ctx):
-    ctx.send('Only admins and people witha a role named "Moderator" ' 
+    ctx.send('Only admins and people with a a role named "Moderator" ' 
              'or with a role with id 123456789 can use this command')
 ```
+
+```python
+from dpytools.checks import any_checks
+
+@commands.guild_only()       # This command must be called inside a server
+@any_checks                  # Place the decorator above the checks you with to compare using "OR"
+@commands.is_owner()         # The command will run if ctx.author is the owner of the bot
+@commands.has_role('Admin')  # __OR__ if ctx.author has the role "Admin"
+@bot.command()               # this decorator transforms this function in a command any_checks must be above it
+async def test(ct):
+    await ctx.send('The command works')
+```
+
 There are also multiple argument parsers. Functions that convert a user's input to something more useful.
 `dpytools.parsers.to_timedelta` takes a string in the format `<number>[s|m|h|d|w]` and returns a timedelta object
 ```python

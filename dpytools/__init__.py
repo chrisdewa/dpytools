@@ -3,7 +3,8 @@
 Collection of uncategorized tools
 """
 from enum import IntEnum, Enum
-from typing import List, Any
+from inspect import isawaitable
+from typing import List, Any, Callable
 
 __title__ = 'dpytools'
 __author__ = 'ChrisDewa'
@@ -190,3 +191,22 @@ def chunkify_string_list(input_list: List[str],
             n -= 1
             l = input_list[i:i + n]
         yield l
+
+
+async def _silent_except(f: Callable, *args, **kwargs):
+    """
+    Helper Function that calls a function or coroutine and returns its result excepting all errors
+    """
+    try:
+        called = f(*args, **kwargs)
+    except:
+        return
+    if isawaitable(called):
+        try:
+            result = await called
+        except:
+            return
+        else:
+            return result
+    else:
+        return called

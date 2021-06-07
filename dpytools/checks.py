@@ -2,6 +2,7 @@
 """
 Checks ready to use with **discord.ext.commands**
 """
+from copy import copy
 from datetime import datetime, time, timezone
 from typing import Union
 
@@ -10,6 +11,7 @@ from discord import utils
 from discord.ext import commands
 from discord.ext.commands import PrivateMessageOnly, Context
 
+from dpytools import _silent_except
 from dpytools.errors import IncorrectGuild, NotMemberOfCorrectGuild, OutsidePermittedDatetime
 
 
@@ -331,3 +333,66 @@ def is_guild_owner() -> commands.check:
             commands.MissingPermissions('This command can only be run by the owner of this guild.')
 
     return commands.check(predicate)
+
+
+def any_checks(f: commands.Command):
+    """Decorator to handle optional checks
+
+    This Decorator will make any @checks placed below itself to be called with a logical OR.
+    This means that if one or more return True, the command will be able to run
+
+    .. note::
+
+        When using this decorator remember that you don't need to call it::
+
+            # correct
+            @any_checks
+
+            # incorrect
+            @any_checks()
+
+    Example
+    -------
+    ::
+
+        from dpytools.checks import any_checks
+
+        @commands.guild_only()       # This command must be called inside a server
+        @any_checks                  # Place the decorator above the checks you with to compare using "OR"
+        @commands.is_owner()         # The command will run if ctx.author is the owner of the bot
+        @commands.has_role('Admin')  # __OR__ if ctx.author has the role "Admin"
+        @bot.command()               # this decorator transforms this function in a command
+        async def test(ct):
+            await ctx.send('The command works')
+
+    .. warning::
+
+        This decorator makes it impossible to know which optional checks succeded or failed.
+
+    .. note::
+
+        The decorator will raise CheckFailure if all checks below itself fail
+
+    Raises
+    ------
+        :class:`commands.CheckFailure`
+            If all checks below itself fail.
+
+    """
+
+    if not isinstance(f, commands.Command):
+        raise TypeError("This decorator must be placed above the @command decorator.")
+    checks = copy(f.checks)
+
+    async def async_any_checks(ctx):
+        if len(checks) == 0:
+            return True
+        else:
+            result = any([await _silent_except(c, ctx) for c in checks])
+            if result:
+                return True
+            else:
+                raise commands.CheckFailure(f'All optional checks for command "{f.qualified_name}" failed')
+
+    f.checks = [async_any_checks]
+    return f

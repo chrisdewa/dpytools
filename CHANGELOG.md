@@ -1,3 +1,6 @@
+# 0.16.0b
+- new check helper `@any_checks` that make checks below it be processed with a logical OR
+
 # 0.15.7b
 - added new embed tool `PaginatedEmbeds`
 
