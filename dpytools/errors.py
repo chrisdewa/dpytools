@@ -33,3 +33,6 @@ class MemberNorUserFound(UserInputError):
 
 class OutsidePermittedDatetime(CheckFailure):
     pass
+
+class UserAnswerParsingError(CommandError):
+    pass

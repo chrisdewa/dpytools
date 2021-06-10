@@ -9,11 +9,11 @@ Add them to your bot by simply doing::
 
 import os
 from typing import Optional
-from functools import wraps
 
 from discord import Embed, Color
 from discord.ext import commands
 from discord.ext.commands import ExtensionError
+
 
 @commands.command(aliases=['lat'])
 async def latency(ctx: commands.Context):

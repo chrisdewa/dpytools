@@ -16,6 +16,7 @@ from discord.ext import commands
 __all__ = (
     'wait_for_regex',
     'wait_for_author',
+    'BaseLock'
 )
 
 
@@ -144,3 +145,4 @@ async def wait_for_author(ctx: commands.Context,
             return
         else:
             return message
+

@@ -7,14 +7,25 @@ All menus are reaction based.
 
 import asyncio
 from copy import copy
-from typing import List, Optional, Union
+from inspect import isawaitable
+from typing import List, Optional, Union, Callable
 
 import discord
 from discord import Embed
 from discord.ext import commands
-from discord.ext.commands import Context
+from discord.ext.commands import Context, Converter
 
 from dpytools import EmojiNumbers, Emoji, chunkify_string_list, Color
+from dpytools.errors import UserAnswerParsingError
+from dpytools.waiters import BaseLock
+
+__all__ = (
+    'try_clear_reactions',
+    'arrows',
+    'confirm',
+    'multichoice',
+    'TextMenu'
+)
 
 
 async def try_clear_reactions(msg):
@@ -360,3 +371,173 @@ async def multichoice(ctx: Context,
                         to_react = get_reactions()
                         for reaction in to_react:
                             await msg.add_reaction(reaction)
+
+
+class _QuestionData:
+    """This class is not intended to be instantiated or subclassed"""
+    failed = False
+
+    def __init__(self,
+                 *,
+                 question: str,
+                 parser: Union[Converter, Callable, None] = None,
+                 parse_fail_response: str = None,
+                 ):
+        self.question = question
+        self.parser = parser
+        self.parse_fail_response = parse_fail_response
+
+    def __str__(self):
+        return f"QuestionData(text={self.question})"
+
+
+class TextMenu:
+    """
+    Constructs the menu instance
+
+    Parameters
+    ----------
+    lock: **Union[discord.Member, discord.Role, bool, None]**
+        - If **True** (default)
+            - the menu will only listen for the author's reactions.
+        - If **False**
+            - ANY user can react to the menu
+        - If **member**
+            - Only target member will be able to react
+        - If **role**
+            - ANY user with target role will be able to react.
+    stop: **str** (Default **'cancel'**)
+        If the users passes this string in the message content the menu will end, clean up and return None
+    timeout: **int** (Default **60**)
+        The amount of time to wait for each question.
+        If a timeout is reached, the menu is cancelled and cleaned up
+    cleanup: **bool** (Default **True**)
+        Whether to clean up messages or not
+
+    .. warning::
+
+        This menu is still being worked on, its not recommended to be used in production
+
+    """
+    _questions: List[_QuestionData] = []
+    _messages = []
+
+    def __init__(self, *,
+                 lock: Union[discord.Member, discord.Role, bool, None] = True,
+                 stop: str = 'cancel',
+                 timeout: int = 60,
+                 cleanup: bool = False,
+                 retry_parse_fail: bool = False,
+                 ):
+        self.lock = lock
+        self.stop = stop
+        self.timeout = timeout
+        self.cleanup = cleanup
+        self.retry_parse_fail = retry_parse_fail
+
+    def add_question(self,
+                     question: str,
+                     *,
+                     parser: Union[Converter, Callable, None] = None,
+                     parse_fail_response: str = 'Failed to convert **"{}"** to desired type, try again'
+                     ):
+        """
+        Adds a question to the menu
+
+        Parameters
+        ----------
+            question: str
+                The bot's question's text to display
+            parser: Union[Converter, Callable, None]
+                - A function that takes a single string argument and returns something else
+                    The function will be passed the user's message.content
+                - Or a **discord.ext.commands.Converter**
+                    Which will be given the same string and context from the command
+            parse_fail_response: str
+
+        ..  note::
+            If a Converter type parser is passed then it needs to be instantiated
+
+            Example::
+
+                # if the converter is discord.ext.commands.TextChannelConverter then:
+                from discord.ext.commands import TextChannelConverter
+                converter = TextChannelConverter()
+                menu.add_question('Tag a channel', parser=converter)
+
+
+
+        """
+        q = _QuestionData(question=question, parser=parser, parse_fail_response=parse_fail_response)
+        self._questions.append(q)
+        return self
+
+    async def _try_to_clean(self, ctx: Context):
+        """
+        Tries to clean up messages excepting errors silently
+        """
+        if self.cleanup:
+            try:
+                await ctx.channel.delete_messages(self._messages)
+            except:
+                pass
+
+    async def _ask(self, ctx, question: _QuestionData):
+        """Asks an individual question"""
+        check = BaseLock(ctx, lock=self.lock)
+        msg_text = question.question if not question.failed else question.parse_fail_response.format()
+        self._messages.append(await ctx.send(msg_text))
+        answer_msg = await ctx.bot.wait_for('message', check=check, timeout=self.timeout)
+        self._messages.append(answer_msg)
+        if question.parser:
+            try:
+                if isinstance(question.parser, Converter):
+                    answer = await question.parser.convert(ctx, answer_msg.content)
+                else:
+                    answer = question.parser(answer_msg.content)
+                    if isawaitable(question.parser):
+                        answer = await answer
+            except Exception as e:
+                question.failed = True
+                question.parse_fail_response = question.parse_fail_response.format(answer_msg.content)
+                raise UserAnswerParsingError(f"Failed to parse {question}")
+        else:
+            answer = answer_msg.content
+        return answer
+
+    async def call(self, ctx: commands.Context):
+        """Activates the menu
+
+        Displays the menu one question at the time.
+        The user can cancel the menu using the :param stop: passed in the constructor
+        The menu will only listen for messages that pass the base lock
+        An attepmpt to clear all menu messages will be made with errors excepted silently
+
+        Returns
+        -------
+            :class:`Optional[List[Any]]`
+                Returns the list of answers from the user processed by the optional parser
+
+                The menu will return None if a TimeoutError occurs.
+
+        Raises
+        ------
+            :class:`Any`
+                This menu will raise any exception derived from parsers
+        """
+        answers = []
+        for question in self._questions:
+            answer = None
+            while not answer:
+                try:
+                    answer = await self._ask(ctx, question)
+                except asyncio.TimeoutError:
+                    return
+                except UserAnswerParsingError as error:
+                    if not self.retry_parse_fail:
+                        await self._try_to_clean(ctx)
+                        raise error
+            answers.append(answer)
+
+        await self._try_to_clean(ctx)
+        return answers

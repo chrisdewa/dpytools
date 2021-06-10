@@ -9,10 +9,24 @@ from typing import Union
 from discord import Member, Permissions
 from discord import utils
 from discord.ext import commands
-from discord.ext.commands import PrivateMessageOnly, Context
+from discord.ext.commands import PrivateMessageOnly, Context, MissingPermissions
 
 from dpytools import _silent_except
 from dpytools.errors import IncorrectGuild, NotMemberOfCorrectGuild, OutsidePermittedDatetime
+
+__all__ = (
+    'admin_or_roles',
+    'only_this_guild',
+    'dm_from_this_guild',
+    'any_of_permissions',
+    'this_or_higher_role',
+    'between_times',
+    'between_datetimes',
+    'only_these_users',
+    'in_these_channels',
+    'is_guild_owner',
+    'any_checks',
+)
 
 
 def admin_or_roles(*roles: Union[int, str]) -> commands.check:
@@ -382,6 +396,7 @@ def any_checks(f: commands.Command):
 
     if not isinstance(f, commands.Command):
         raise TypeError("This decorator must be placed above the @command decorator.")
+
     checks = copy(f.checks)
 
     async def async_any_checks(ctx):
@@ -396,3 +411,20 @@ def any_checks(f: commands.Command):
 
     f.checks = [async_any_checks]
     return f
+
+
+def is_admin():
+    """
+    Shorthand for `@commands.has_guild_permissions(administrator=True)`
+    """
+    async def predicate(ctx):
+        if ctx.guild is None:
+            raise commands.NoPrivateMessage('This command can only be used in a server.')
+        if not ctx.author.guild_permissions.administrator:
+            raise MissingPermissions('administrator')
+
+        return True
+
+    return commands.check(predicate)
+
+## add is_admin

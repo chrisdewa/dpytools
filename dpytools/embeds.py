@@ -10,6 +10,12 @@ import discord
 from discord import Embed
 from discord.ext.commands import Paginator
 
+__all__ = (
+    'paginate_to_embeds',
+    'dict_to_fields',
+    'Embed',
+    'PaginatedEmbeds',
+)
 
 def paginate_to_embeds(description: str,
                        title: Optional[str] = None,
@@ -200,7 +206,7 @@ class PaginatedEmbeds:
 
     def _check_embed(self, embed: Embed, *chars: str):
         """
-        Check if the emebed is too big to be sent on discord
+        Check if the embed is too big to be sent on discord
 
         Parameters
         ----------

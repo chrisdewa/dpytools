@@ -23,6 +23,7 @@ Index
    :maxdepth: 2
 
    general
+   emojis
    checks
    parsers
    menus

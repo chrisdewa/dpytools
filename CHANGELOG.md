@@ -1,3 +1,10 @@
+# 0.17.0b
+- **Upcoming braking change** emoji enums have been moved to `dpytools.emojis` at the moment __init__ imports 
+the emojis, so it shouldn't break anything for now, however on a future version, this import might be deprecated
+- Added `__all__` to all modules
+- Added new menu `TextMenu`. Still in alpha. Probably not suitable for production yet.
+- Added new check `is_admin` which is a shorthand for `@commands.has_guild_permissions(administrator=True)`
+
 # 0.16.0b
 - new check helper `@any_checks` that make checks below it be processed with a logical OR
 
