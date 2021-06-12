@@ -1,3 +1,7 @@
+# 0.17.1b
+- Improved **TextMenu** so `add_question` also accept `embed` and `parse_fail_embed` 
+
+
 # 0.17.0b
 - **Upcoming braking change** emoji enums have been moved to `dpytools.emojis` at the moment __init__ imports 
 the emojis, so it shouldn't break anything for now, however on a future version, this import might be deprecated

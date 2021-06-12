@@ -379,13 +379,21 @@ class _QuestionData:
 
     def __init__(self,
                  *,
-                 question: str,
+                 question: str = None,
+                 embed: discord.Embed = None,
                  parser: Union[Converter, Callable, None] = None,
                  parse_fail_response: str = None,
+                 parse_fail_embed: discord.Embed = None
                  ):
+
+        if not question and not embed:
+            raise ValueError('Either question or embed are required to construct the instance')
+
         self.question = question
+        self.embed = embed
         self.parser = parser
         self.parse_fail_response = parse_fail_response
+        self.parse_fail_embed = parse_fail_embed
 
     def __str__(self):
         return f"QuestionData(text={self.question})"
@@ -436,10 +444,12 @@ class TextMenu:
         self.retry_parse_fail = retry_parse_fail
 
     def add_question(self,
-                     question: str,
                      *,
+                     question: str = None,
+                     embed: discord.Embed = None,
                      parser: Union[Converter, Callable, None] = None,
-                     parse_fail_response: str = 'Failed to convert **"{}"** to desired type, try again'
+                     parse_fail_response: str = None,
+                     parse_fail_embed: discord.Embed = None,
                      ):
         """
         Adds a question to the menu
@@ -448,12 +458,21 @@ class TextMenu:
         ----------
             question: str
                 The bot's question's text to display
+            embed: discord.Embed
+                An embed to send with the question
             parser: Union[Converter, Callable, None]
                 - A function that takes a single string argument and returns something else
                     The function will be passed the user's message.content
                 - Or a **discord.ext.commands.Converter**
                     Which will be given the same string and context from the command
-            parse_fail_response: str
+            parse_fail_response: Optional[str]
+                If the parser raises an exception and TextMenu .retry_parse_fail is enabled message content will be this
+            parse_fail_embed: Optional[discord.Embed]
+                If the parser raises an exception and TextMenu .retry_parse_fail is enabled message embed will be this
+
+        .. warning::
+
+            Either :param question: or :param embed: are required. If you dont pass any :class:`ValueError` will be raised
 
         ..  note::
             If a Converter type parser is passed then it needs to be instantiated
@@ -464,11 +483,15 @@ class TextMenu:
                 from discord.ext.commands import TextChannelConverter
                 converter = TextChannelConverter()
                 menu.add_question('Tag a channel', parser=converter)
-
-
-
         """
-        q = _QuestionData(question=question, parser=parser, parse_fail_response=parse_fail_response)
+        parse_fail_response = (parse_fail_response
+                               or 'Failed to convert **"{}"** to desired type, try again'
+                               if not parse_fail_embed else None)
+        q = _QuestionData(question=question,
+                          embed=embed,
+                          parser=parser,
+                          parse_fail_response=parse_fail_response,
+                          parse_fail_embed=parse_fail_embed)
         self._questions.append(q)
         return self
 
@@ -485,8 +508,9 @@ class TextMenu:
     async def _ask(self, ctx, question: _QuestionData):
         """Asks an individual question"""
         check = BaseLock(ctx, lock=self.lock)
-        msg_text = question.question if not question.failed else question.parse_fail_response.format()
-        self._messages.append(await ctx.send(msg_text))
+        msg_text = question.question if not question.failed else question.parse_fail_response
+        msg_embed = question.embed if not question.failed else question.parse_fail_embed
+        self._messages.append(await ctx.send(content=msg_text, embed=msg_embed))
         answer_msg = await ctx.bot.wait_for('message', check=check, timeout=self.timeout)
         self._messages.append(answer_msg)
         if question.parser:
@@ -499,7 +523,8 @@ class TextMenu:
                         answer = await answer
             except Exception as e:
                 question.failed = True
-                question.parse_fail_response = question.parse_fail_response.format(answer_msg.content)
+                question.parse_fail_response = (question.parse_fail_response.format(answer_msg.content)
+                                                if question.parse_fail_response else None)
                 raise UserAnswerParsingError(f"Failed to parse {question}")
         else:
             answer = answer_msg.content
