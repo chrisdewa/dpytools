@@ -20,6 +20,7 @@ __all__ = (
     '_silent_except'
 )
 
+
 class Color(IntEnum):
     """
     Enum class with nice color values that can be used directly on embeds

@@ -1,3 +1,7 @@
+# 0.17.4b
+- Fixed bug where **TextMenu** would start repeating its questions after the first call.
+- Added property to **Embed** that tells you if the embed is valid (acording to the length limits of its fields and global character limit)
+
 # 0.17.3b
 - Fixed bug on **TextMenu** where messages would not be cleaned on timeout or cancel
 

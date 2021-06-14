@@ -122,6 +122,18 @@ class Embed(discord.Embed):
         if thumbnail := kwargs.get('thumbnail', None):
             self.set_thumbnail(url=thumbnail)
 
+    @property
+    def is_valid(self):
+        """Returns a bool for whether the length of the embed is valid"""
+        return all([
+            len(self.fields) <= 25,
+            all([len(field.name) <= 256 and len(field.value) <= 1024 for field in self.fields]),
+            len(self.title) <= 256,
+            len(self.description) <= 2048,
+            len(self.footer.text) <= 2048 if self.footer else True,
+            len(self) <= 6000
+        ])
+
     def add_fields(self, inline=True, **kwargs) -> Embed:
         """
         Works in a similar way to **Embed.add_field** but you can add as many fields as you need by passing them as

@@ -375,8 +375,6 @@ async def multichoice(ctx: Context,
 
 class _QuestionData:
     """This class is not intended to be instantiated or subclassed"""
-    failed = False
-
     def __init__(self,
                  *,
                  question: str = None,
@@ -385,6 +383,7 @@ class _QuestionData:
                  parse_fail_response: str = None,
                  parse_fail_embed: discord.Embed = None
                  ):
+        self.failed = False
 
         if not question and not embed:
             raise ValueError('Either question or embed are required to construct the instance')
@@ -435,9 +434,6 @@ class TextMenu:
         This way you can differentiate the output reasons
 
     """
-    _questions: List[_QuestionData] = []
-    _messages = []
-
     def __init__(self, *,
                  lock: Union[discord.Member, discord.Role, bool, None] = True,
                  stop: str = 'cancel',
@@ -445,6 +441,8 @@ class TextMenu:
                  cleanup: bool = False,
                  retry_parse_fail: bool = False,
                  ):
+        self._questions: List[_QuestionData] = []
+        self._messages = []
         self.lock = lock
         self.stop = stop
         self.timeout = timeout
