@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dpytools"
-version = "0.17.2b"
+version = "0.17.3b"
 description = "Collection of easy to use, beginner friendly but powerful, orthogonal tools to speed up discord bots development (discord.py)"
 keywords=["discord", "discord.py", "discord bot"]
 authors = ["chrisdewa <alexdewa@gmail.com>"]
