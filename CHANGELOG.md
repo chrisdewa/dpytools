@@ -1,6 +1,9 @@
-# 0.17.1b
-- Improved **TextMenu** so `add_question` also accept `embed` and `parse_fail_embed` 
+# 0.17.2b
+- Fixed **TextMenu** bug where the menu would ignore the stop string
+- Documentation improvements
 
+# 0.17.1b
+- Improved **TextMenu** so `add_question` also accept `embed` and `parse_fail_embed`
 
 # 0.17.0b
 - **Upcoming braking change** emoji enums have been moved to `dpytools.emojis` at the moment __init__ imports 

@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="General improvements&#10;Additions in checks and menus&#10;New submodule &quot;emojis&quot;">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="TextMenu improvements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/menus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/waiters.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/waiters.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,14 +237,7 @@
       <workItem from="1623194656771" duration="2593000" />
       <workItem from="1623334363135" duration="2738000" />
       <workItem from="1623342058458" duration="11973000" />
-      <workItem from="1623515266757" duration="1490000" />
-    </task>
-    <task id="LOCAL-00030" summary="minor format changes. &#10;improvement in time_parser">
-      <created>1618585380105</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1618585380105</updated>
+      <workItem from="1623515266757" duration="8352000" />
     </task>
     <task id="LOCAL-00031" summary="changed name of time_parser to &quot;to_timedelta&quot;">
       <created>1618585710968</created>
@@ -581,7 +575,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623104964868</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="TextMenu improvements">
+      <created>1623517079459</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1623517079459</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,7 +601,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="`to_month` added to module __all__" />
     <MESSAGE value="." />
     <MESSAGE value="corrected version error" />
     <MESSAGE value="added four new tools. improved All.md" />
@@ -625,13 +625,14 @@
     <MESSAGE value="minor fixes&#10;improved docs fro `PaginatedEmbeds`" />
     <MESSAGE value="version bump" />
     <MESSAGE value="added decorator `any_checks`" />
-    <option name="LAST_COMMIT_MESSAGE" value="added decorator `any_checks`" />
+    <MESSAGE value="TextMenu improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="TextMenu improvements" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dpytools$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1622238960660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/dpytools$s.coverage" NAME="s Coverage Results" MODIFIED="1623097000365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/dpytools$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1621089598879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
-    <SUITE FILE_PATH="coverage/dpytools$bot.coverage" NAME="bot Coverage Results" MODIFIED="1623516767237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/dpytools$bot.coverage" NAME="bot Coverage Results" MODIFIED="1623635693638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/dpytools$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1623097868040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
   </component>
 </project>

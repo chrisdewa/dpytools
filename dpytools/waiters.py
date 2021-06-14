@@ -21,14 +21,17 @@ __all__ = (
 
 
 class BaseLock:
-    """
-    Callable class to use with the :check: parameter in client.wait_for('message')
+    """Callable class to use with the :check: parameter in client.wait_for('message')
+
     The default behavior only requires to pass the context in the constructor and will perform these checks:
-        `ctx.author == message.author and ctx.channel == message.channel`
+        - `ctx.author == message.author and ctx.channel == message.channel`
+
     If channel is passed then it will check `channel == message.channel`
+
     If lock parameter is passed (differently than True) then it'll check the object against message.author.
 
     The constructor Raises ValueError if channel is not a GuildChannel when lock is type Role.
+
     """
 
     def __init__(self,

@@ -405,26 +405,34 @@ class TextMenu:
 
     Parameters
     ----------
-    lock: **Union[discord.Member, discord.Role, bool, None]**
-        - If **True** (default)
-            - the menu will only listen for the author's reactions.
-        - If **False**
-            - ANY user can react to the menu
-        - If **member**
-            - Only target member will be able to react
-        - If **role**
-            - ANY user with target role will be able to react.
-    stop: **str** (Default **'cancel'**)
-        If the users passes this string in the message content the menu will end, clean up and return None
-    timeout: **int** (Default **60**)
-        The amount of time to wait for each question.
-        If a timeout is reached, the menu is cancelled and cleaned up
-    cleanup: **bool** (Default **True**)
-        Whether to clean up messages or not
+        lock: **Union[discord.Member, discord.Role, bool, None]**
+            - If **True** (default)
+                - the menu will only listen for the author's reactions.
+            - If **False**
+                - ANY user can react to the menu
+            - If **member**
+                - Only target member will be able to react
+            - If **role**
+                - ANY user with target role will be able to react.
+        stop: **str** (Default **'cancel'**)
+            If the users passes this string in the message content the menu will end, clean up and return None
+        timeout: **int** (Default **60**)
+            The amount of time to wait for each question.
+            If a timeout is reached, the menu is cancelled and cleaned up
+        cleanup: **bool** (Default **True**)
+            Whether to clean up messages or not
 
     .. warning::
 
-        This menu is still being worked on, its not recommended to be used in production
+        This menu is still being worked on, its not recommended to be used in production without extensive testing
+
+    .. note::
+
+        If the users response matches the **stop** parameter the menu will return an explicit **False**
+
+        If timeout occurs however return value will be **None**
+
+        This way you can differentiate the output reasons
 
     """
     _questions: List[_QuestionData] = []
@@ -472,17 +480,8 @@ class TextMenu:
 
         .. warning::
 
-            Either :param question: or :param embed: are required. If you dont pass any :class:`ValueError` will be raised
+            Either **question** or **embed** are required. If you dont pass any :class:`ValueError` will be raised
 
-        ..  note::
-            If a Converter type parser is passed then it needs to be instantiated
-
-            Example::
-
-                # if the converter is discord.ext.commands.TextChannelConverter then:
-                from discord.ext.commands import TextChannelConverter
-                converter = TextChannelConverter()
-                menu.add_question('Tag a channel', parser=converter)
         """
         parse_fail_response = (parse_fail_response
                                or 'Failed to convert **"{}"** to desired type, try again'
@@ -513,10 +512,14 @@ class TextMenu:
         self._messages.append(await ctx.send(content=msg_text, embed=msg_embed))
         answer_msg = await ctx.bot.wait_for('message', check=check, timeout=self.timeout)
         self._messages.append(answer_msg)
+        if answer_msg.content.lower().strip() == self.stop:
+            return False
         if question.parser:
             try:
                 if isinstance(question.parser, Converter):
                     answer = await question.parser.convert(ctx, answer_msg.content)
+                elif isinstance(question.parser, type) and issubclass(question.parser, Converter):
+                    answer = await question.parser().convert(ctx, answer_msg.content)
                 else:
                     answer = question.parser(answer_msg.content)
                     if isawaitable(question.parser):
@@ -525,7 +528,7 @@ class TextMenu:
                 question.failed = True
                 question.parse_fail_response = (question.parse_fail_response.format(answer_msg.content)
                                                 if question.parse_fail_response else None)
-                raise UserAnswerParsingError(f"Failed to parse {question}")
+                raise UserAnswerParsingError(f"Failed to parse {question}") from e
         else:
             answer = answer_msg.content
         return answer
@@ -553,9 +556,11 @@ class TextMenu:
         answers = []
         for question in self._questions:
             answer = None
-            while not answer:
+            while answer is None:
                 try:
                     answer = await self._ask(ctx, question)
+                    if answer is False:
+                        return answer
                 except asyncio.TimeoutError:
                     return
                 except UserAnswerParsingError as error:
