@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="TextMenu improvements">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/menus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/waiters.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/waiters.py" afterDir="false" />
-    </list>
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="TextMenu improvements" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -237,14 +233,7 @@
       <workItem from="1623194656771" duration="2593000" />
       <workItem from="1623334363135" duration="2738000" />
       <workItem from="1623342058458" duration="11973000" />
-      <workItem from="1623515266757" duration="8352000" />
-    </task>
-    <task id="LOCAL-00031" summary="changed name of time_parser to &quot;to_timedelta&quot;">
-      <created>1618585710968</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1618585710968</updated>
+      <workItem from="1623515266757" duration="8916000" />
     </task>
     <task id="LOCAL-00032" summary="updated version to 0.0.20a. View changelog">
       <created>1619037592682</created>
@@ -582,7 +571,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623517079459</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="TextMenu improvements">
+      <created>1623636393000</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1623636393001</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

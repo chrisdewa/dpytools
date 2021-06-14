@@ -560,8 +560,10 @@ class TextMenu:
                 try:
                     answer = await self._ask(ctx, question)
                     if answer is False:
+                        await self._try_to_clean(ctx)
                         return answer
                 except asyncio.TimeoutError:
+                    await self._try_to_clean(ctx)
                     return
                 except UserAnswerParsingError as error:
                     if not self.retry_parse_fail:

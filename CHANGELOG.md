@@ -1,3 +1,6 @@
+# 0.17.3b
+- Fixed bug on **TextMenu** where messages would not be cleaned on timeout or cancel
+
 # 0.17.2b
 - Fixed **TextMenu** bug where the menu would ignore the stop string
 - Documentation improvements
