@@ -107,15 +107,28 @@ class Embed(discord.Embed):
     colour (or color):
         The colour code of the embed.
     image:
-        The image url
-        Calls the internal "set_image" method with the kwarg value as the url
+        The image url.
+        Calls the internal "set_image" method with the kwarg value as the url.
     thumbnail:
-        The thumbnail url
-        Calls the internal "set_thumbnail" method with the kwarg value as the url
+        The thumbnail url.
+        Calls the internal "set_thumbnail" method with the kwarg value as the url.
+    author:
+        A dict containing (optional) "name", "url", and "icon_url" fields.
+        Calls the internal "set_author" method, setting the author name, url, and icon_url if applicable.
+    footer:
+        A dict containing (optional) "text" and "icon_url" fields.
+        Calls the internal "set_footer" method, setting the footer text and icon_url if applicable.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        if author := kwargs.get('author', None):
+            self.set_author(**author)
+
+        if footer := kwargs.get('footer', None):
+            self.set_footer(**footer)
+
         if image := kwargs.get('image', None):
             self.set_image(url=image)
 
