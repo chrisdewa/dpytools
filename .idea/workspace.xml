@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="TextMenu improvements">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="TextMenu bug fix&#10;Added property to Embed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/embeds.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/embeds.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/checks.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/checks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpytools/emojis.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/emojis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpytools/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/menus.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -239,14 +240,9 @@
       <workItem from="1623194656771" duration="2593000" />
       <workItem from="1623334363135" duration="2738000" />
       <workItem from="1623342058458" duration="11973000" />
-      <workItem from="1623515266757" duration="14570000" />
-    </task>
-    <task id="LOCAL-00034" summary="readme and version update">
-      <created>1619658865100</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1619658865100</updated>
+      <workItem from="1623515266757" duration="15530000" />
+      <workItem from="1623809124086" duration="9724000" />
+      <workItem from="1624634515093" duration="55000" />
     </task>
     <task id="LOCAL-00035" summary="added FAQ, general patches, readme improvements">
       <created>1619711009452</created>
@@ -584,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623637032901</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="TextMenu bug fix&#10;Added property to Embed">
+      <created>1623689293504</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1623689293504</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -603,7 +606,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="." />
     <MESSAGE value="corrected version error" />
     <MESSAGE value="added four new tools. improved All.md" />
     <MESSAGE value="patch bug in `to_month`, added docstring to `multichoice`" />
@@ -628,7 +630,8 @@
     <MESSAGE value="version bump" />
     <MESSAGE value="added decorator `any_checks`" />
     <MESSAGE value="TextMenu improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="TextMenu improvements" />
+    <MESSAGE value="TextMenu bug fix&#10;Added property to Embed" />
+    <option name="LAST_COMMIT_MESSAGE" value="TextMenu bug fix&#10;Added property to Embed" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dpytools$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1622238960660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />

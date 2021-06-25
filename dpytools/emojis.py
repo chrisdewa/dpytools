@@ -5,6 +5,7 @@ __all__ = (
     'EmojiNumbers'
 )
 
+
 class Emoji(str, Enum):
     """
     Enum class with common emojis used for reaction messages or related interactions

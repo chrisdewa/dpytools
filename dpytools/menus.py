@@ -414,16 +414,12 @@ class TextMenu:
             - If **role**
                 - ANY user with target role will be able to react.
         stop: **str** (Default **'cancel'**)
-            If the users passes this string in the message content the menu will end, clean up and return None
+            If the users passes this string in the message content the menu will end, clean up and return False
         timeout: **int** (Default **60**)
             The amount of time to wait for each question.
-            If a timeout is reached, the menu is cancelled and cleaned up
+            If a timeout is reached, the menu is cancelled and cleaned up and returns None
         cleanup: **bool** (Default **True**)
             Whether to clean up messages or not
-
-    .. warning::
-
-        This menu is still being worked on, its not recommended to be used in production without extensive testing
 
     .. note::
 

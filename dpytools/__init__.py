@@ -7,6 +7,7 @@ from inspect import isawaitable
 from typing import List, Any, Callable
 
 from .emojis import Emoji, EmojiNumbers
+from .embeds import Embed
 
 __title__ = 'dpytools'
 __author__ = 'ChrisDewa'
@@ -14,10 +15,7 @@ __license__ = 'MIT'
 __copyright__ = 'Copyright 2020-2021 ChrisDewa'
 
 __all__ = (
-    'Color',
-    'chunkify',
-    'chunkify_string_list',
-    '_silent_except'
+    'Color', 'chunkify', 'chunkify_string_list', '_silent_except', 'Emoji', 'EmojiNumbers', 'Embed'
 )
 
 

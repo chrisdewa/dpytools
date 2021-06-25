@@ -1,3 +1,8 @@
+# 0.18.0b
+- Reorganizing functions some tools
+  - Emoji, EmojiNumbers and Embed will remain on their file but will be imported to `__init__`
+  - As such they will be able to be accessed directly from dpytools
+
 # 0.17.4b
 - Fixed bug where **TextMenu** would start repeating its questions after the first call.
 - Added property to **Embed** that tells you if the embed is valid (acording to the length limits of its fields and global character limit)
