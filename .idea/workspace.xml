@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="TextMenu bug fix&#10;Added property to Embed">
+    <list default="true" id="ad292518-93d1-4a85-ac10-b407c7b3348d" name="Default Changelist" comment="import improvements, embed patch">
+      <change afterPath="$PROJECT_DIR$/dpytools/future/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dpytools/future/menu_views/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dpytools/future/menu_views/confirm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dpytools/future/react_menus/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dpytools/future/react_menus/menus.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dpytools/future/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dpytools/future/utils/randstr.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/checks.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/checks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/emojis.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/emojis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpytools/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpytools/menus.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="general_dev" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,12 +46,13 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/dpytools/embeds.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pyproject.toml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/dpytools/waiters.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/LICENCE" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/dpytools/__init__.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/env/Lib/site-packages/discord/ext/commands/core.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/env/Lib/site-packages/discord/embeds.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pyproject.toml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/dpytools/embeds.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/dpytools/__init__.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1nM4NLliVhW09mqMon6Ipua98l9" />
   <component name="ProjectViewState">
@@ -62,7 +65,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Athena" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dpytools/future/react_menus" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -71,6 +74,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\dpytools\future\react_menus" />
       <recent name="C:\Users\chris\Documents\MEGA\Chris\Discord\dpytools\tests\cogs\other" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -634,10 +638,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="TextMenu bug fix&#10;Added property to Embed" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/dpytools$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1623097868040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/dpytools$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1622238960660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/dpytools$s.coverage" NAME="s Coverage Results" MODIFIED="1623097000365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/dpytools$bot.coverage" NAME="bot Coverage Results" MODIFIED="1625852340364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/dpytools$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1621089598879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
-    <SUITE FILE_PATH="coverage/dpytools$bot.coverage" NAME="bot Coverage Results" MODIFIED="1623687363937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/dpytools$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1623097868040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
   </component>
 </project>
